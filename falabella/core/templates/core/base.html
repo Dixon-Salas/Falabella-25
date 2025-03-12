@@ -1,0 +1,1220 @@
+{% load static %}
+<doctype html>
+  <html>
+
+  <head>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Falabella Colombia">
+    <title>{% block title %}{% endblock %}</title>
+
+    <style>
+      .dropdown-menu-wide {
+        width: 300px;
+        /* Ajusta este valor según tus necesidades */
+        border: none;
+        /* Eliminar borde */
+        background: none;
+        /* Eliminar fondo */
+        box-shadow: none;
+        /* Eliminar sombra */
+      }
+
+      .menu-hola {
+        color: #040000;
+        /* Color del texto */
+        font-weight: bold;
+        /* Opcional: para hacer el texto en negrita */
+        padding: 5px;
+        /* Opcional: para agregar un poco de espacio alrededor del texto */
+        border-radius: 5px;
+        /* Opcional: para redondear las esquinas */
+      }
+
+      .dropdown-toggle.no-arrow::after {
+        display: none;
+      }
+
+      .bold-on-hover:hover {
+        font-weight: bold;
+      }
+
+      .semi-bold-on-hover:hover {
+        font-weight: 500;
+      }
+
+      .popover {
+        max-width: 200px !important;
+      }
+
+      .popover-body {
+        width: 200px !important;
+        padding: 1rem !important;
+      }
+
+      .popover hr {
+        margin: 0.5rem 0;
+        border-top: 1px solid #dee2e6;
+        opacity: 1;
+        width: 80%;
+      }
+
+      .submenu {
+        position: absolute;
+        left: 250px;
+        top: 0;
+        height: 95vh;
+        /* Reducir la altura a 80vh */
+        width: 900px;
+        background-color: white;
+        border-left: 1px solid #dee2e6;
+        padding: 1rem;
+        display: none;
+        z-index: 1050;
+        overflow-y: auto;
+        /* Cambiar de hidden a auto */
+        padding-top: 60px;
+        transition: all 0.2s ease-in-out;
+        visibility: hidden;
+        opacity: 0;
+        border-radius: 0 15px 15px 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Añadir sombra */
+      }
+
+      .submenu:hover,
+      .menu-item:hover .submenu {
+        display: block;
+      }
+
+      /* Ajustar el comportamiento del hover */
+      .menu-item .submenu {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .menu-item:hover .submenu,
+      .submenu:hover {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+      }
+
+      /* Estilos para la barra de desplazamiento */
+      .submenu::-webkit-scrollbar {
+        width: 16px !important;
+        display: block !important;
+      }
+
+      .submenu::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+        /* Añadir borde curvo */
+        margin: 5px;
+        margin-top: 1cm;
+        /* Añadir margen superior de 1 cm */
+      }
+
+      .submenu::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+        /* Añadir borde curvo */
+        min-height: 50px;
+        border: 3px solid #f1f1f1;
+      }
+
+      .submenu::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      .submenu,
+      .offcanvas-body {
+        overflow-y: auto;
+        scrollbar-width: thick;
+        /* Cambiado a thick para una barra más ancha */
+        scrollbar-color: #888 #f1f1f1;
+      }
+
+      /* Estilos específicos para la barra de desplazamiento */
+      .submenu::-webkit-scrollbar,
+      .offcanvas-body::-webkit-scrollbar {
+        width: 20px !important;
+        /* Aumentado significativamente */
+        display: block !important;
+        /* Fuerza la visualización de la barra */
+      }
+
+      .submenu::-webkit-scrollbar-track,
+      .offcanvas-body::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+        /* Añadir borde curvo */
+        margin: 5px;
+        margin-top: 1cm;
+        /* Añadir margen superior de 1 cm */
+      }
+
+      .submenu::-webkit-scrollbar-thumb,
+      .offcanvas-body::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+        /* Añadir borde curvo */
+        border: 3px solid #f1f1f1;
+        /* Añade borde */
+        min-height: 60px;
+      }
+
+      .submenu::-webkit-scrollbar-thumb:hover,
+      .offcanvas-body::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      /* Asegura que el contenedor del submenu tenga suficiente contenido para scroll */
+      .submenu ul,
+      .offcanvas-body ul {
+        min-height: 120vh;
+        /* Mayor que la altura de la ventana */
+        padding-bottom: 200px;
+      }
+
+      .menu-item:hover .submenu {
+        display: block;
+      }
+
+      /* Asegurarse de que el contenido del submenu comience en la misma posición que el menú principal */
+      .offcanvas-body {
+        padding-top: 0;
+        height: calc(100vh - 60px);
+        /* Misma altura que el submenu */
+        overflow-y: auto;
+      }
+
+      /* Comportamiento del hover */
+      .menu-item:hover .submenu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .submenu:hover {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateZ(0);
+        /* Activar aceleración por hardware */
+        will-change: transform;
+        /* Optimizar rendimiento */
+      }
+
+      .menu-item.active .submenu {
+        display: block;
+      }
+
+      /* Estilo específico para el submenu de Tecnología */
+      #tecnologia-link+i+.submenu {
+        border-radius: 0 15px 15px 0;
+        /* Bordes curvos solo al lado derecho */
+        border-left: 2px solid #dee2e6;
+        /* Borde izquierdo más definido */
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+        /* Sombra suave en el lado derecho */
+      }
+
+      /* Ajustar el contenedor del submenu */
+      #tecnologia-link+i+.submenu::-webkit-scrollbar-track {
+        border-radius: 0 10px 10px 0;
+        /* Borde curvo solo al lado derecho */
+        margin: 5px;
+        margin-top: 1cm;
+        /* Añadir margen superior de 1 cm */
+      }
+
+      /* Ajustar la barra de desplazamiento */
+      #tecnologia-link+i+.submenu::-webkit-scrollbar {
+        border-radius: 0 10px 10px 0;
+        /* Borde curvo solo al lado derecho */
+        margin-right: 5px;
+      }
+
+      /* Ajustar el espaciado superior del contenido del submenu */
+      .submenu .row {
+        margin-top: 20px;
+        /* Espacio superior */
+        padding-top: 20px;
+        /* Padding adicional */
+      }
+
+      /* Si necesitas ajustar específicamente las columnas */
+      .submenu .col-md-3 {
+        margin-top: 15px;
+        /* Espacio superior para cada columna */
+      }
+
+      /* Ajustar el título del submenu */
+      .submenu h6 {
+        margin-top: 15px;
+        /* Espacio superior para los títulos */
+      }
+
+      /* Cambiar el cursor a una mano para "Hola, Inicia sesión" y su submenú, "Mis compras", "Rebajas Vestuario", "Menú" y su submenú */
+      #loginArea,
+      #loginArea a,
+      #misCompras,
+      #misCompras a,
+      #rebajas-link,
+      .menu-item,
+      .submenu,
+      button[data-bs-toggle="offcanvas"] {
+        cursor: pointer;
+      }
+
+      .no-underline {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Estilos para el modal de inicio de sesión */
+      #loginModal .modal-header {
+        border-bottom: 1px solid #dee2e6;
+        /* Reduce el grosor de la línea */
+      }
+
+      /* Ajustar el padding del header del modal */
+      #loginModal .modal-header {
+        padding-bottom: 0.5rem;
+        /* Reduce el espacio debajo del logo */
+      }
+
+      /* Ajustar el margen del título del modal */
+      #loginModal .modal-title {
+        margin-bottom: 0;
+      }
+
+      /* Estilos para el input del login */
+      #loginModal .form-control {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+        border-bottom: 1px solid #000; /* Cambiamos el color a negro */
+        padding-left: 0;
+      }
+
+      #loginModal .form-control:focus {
+        box-shadow: none;
+        border-bottom: 2px solid #000; /* Mantenemos el negro en el focus */
+      }
+
+      /* Ajustar la posición vertical del modal */
+      #loginModal .modal-dialog {
+        margin-top: 150px; /* Aumenta este valor para bajar más el modal */
+      }
+      
+
+      /* Opcional: agregar una transición suave */
+      #loginModal.fade .modal-dialog {
+        transition: transform .3s ease-out, margin-top .3s ease-out;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- Main container -->
+    <div class="container-fluid">
+
+      <!-- Navbar Homecenter / Linio -->
+      <nav class="flex justify-between items-center border-b border-gray-200">
+        <div class="btn btn-group">
+          <a href="#" aria-current="page" class="py-3  object-contain px-2">
+            <img src="{% static 'img/falIconButton.png' %}" alt="Falabella Icon" width="90" height="15">
+          </a>
+          <a href="https://homecenter.falabella.com.co/homecenter-co" class="py-3 object-contain px-2">
+            <img src="{% static 'img/homIconButton.png' %}" alt="Homecenter Icon" width="115" height="10">
+          </a>
+          <a href="https://linio.falabella.com.co/linio-co" class="py-1 object-contain px-2">
+            <img src="{% static 'img/linIconButton.png' %}" alt="Linio Icon" width="50" height="30">
+          </a>
+        </div>
+      </nav>
+
+      <!-- Main Navbar -->
+      <nav
+        class="navbar border-bottom border-gray-200 d-flex align-items-center justify-content-between px-3 py-2 bg-gray-50">
+        <!-- Logo + Menu -->
+        <div class="d-flex align-items-center">
+          <!-- Logo -->
+          <div class="me-3">
+            <img src="{% static 'img/falLogo.png' %}" alt="Falabella Icon" width="150" height="50">
+          </div>
+          <!-- Offcanvas Menu Button -->
+          <button class="d-flex align-items-center justify-content-center" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+            <i class="bi bi-list"></i> <strong class="fs-5">Menú</strong>
+          </button>
+          <!---
+        <button class="d-flex align-items-center justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+          <i class="bi bi-list fs-1"></i> <strong class="fs-5">Menú</strong>
+        </button>
+        -->
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel"
+            style="width: 250px;">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasMenuLabel">¡Hola!</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="list-unstyled">
+                <li class="d-flex justify-content-between align-items-center menu-item">
+                  <span href="#" id="rebajas-link">Rebajas Vestuario</span>
+                  <i class="bi bi-chevron-right"></i>
+                  <div class="submenu">
+                    <div class="row g-2"> <!-- Añadimos la clase g-2 para reducir el espaciado -->
+                      <!-- Columna Ropa Mujer -->
+                      <div class="col-md-3 px-2"> <!-- Reducimos el padding horizontal -->
+                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Rebajas Ropa Mujer</a></span></h6>
+                        <ul class="list-unstyled">
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Blusas</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Sacos y Sweaters</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Vestidos</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Jeans</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Cardigans</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chalecos</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pijamas</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Brassieres</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Calzones</a></li>
+                          <li class="mb-4" style="width: 150px;"></li>
+                          <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Rebajas Deportiva Mujer</a></span>
+                          </h6>
+                          <ul class="list-unstyled">
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Tops</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Short</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Leggings</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Sacos y Hoodies</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
+                          </ul>
+                      </div>
+                      <!-- Nueva Columna Ropa Hombre -->
+                      <div class="col-md-3 px-2">
+                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Hombre</a></span></h6>
+                        <ul class="list-unstyled">
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisas</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Poleras</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Jeans</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Polerones</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Trajes</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Ropa Interior</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Calcetines</a></li>
+                          <li class="mb-4" style="width: 150px;"></li>
+                          <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Deportiva Hombre</a></span></h6>
+                          <ul class="list-unstyled">
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas Futbool</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalonetas</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Sacos y Hoodies</a></li>
+                          </ul>
+                      </div>
+                      <!-- Nueva Columna Ropa Hombre -->
+                      <div class="col-md-3 px-2">
+                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Niñas</a></span></h6>
+                        <ul class="list-unstyled">
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisas</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Poleras</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Jeans</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Polerones</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Trajes</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Ropa Interior</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Calcetines</a></li>
+                          <li class="mb-6" style="width: 150px;"></li>
+                          <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Niños</a></span></h6>
+                          <ul class="list-unstyled">
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Sacos y Sweaters</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pijamas</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Ropa interior</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
+                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Bermudas</a></li>
+                            <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Bebes Niñas</a></span></h6>
+                            <ul class="list-unstyled"> <!-- Abre una nueva lista aquí si es necesario -->
+                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas</a></li>
+                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
+                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Sacos y Sweaters</a></li>
+                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pijamas</a></li>
+                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Ropa interior</a></li>
+                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
+                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Bermudas</a></li>
+                            </ul>
+                      </div>
+                      <!-- Nueva Columna Ropa bebe niños -->
+                      <div class="col-md-3 px-2">
+                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Bebes Niños</a></span></h6>
+                        <ul class="list-unstyled">
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover no-underline">Packs</a></li>
+                          <li class="mb-2"><a href="/" class="semi-bold-on-hover no-underline">Conjuntos</a></li>
+                        </ul>
+                      </div>
+                      <!--Tecnologia-->
+                <li class="d-flex justify-content-between align-items-center menu-item">
+                  <span href="#" id="rebajas-link">Tecnología</span>
+                  <i class="bi bi-chevron-right"></i>
+                  <div class="submenu">
+                    <div class="row g-2"> <!-- Añadimos la clase g-2 para reducir el espaciado -->
+                      <!-- Columna Ropa Computación -->
+                      <div class="col-md-3 px-2"> <!-- Reducimos el padding horizontal -->
+                        <h6 class="mb-2"><span class="bold-on-hover">Computación</span></h6>
+                        <ul class="list-unstyled">
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Portátiles</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Inteligencia
+                              Artificial</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Tablets</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Impresoras</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Portátiles gamer</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Accesorios
+                              Computación</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Monitores</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Pc de escritorio</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Conectividad</a></li>
+                          <li class="mb-4" style="width: 150px;"></li>
+
+                          <h6 class="mb-2"><span class="bold-on-hover">Audio</span></h6>
+                          <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Audifonos</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Barras de sonido</a>
+                            </li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Equipos de sonido y
+                                karaoke</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Accesorios audio</a>
+                            </li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Parlantes</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Audio profesional y
+                                dj</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Instrumentos
+                                musicales</a></li>
+                          </ul>
+                      </div>
+                      <!-- Nueva Columna Ropa Hombre -->
+                      <div class="col-md-3 px-2">
+                        <h6 class="mb-2"><span class="bold-on-hover">Tv y video</span></h6>
+                        <ul class="list-unstyled">
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Televisores</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">TVs de 42" o menos</a>
+                          </li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">TVs de 43"-49"</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">TVs de 50"-58"</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">TVs de 60"-65"</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">TVs superiores a 70"</a>
+                          </li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Proyectores</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Accesorios TV</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Soportes</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Streaming</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Zona gamer</a></li>
+                          <ul class="list-unstyled">
+
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Portatiles gamer</a>
+                            </li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Monitores gamer</a>
+                            </li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Accesorios gamer</a>
+                            </li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Audifonos gamer</a>
+                            </li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Sillas gamer</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Lentes VR</a></li>
+                          </ul>
+                      </div>
+                      <!-- Nueva Columna Ropa Hombre -->
+                      <div class="col-md-3 px-2">
+                        <h6 class="mb-2"><span class="bold-on-hover">Consolas</span></h6>
+                        <ul class="list-unstyled">
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                              style="text-decoration: none; color: inherit;">Playstation</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                              style="text-decoration: none; color: inherit;">Nintendo</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                              style="text-decoration: none; color: inherit;">Xbox</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                              style="text-decoration: none; color: inherit;">Videojuegos</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                              style="text-decoration: none; color: inherit;">Accesorios</a></li>
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                              style="text-decoration: none; color: inherit;">Consolas retro</a></li>
+                          <li class="mb-6" style="width: 150px;"></li>
+                          <h6 class="mb-2"><span class="bold-on-hover">Smartwatch y accesorios</span></h6>
+                          <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                style="text-decoration: none; color: inherit;">Smartwatch</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                style="text-decoration: none; color: inherit;">Smartband</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                style="text-decoration: none; color: inherit;">Accesorios</a></li>
+
+                            <h6 class="mb-2"><span class="bold-on-hover">Cámaras y drones</span></h6>
+                            <ul class="list-unstyled">
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                  style="text-decoration: none; color: inherit;">Cámaras deportivas</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                  style="text-decoration: none; color: inherit;">Cámaras instantaneas</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                  style="text-decoration: none; color: inherit;">Cámaras profesionales</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                  style="text-decoration: none; color: inherit;">Cámaras semiprofesionales</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                  style="text-decoration: none; color: inherit;">Accesorios fotografía</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                  style="text-decoration: none; color: inherit;">Drones</a></li>
+                            </ul>
+                          </ul>
+                      </div>
+                      <!-- Nueva Columna Ropa bebe niños -->
+                      <div class="col-md-3 px-2">
+                        <h6 class="mb-2"><span class="bold-on-hover">Patinetas eléctricas</span></h6>
+                        <ul class="list-unstyled">
+                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                              style="text-decoration: none; color: inherit;">ver todo</a></li>
+                          <div style="margin-bottom: 20px;"></div>
+                          <h6 class="mb-2"><span class="bold-on-hover">Smart Home</span></h6>
+                          <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                style="text-decoration: none; color: inherit;">Asistentes de voz</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                style="text-decoration: none; color: inherit;">Aspiradoras robots</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                style="text-decoration: none; color: inherit;">Iluminación inteligente</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                style="text-decoration: none; color: inherit;">Cámaras inteligentes</a></li>
+                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
+                                style="text-decoration: none; color: inherit;">Routers y conectividad</a></li>
+                            <h6 class="mb-2"><span class="bold-on-hover">Marcas Destacadas</span></h6>
+                            <ul class="list-unstyled">
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Apple</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Samsung</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Xiaomi</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">LG</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Sony</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Bosse</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">HP</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Lenovo</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Asus</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">JVC</a></li>
+                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline"></a></li>
+                            </ul>
+                      </div>
+
+
+
+                    </div>
+                  </div>
+                </li>
+
+
+                <li class="mb-4" style="width: 150px;"></li>
+                <hr class="my-4">
+                <li><a href="#" style="text-decoration: none; color: black; font-size: x-small;"><small><strong>TIENDAS
+                        OFICIALES</strong></small></a></li>
+                <li class="mb-4" style="width: 100px;"></li>
+                <li><a href="#"><img src="{% static 'img/homIconButton.png' %}" alt="Homecenter Icon" width="100"
+                      height="30"></a></li>
+                <li class="mb-4" style="width: 100px;"></li>
+
+                <hr class="my-4">
+                <li><a href="#" style="text-decoration: none;"></a>Vende en falabella.com</a></li>
+                <hr class="my-4">
+                <li><a href="#" id="guias-compras-link" style="text-decoration: none;"></a>Guias de compras</a></li>
+                <li class="mb-4" style="width: 100px;"></li>
+                <li><a href="#" id="horario-tiendas-link" style="text-decoration: none;"><a>Horario de tiendas</a></a>
+                </li>
+                <li class="mb-4" style="width: 100px; font-size: larger;"></li>
+                <hr class="my-4">
+                <img src="{% static 'img/falIconButton.png' %}" alt="falIconButton" width="115" height="10">
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Search bar -->
+        <div class="flex-grow-1 mx-4">
+          <div class="input-group">
+            <input class="form-control rounded-pill py-2 bg-transparent" type="search"
+              placeholder="Buscar en falabella.com" aria-label="Search">
+            <span class="position-absolute top-50 end-0 translate-middle-y me-2 bg-secondary rounded-circle"
+              style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
+              <i class="bi bi-search text-white"></i>
+            </span>
+          </div>
+        </div>
+        <!-- Links -->
+        <nav class="navbar p-2">
+          <div class="container-fluid d-flex align-items-center justify-content-between">
+            <!-- Login -->
+            <div class="d-flex flex-column align-items-start" id="loginArea">
+              <strong class="text-dark mb-0 fs-5">Hola,</strong> <!-- Aumentar el tamaño del texto -->
+              <div class="d-flex align-items-center">
+                <strong class="text-dark fs-5 semi-bold-on-hover">Inicia sesión</strong>
+                <!-- Aumentar el tamaño del texto -->
+                <i class="bi bi-chevron-down ms-1 fs-5" id="chevronIcon"></i> <!-- Aumentar el tamaño del ícono -->
+              </div>
+            </div>
+            <!-- Divider -->
+            <div class="vr mx-3"></div>
+            <!-- Mis compras -->
+            <div class="d-flex align-items-center" id="misCompras">
+              <div class="d-flex flex-column" style="line-height: 1;">
+                <strong class="text-dark">Mis</strong>
+                <strong class="text-dark fw-bold">compras</strong>
+              </div>
+            </div>
+            <!-- Divider -->
+            <div class="vr mx-3"></div>
+            <!-- Liked -->
+            <a href="#">
+              <i class="bi bi-heart text-dark fs-4"></i>
+            </a>
+            <!-- Divider -->
+            <div class="vr mx-3"></div>
+            <!-- Cart -->
+            <div class="position-relative me-3">
+              <a href="#" class="text-decoration-none">
+                <i class="bi bi-cart3 text-dark fs-4"></i>
+              </a>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
+                0
+              </span>
+            </div>
+          </div>
+        </nav>
+      </nav>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+          var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+          });
+
+          var loginArea = document.getElementById('loginArea');
+          var chevronIcon = document.getElementById('chevronIcon');
+          var popover = new bootstrap.Popover(chevronIcon, {
+            trigger: 'manual',
+            placement: 'bottom',
+            html: true,
+            content: `
+            <div class="popover-body text-start">
+              <ul class="list-unstyled m-0">
+                <li class="mb-3">
+                  <a href="#" class="semi-bold-on-hover no-underline" id="loginLink">
+                    Inicia sesión
+                  </a>
+                </li>
+                <li class="mb-3">
+                  <a href="/" class="semi-bold-on-hover no-underline" id="registerLink">
+                    Regístrate
+                  </a>
+                </li>
+                <li class="mb-3">
+                  <a href="#" class="semi-bold-on-hover no-underline" id="myAccountLink">
+                    Mi cuenta
+                  </a>
+                </li>
+                <hr class="my-3">
+                <li class="mb-3"><a href="/" class="semi-bold-on-hover no-underline">CMR Puntos</a></li>
+              </ul>
+            </div>
+          `
+          });
+
+          // Agregar evento para manejar el clic en el enlace de inicio de sesión
+          document.addEventListener('click', function (event) {
+            const loginLink = event.target.closest('#loginLink');
+            if (loginLink) {
+              event.preventDefault();
+
+              // Ocultar el popover
+              popover.hide();
+
+              // Mostrar el modal de inicio de sesión
+              const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+              loginModal.show();
+            }
+          });
+
+          // Manejar el envío del formulario del modal
+          document.querySelector('#loginModal form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Remover mensaje de error anterior si existe
+            const existingError = document.querySelector('.error-message');
+            if (existingError) {
+              existingError.remove();
+            }
+
+            // Simular verificación de credenciales (reemplazar con tu lógica real)
+            fetch('/login/', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+              },
+              body: JSON.stringify({ email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                window.location.reload();
+              } else {
+                // Crear y mostrar mensaje de error
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'alert alert-danger mt-3 error-message';
+                errorDiv.style.fontSize = '14px';
+                errorDiv.innerHTML = 'Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.';
+                
+                // Insertar el mensaje después del botón de ingresar
+                const submitButton = document.querySelector('#loginModal button[type="submit"]');
+                submitButton.insertAdjacentElement('afterend', errorDiv);
+              }
+            })
+            .catch(error => {
+              // Mostrar el mismo mensaje de error en caso de error de red
+              const errorDiv = document.createElement('div');
+              errorDiv.className = 'alert alert-danger mt-3 error-message';
+              errorDiv.style.fontSize = '14px';
+              errorDiv.innerHTML = 'Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.';
+              
+              const submitButton = document.querySelector('#loginModal button[type="submit"]');
+              submitButton.insertAdjacentElement('afterend', errorDiv);
+            });
+          });
+
+          // Agregar evento para manejar el clic en el enlace de registro
+          document.addEventListener('click', function (event) {
+            const registerLink = event.target.closest('#registerLink');
+            if (registerLink) {
+              event.preventDefault();
+
+              // Ocultar el popover
+              popover.hide();
+
+              // Mostrar el modal de registro
+              const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+              registerModal.show();
+            }
+          });
+
+          // Manejar el envío del formulario de registro
+          document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validar que las contraseñas coincidan
+            if (password !== confirmPassword) {
+              alert('Las contraseñas no coinciden');
+              return;
+            }
+
+            // Enviar datos al servidor
+            fetch('/register/', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+              },
+              body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password
+              })
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                window.location.reload();
+              } else {
+                alert(data.message || 'Error al registrar usuario');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('Error al registrar usuario');
+            });
+          });
+
+          // Agregar el event listener para Mi cuenta
+          document.addEventListener('click', function(event) {
+            const myAccountLink = event.target.closest('#myAccountLink');
+            if (myAccountLink) {
+              event.preventDefault();
+              
+              // Ocultar el popover
+              popover.hide();
+              
+              // Mostrar el modal de inicio de sesión
+              const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+              loginModal.show();
+            }
+          });
+
+          loginArea.addEventListener('mouseover', function () {
+            popover.show();
+          });
+
+          loginArea.addEventListener('mouseleave', function () {
+            setTimeout(function () {
+              if (!loginArea.matches(':hover') && !document.querySelector('.popover:hover')) {
+                popover.hide();
+              }
+            }, 300);
+          });
+
+          document.addEventListener('click', function (event) {
+            if (!loginArea.contains(event.target) && !document.querySelector('.popover').contains(event.target)) {
+              popover.hide();
+            }
+          });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+          const menuItems = document.querySelectorAll('.menu-item');
+          let activeSubmenu = null;
+
+          menuItems.forEach(item => {
+            const submenu = item.querySelector('.submenu');
+
+            if (submenu) {
+              item.addEventListener('mouseenter', () => {
+                // Ocultar submenú anterior si existe y es diferente
+                if (activeSubmenu && activeSubmenu !== submenu) {
+                  activeSubmenu.style.display = 'none';
+                }
+                // Calcular posición y mostrar submenú
+                const offcanvasBody = document.querySelector('.offcanvas-body');
+                const bodyTop = offcanvasBody.getBoundingClientRect().top;
+                submenu.style.top = `${bodyTop}px`;
+                submenu.style.display = 'block';
+                activeSubmenu = submenu;
+              });
+
+              // Mantener el submenú visible al hacer hover sobre él
+              submenu.addEventListener('mouseenter', () => {
+                submenu.style.display = 'block';
+              });
+
+              // Mantener el submenú visible al hacer hover sobre el menú principal
+              item.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                  if (!submenu.matches(':hover')) {
+                    submenu.style.display = 'none';
+                  }
+                }, 300);
+              });
+
+              submenu.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                  if (!item.matches(':hover')) {
+                    submenu.style.display = 'none';
+                  }
+                }, 300);
+              });
+            }
+          });
+        });
+
+        function togglePassword(id) {
+          const passwordInput = document.getElementById(id);
+          const toggleIcon = document.getElementById('togglePassword');
+          if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.classList.remove('bi-eye-slash');
+            toggleIcon.classList.add('bi-eye');
+          } else {
+            passwordInput.type = 'password';
+            toggleIcon.classList.remove('bi-eye');
+            toggleIcon.classList.add('bi-eye-slash');
+          }
+        }
+      </script>
+
+      <script>
+        function togglePassword(inputId) {
+          const passwordInput = document.getElementById(inputId);
+          const toggleIcon = document.getElementById('togglePassword');
+          
+          if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.className = 'bi bi-eye';
+          } else {
+            passwordInput.type = 'password';
+            toggleIcon.className = 'bi bi-eye-slash';
+          }
+        }
+      </script>
+
+      <script>
+        document.addEventListener('click', function(event) {
+          const registerLinkFromLogin = event.target.closest('#registerLinkFromLogin');
+          if (registerLinkFromLogin) {
+            event.preventDefault();
+            
+            // Cerrar el modal de login
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            loginModal.hide();
+            
+            // Abrir el modal de registro
+            const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+            registerModal.show();
+          }
+        });
+      </script>
+
+      <script>
+        document.querySelector('#loginModal form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          
+          // Simular validación (esto es solo para demostración)
+          if (email && password) {
+            // Crear el mensaje de error
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'alert alert-danger mt-3';
+            errorDiv.style.fontSize = '14px';
+            errorDiv.style.borderRadius = '8px';
+            errorDiv.innerHTML = 'Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.';
+            
+            // Remover mensaje de error anterior si existe
+            const existingError = document.querySelector('.alert-danger');
+            if (existingError) {
+              existingError.remove();
+            }
+            
+            // Insertar el mensaje después del botón
+            const form = document.querySelector('#loginModal form');
+            form.appendChild(errorDiv);
+          }
+        });
+      </script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const loginForm = document.querySelector('#loginModal form');
+          
+          loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Remover mensaje de error anterior si existe
+            const existingError = document.querySelector('.alert-danger');
+            if (existingError) {
+              existingError.remove();
+            }
+            
+            // Crear el mensaje de error
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'alert alert-danger mt-3';
+            errorDiv.style.fontSize = '14px';
+            errorDiv.style.borderRadius = '8px';
+            errorDiv.innerHTML = 'Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.';
+            
+            // Insertar el mensaje después del título "Inicia sesión para comprar"
+            const title = loginForm.querySelector('h4');
+            title.insertAdjacentElement('afterend', errorDiv);
+
+            // Limpiar los campos del formulario
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            
+            // Restablecer el ícono de mostrar/ocultar contraseña
+            const toggleIcon = document.getElementById('togglePassword');
+            toggleIcon.className = 'bi bi-eye-slash';
+            
+            // Asegurar que el campo de contraseña esté en modo oculto
+            document.getElementById('password').type = 'password';
+          });
+        });
+      </script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const loginForm = document.querySelector('#loginModal form');
+          
+          loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Remover mensaje de error anterior si existe
+            const existingError = document.querySelector('.alert-danger');
+            if (existingError) {
+              existingError.remove();
+            }
+            
+            // Crear el mensaje de error
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'alert alert-danger mt-3';
+            errorDiv.style.fontSize = '14px';
+            errorDiv.style.borderRadius = '8px';
+            errorDiv.innerHTML = 'Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.';
+            
+            // Insertar el mensaje después del título "Inicia sesión para comprar"
+            const title = loginForm.querySelector('h4');
+            title.insertAdjacentElement('afterend', errorDiv);
+
+            // Limpiar los campos del formulario
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            
+            // Restablecer el ícono de mostrar/ocultar contraseña
+            const toggleIcon = document.getElementById('togglePassword');
+            toggleIcon.className = 'bi bi-eye-slash';
+            
+            // Asegurar que el campo de contraseña esté en modo oculto
+            document.getElementById('password').type = 'password';
+          });
+        });
+      </script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const loginModal = document.getElementById('loginModal');
+          const loginForm = document.querySelector('#loginModal form');
+          
+          // Limpiar el error cuando se cierra el modal
+          loginModal.addEventListener('hidden.bs.modal', function() {
+            // Remover mensaje de error si existe
+            const existingError = document.querySelector('.alert-danger');
+            if (existingError) {
+              existingError.remove();
+            }
+            
+            // Limpiar los campos del formulario
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            
+            // Restablecer el ícono de mostrar/ocultar contraseña
+            const toggleIcon = document.getElementById('togglePassword');
+            toggleIcon.className = 'bi bi-eye-slash';
+            
+            // Asegurar que el campo de contraseña esté en modo oculto
+            document.getElementById('password').type = 'password';
+          });
+          
+          // Resto del código del formulario...
+        });
+      </script>
+
+      <!-- Modal de inicio de sesión -->
+      <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginModalLabel">
+                <img src="{% static 'img/falIconButton.png' %}" alt="Falabella Icon" height="30">
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <h4 class="text-label mb-4">Inicia sesión para comprar</h4>
+                <div class="mb-3" style="margin-top: -15px;">
+                  <label for="email" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control border-0 border-bottom rounded-0" id="email" 
+                         placeholder="nombre@ejemplo.com" style="box-shadow: none; background: transparent;" required>
+                  
+                  <label for="password" class="form-label">Contraseña</label>
+                  <div class="position-relative">
+                    <input type="password" class="form-control border-0 border-bottom rounded-0" id="password" 
+                           placeholder="Ingresa tu contraseña" style="box-shadow: none; background: transparent;" required>
+                    <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y" 
+                            onclick="togglePassword('password')" style="background: none; border: none;">
+                      <i class="bi bi-eye-slash" id="togglePassword"></i>
+                    </button>
+                  </div>
+                  <small class="text-muted mt-2 d-block">
+                    ¿Olvidaste tu contraseña? No te preocupes, pide un código verificador por correo o SMS para cambiar tu contraseña.
+                  </small>
+                  <button type="submit" class="btn btn-dark w-100 rounded-pill mt-4">Ingresar</button>
+                  <div class="text-center mt-3">
+                    <small class="text-muted">
+                      ¿Aún no tienes cuenta? 
+                      <a href="#" class="text-dark text-decoration-none fw-bold" id="registerLinkFromLogin">Regístrate</a>
+                    </small>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de registro -->
+      <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="registerModalLabel">Regístrate</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="registerForm">
+                <div class="mb-3">
+                  <label for="registerName" class="form-label">Nombre completo</label>
+                  <input type="text" class="form-control" id="registerName" required>
+                </div>
+                <div class="mb-3">
+                  <label for="registerEmail" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control" id="registerEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label for="registerPassword" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="registerPassword" required>
+                </div>
+                <div class="mb-3">
+                  <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+                  <input type="password" class="form-control" id="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn btn-dark w-100">Crear cuenta</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </div>
+  </body>
+
+  </html>
