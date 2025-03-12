@@ -327,6 +327,38 @@
       #loginModal.fade .modal-dialog {
         transition: transform .3s ease-out, margin-top .3s ease-out;
       }
+
+      /* Estilos para el formulario de registro en línea */
+      .integrated-register {
+        position: relative;
+        background-color: #f8f9fa;
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .integrated-register .card {
+        transition: transform 0.3s;
+      }
+
+      .integrated-register .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+      }
+
+      .integrated-register .form-control:focus {
+        border-color: #000;
+        box-shadow: none;
+      }
+
+      .integrated-register .btn-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10;
+      }
     </style>
 
   </head>
@@ -709,6 +741,112 @@
         </nav>
       </nav>
 
+      <!-- Agregar después del nav principal -->
+      <div id="inlineRegisterForm" class="integrated-register" style="display: none;">
+        <div class="container py-4">
+          <div class="row justify-content-center">
+            <div class="col-md-10">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <div class="row">
+                    <!-- Columna del formulario - eliminar la clase border-end -->
+                    <div class="col-md-7">
+                      <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                          <h4 class="m-0">Inicia sesión o regístrate para comprar</h4>
+                          <p class="text-muted mt-2 mb-0" style="font-size: 14px;">Ingresa tus datos personales y disfruta de una experiencia de compra más rápida.</p>
+                        </div>
+                        <button type="button" class="btn-close" onclick="closeInlineRegister()"></button>
+                      </div>
+                      <form>
+                        <div class="mb-3">
+                          <label class="form-label">Correo</label>
+                          <input type="text" class="form-control border-0 border-bottom rounded-0" required>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Nombre</label>
+                          <input type="email" class="form-control border-0 border-bottom rounded-0" required>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Apellidos</label>
+                          <input type="email" class="form-control border-0 border-bottom rounded-0" required>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Tipo de documento</label>
+                          <input type="email" class="form-control border-0 border-bottom rounded-0" required>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Celular</label>
+                          <input type="email" class="form-control border-0 border-bottom rounded-0" required>
+                        </div>
+                        <div class="mb-3">
+                          
+                        </div>
+                        <div class="mb-3">
+                          <label for="confirmPassword" class="form-label">Contraseña</label>
+                          <div class="position-relative">
+                            <input type="password" class="form-control border-0 border-bottom rounded-0" id="confirmPassword" 
+                                   placeholder="Ingresa una contraseña" style="box-shadow: none; background: transparent;" required>
+                            <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y" 
+                                    onclick="togglePassword('confirmPassword')" style="background: none; border: none;">
+                              <i class="bi bi-eye-slash" id="togglePasswordConfirm"></i>
+                            </button>
+                          </div>
+                          <div class="mt-2">
+                            <small class="text-muted d-flex flex-wrap gap-2">
+                              <span>• Mín. 8 caracteres</span>
+                              <span>• 1 número</span>
+                              <span>• 1 mayúscula</span>
+                              <span>• 1 minúscula</span>
+                              <span>• Sin espacio</span>
+                              <span>• Sin usar '\¡¿"ºª·`´çñÑ</span>
+                            </small>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100 rounded-pill">Crear cuenta</button>
+                      </form>
+                    </div>
+                    
+                    <!-- Columna de beneficios -->
+                    <div class="col-md-5">
+                      <div class="p-4">
+                        <h5 class="mb-4">Beneficios de tu cuenta</h5>
+                        <ul class="list-unstyled">
+                          <li class="mb-3">
+                            <i class="bi bi-clock-history text-success me-2"></i>
+                            Historial de compras
+                          </li>
+                          <li class="mb-3">
+                            <i class="bi bi-heart text-success me-2"></i>
+                            Lista de favoritos
+                          </li>
+                          <li class="mb-3">
+                            <i class="bi bi-truck text-success me-2"></i>
+                            Seguimiento de pedidos
+                          </li>
+                          <li class="mb-3">
+                            <i class="bi bi-tag text-success me-2"></i>
+                            Ofertas exclusivas
+                          </li>
+                        </ul>
+                        <hr class="my-4">
+                        <div class="text-center">
+                          <p>¿Ya tienes una cuenta?</p>
+                          <button type="button" class="btn btn-outline-dark rounded-pill" 
+                                  onclick="closeInlineRegister(); document.getElementById('loginModal').showModal();">
+                            Inicia sesión
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <script>
         document.addEventListener('DOMContentLoaded', function () {
           var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -731,7 +869,7 @@
                   </a>
                 </li>
                 <li class="mb-3">
-                  <a href="/" class="semi-bold-on-hover no-underline" id="registerLink">
+                  <a href="#" class="semi-bold-on-hover no-underline" id="registerLink">
                     Regístrate
                   </a>
                 </li>
@@ -821,9 +959,11 @@
               // Ocultar el popover
               popover.hide();
 
-              // Mostrar el modal de registro
-              const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
-              registerModal.show();
+              // En lugar de mostrar el modal, mostramos el contenedor inline
+              document.getElementById('inlineRegisterForm').style.display = 'block';
+              
+              // Scroll to the registration form
+              document.getElementById('inlineRegisterForm').scrollIntoView({behavior: 'smooth'});
             }
           });
 
@@ -962,6 +1102,10 @@
             toggleIcon.classList.add('bi-eye-slash');
           }
         }
+
+        function closeInlineRegister() {
+          document.getElementById('inlineRegisterForm').style.display = 'none';
+        }
       </script>
 
       <script>
@@ -989,9 +1133,9 @@
             const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
             loginModal.hide();
             
-            // Abrir el modal de registro
-            const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
-            registerModal.show();
+            // Mostrar el formulario de registro en línea en lugar del modal
+            document.getElementById('inlineRegisterForm').style.display = 'block';
+            document.getElementById('inlineRegisterForm').scrollIntoView({behavior: 'smooth'});
           }
         });
       </script>
@@ -1182,32 +1326,89 @@
 
       <!-- Modal de registro -->
       <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="registerModalLabel">Regístrate</h5>
+              <h5 class="modal-title" id="registerModalLabel">
+                <img src="{% static 'img/falIconButton.png' %}" alt="Falabella Icon" height="30">
+              </h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form id="registerForm">
-                <div class="mb-3">
-                  <label for="registerName" class="form-label">Nombre completo</label>
-                  <input type="text" class="form-control" id="registerName" required>
+              <div class="row">
+                <!-- Columna del formulario -->
+                <div class="col-md-7 border-end">
+                  <h4 class="text-label mb-4">Prueba</h4>
+                  <form id="registerForm">
+                    <div class="mb-3">
+                      <label for="registerName" class="form-label">Nombre completo</label>
+                      <input type="text" class="form-control border-0 border-bottom rounded-0" id="registerName" 
+                             placeholder="Ingresa tu nombre" style="box-shadow: none; background: transparent;" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="registerEmail" class="form-label">Correo electrónico</label>
+                      <input type="email" class="form-control border-0 border-bottom rounded-0" id="registerEmail" 
+                             placeholder="nombre@ejemplo.com" style="box-shadow: none; background: transparent;" required>
+                    </div>                       
+                    
+                    <div class="mb-3">
+                      <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+                      <div class="position-relative">
+                        <input type="password" class="form-control border-0 border-bottom rounded-0" id="confirmPassword" 
+                               placeholder="Repite tu contraseña" style="box-shadow: none; background: transparent;" required>
+                        <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y" 
+                                onclick="togglePassword('confirmPassword')" style="background: none; border: none;">
+                          <i class="bi bi-eye-slash" id="togglePasswordConfirm"></i>
+                        </button>
+                      </div>
+                      <div class="mt-2">
+                        <small class="text-muted d-flex flex-wrap gap-2">
+                          <span>• Mín. 8 caracteres</span>
+                          <span>• 1 número</span>
+                          <span>• 1 mayúscula</span>
+                          <span>• 1 minúscula</span>
+                          <span>• Sin espacio</span>
+                          <span>• Sin usar '\¡¿"ºª·`´çñÑ</span>
+                        </small>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100 rounded-pill mt-4">Crear cuenta</button>
+                  </form>
                 </div>
-                <div class="mb-3">
-                  <label for="registerEmail" class="form-label">Correo electrónico</label>
-                  <input type="email" class="form-control" id="registerEmail" required>
+                
+                <!-- Columna de beneficios -->
+                <div class="col-md-5">
+                  <div class="benefits-section p-4">
+                    <h5 class="mb-4">Beneficios de tu cuenta</h5>
+                    <ul class="list-unstyled">
+                      <li class="mb-3">
+                        <i class="bi bi-clock-history text-success me-2"></i>
+                        Historial de compras
+                      </li>
+                      <li class="mb-3">
+                        <i class="bi bi-heart text-success me-2"></i>
+                        Lista de favoritos
+                      </li>
+                      <li class="mb-3">
+                        <i class="bi bi-truck text-success me-2"></i>
+                        Seguimiento de pedidos
+                      </li>
+                      <li class="mb-3">
+                        <i class="bi bi-tag text-success me-2"></i>
+                        Ofertas exclusivas
+                      </li>
+                    </ul>
+                    <hr class="my-4">
+                    <div class="text-center">
+                      <p>¿Ya tienes una cuenta?</p>
+                      <button type="button" class="btn btn-outline-dark rounded-pill" 
+                              onclick="$('#registerModal').modal('hide'); $('#loginModal').modal('show');">
+                        Inicia sesión
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div class="mb-3">
-                  <label for="registerPassword" class="form-label">Contraseña</label>
-                  <input type="password" class="form-control" id="registerPassword" required>
-                </div>
-                <div class="mb-3">
-                  <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
-                  <input type="password" class="form-control" id="confirmPassword" required>
-                </div>
-                <button type="submit" class="btn btn-dark w-100">Crear cuenta</button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
