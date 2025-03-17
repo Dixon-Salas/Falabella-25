@@ -391,6 +391,361 @@
           color: #6c757d;   /* Mantener el color gris */
           margin-bottom: 2px; /* Mantener el espaciado */
       }
+
+      .submenu-title {
+        background: linear-gradient(90deg, rgb(106, 149, 0), rgb(141, 199, 0));
+        color: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        flex-grow: 1;
+      }
+  
+      .bold-on-hover {
+        font-weight: bold;
+      }
+  
+      .no-underline {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
+  
+      .list-unstyled {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 1rem;
+        /* Ajusta este valor según tus necesidades */
+      }
+  
+      .menu-item:hover {
+        background-color: #f1f1f1;
+        /* Fondo gris claro */
+      }
+  
+      .menu-item:hover>span {
+        font-weight: bold;
+        /* Texto en negrita solo para el span dentro de menu-item */
+      }
+  
+      /* Aplica la línea verde solo a la categoría "Rebajas Vestuario" */
+      #rebajas-link:hover::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        /* Ancho de la línea vertical */
+        background-color: rgb(106, 149, 0);
+        /* Color verde */
+      }
+  
+      .menu-item:hover .submenu {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+      }
+  
+      .offcanvas-header {
+        background-color: #f1f1f1;
+        /* Fondo gris claro */
+        position: relative;
+        padding-top: 1rem;
+        /* Ajusta el padding superior si es necesario */
+      }
+  
+      .offcanvas-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        /* Altura de la línea verde */
+        background-color: rgb(106, 149, 0);
+        /* Color verde */
+      }
+  
+      .no-underline {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
+  
+      .list-unstyled {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 1rem;
+        /* Ajusta este valor según tus necesidades */
+      }
+  
+      .menu-item:hover {
+        background-color: #f1f1f1;
+        /* Fondo gris claro */
+      }
+  
+      .menu-item:hover>span {
+        font-weight: bold;
+        /* Texto en negrita solo para el span dentro de menu-item */
+      }
+  
+      /* Aplica la línea verde solo a la categoría "Rebajas Vestuario" */
+      #rebajas-link:hover::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        /* Ancho de la línea vertical */
+        background-color: rgb(106, 149, 0);
+        /* Color verde */
+      }
+  
+      .menu-item:hover .submenu {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+      }
+  
+      .submenu:hover,
+      .menu-item:hover .submenu {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+      }
+  
+      .offcanvas-header {
+        background-color: #f1f1f1;
+        /* Fondo gris claro */
+        position: relative;
+        padding-top: 1rem;
+        /* Ajusta el padding superior si es necesario */
+      }
+  
+      .offcanvas-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        /* Altura de la línea verde */
+        background-color: rgb(106, 149, 0);
+        /* Color verde */
+      }
+  
+      .category-link:hover {
+        color: #000;
+        /* Cambia el color del texto */
+        font-weight: bold;
+        /* Opcional: cambia el texto a negrita */
+        border-radius: 5px;
+        /* Opcional: añade bordes redondeados */
+      }
+  
+      #filters-container,
+      #product-container {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      
+      #filters-container h5,
+      #product-container h5 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      
+      #filters-container .form-label,
+      #product-container .form-label {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      
+      #filters-container .btn-outline-secondary,
+      #product-container .btn-outline-secondary {
+        margin-bottom: 10px;
+        width: 120px;
+        text-align: left;
+      }
+      
+      #filters-container .btn-outline-secondary:hover,
+      #product-container .btn-outline-secondary:hover {
+        background-color: #f1f1f1;
+      }
+      
+      /* Estilos específicos para #filters-container */
+      #filters-container {
+        /* Estilos adicionales para el contenedor de filtros */
+        max-width: 300px; /* Ancho máximo para el contenedor de filtros */
+        height: 100vh; /* Altura completa de la ventana */
+        overflow-y: auto; /* Permitir desplazamiento vertical */
+      }
+      
+      #filters-container h5 {
+        color: #333; /* Color personalizado para el título */
+      }
+      
+      #filters-container .form-label {
+        color: #555; /* Color personalizado para las etiquetas */
+      }
+      
+      #filters-container .btn-outline-secondary {
+        background-color: #fff; /* Fondo blanco para los botones */
+        border-color: #dee2e6; /* Color del borde */
+      }
+      
+      #filters-container .btn-outline-secondary:hover {
+        background-color: #e9ecef; /* Color de fondo al hacer hover */
+        border-color: #ced4da; /* Color del borde al hacer hover */
+      }
+      
+      /* Estilos específicos para #product-container */
+      #product-container {
+        margin-left: 20px; /* Espacio entre filtros y productos */
+      }
+      
+      #product-container h5 {
+        color: #000; /* Color personalizado para el título */
+      }
+      
+      #product-container .form-label {
+        color: #444; /* Color personalizado para las etiquetas */
+      }
+      
+      #product-container .btn-outline-secondary {
+        background-color: #f8f9fa; /* Fondo gris claro para los botones */
+        border-color: #ccc; /* Color del borde */
+      }
+      
+      #product-container .btn-outline-secondary:hover {
+        background-color: #e2e6ea; /* Color de fondo al hacer hover */
+        border-color: #adb5bd; /* Color del borde al hacer hover */
+      }
+      
+      .product-card {
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 100%;
+        max-width: 200px; /* Ancho máximo para las tarjetas */
+        margin: 10px; /* Espacio entre tarjetas */
+        overflow: hidden; /* Evita que el contenido se desborde */
+      }
+      
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
+      }
+      
+      .card-img-top {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        width: 100%; /* Asegura que la imagen ocupe todo el ancho de la tarjeta */
+        height: 150px; /* Altura fija para las imágenes */
+        object-fit: cover; /* Ajusta la imagen para que cubra el espacio sin distorsionarse */
+      }
+      
+      .card-body {
+        padding: 15px; /* Más espacio interno */
+        text-align: left; /* Centra el contenido */
+      }
+      
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333; /* Color más oscuro para el título */
+      }
+      
+      .card-text {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 5px; /* Espacio entre el precio y el precio anterior */
+      }
+      
+      .card-text del {
+        color: #999;
+        font-size: 0.9rem; /* Tamaño más pequeño para el precio anterior */
+      }
+  
+      .simple-accordion .accordion-item {
+        border: none;
+        /* Eliminar borde */
+      }
+  
+      .simple-accordion .accordion-button {
+        background-color: transparent;
+        /* Fondo transparente */
+        color: #000;
+        /* Color del texto */
+        border: none;
+        /* Eliminar borde */
+        box-shadow: none;
+        /* Eliminar sombra */
+        padding: 0.5rem 1rem;
+        /* Ajustar padding */
+      }
+  
+      .simple-accordion .accordion-button:not(.collapsed) {
+        color: #000;
+        /* Color del texto */
+        background-color: transparent;
+        /* Fondo transparente */
+        box-shadow: none;
+        /* Eliminar sombra */
+      }
+  
+      .simple-accordion .accordion-body {
+        padding: 0.5rem 1rem;
+        /* Ajustar padding */
+      }
+  
+      .accordion-body {
+        display: block;
+        /* Asegúrate de que el contenido sea visible */
+        overflow: visible;
+        /* Evita que el contenido se oculte */
+        height: auto;
+        /* Asegúrate de que el contenido tenga altura automática */
+        z-index: 1000;
+      }
+  
+      .accordion-collapse {
+        transition: height 0.3s ease;
+        /* Asegúrate de que la transición sea suave */
+      }
+  
+      #container-tipoEnvio {
+      font-family: Arial, sans-serif;
+      }
+  
+      .envio-option {
+          margin-bottom: 20px;
+      }
+  
+      .envio-option button {
+          margin-bottom: 10px;
+      }
+  
+      .envio-option p {
+          margin: 5px 0;
+          font-size: 10px;
+          color: #555;
+      }
+
     </style>
 
   </head>
@@ -434,266 +789,133 @@
           <i class="bi bi-list fs-1"></i> <strong class="fs-5">Menú</strong>
         </button>
         -->
-          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel"
-            style="width: 250px;">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasMenuLabel">¡Hola!</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="list-unstyled">
-                <li class="d-flex justify-content-between align-items-center menu-item">
-                  <span href="#" id="rebajas-link">Rebajas Vestuario</span>
-                  <i class="bi bi-chevron-right"></i>
-                  <div class="submenu">
-                    <div class="row g-2"> <!-- Añadimos la clase g-2 para reducir el espaciado -->
-                      <!-- Columna Ropa Mujer -->
-                      <div class="col-md-3 px-2"> <!-- Reducimos el padding horizontal -->
-                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Rebajas Ropa Mujer</a></span></h6>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel"
+          style="width: 250px;">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasMenuLabel">¡Hola!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="list-unstyled">
+              <li class="d-flex justify-content-between align-items-center menu-item">
+                <span href="#" id="rebajas-link">Rebajas Vestuario</span>
+                <i class="bi bi-chevron-right"></i>
+                <div class="submenu">
+                  <h5 class="submenu-title">Rebajas Vestuario</h5>
+                  <div class="row g-2">
+                    <!-- Añadimos la clase g-2 para reducir el espaciado -->
+                    <!-- Columna Ropa Mujer -->
+                    <div class="col-md-3 px-2">
+                      <!-- Reducimos el padding horizontal -->
+                      <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Rebajas Ropa Mujer</a></span></h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="category-link" data-category="blusas">Blusas</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Camisetas">Camisetas</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Sacos y Sweaters">Sacos y Sweaters</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Vestidos">Vestidos</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Jeans">Jeans</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Pantalones">Pantalones</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Cardigans">Cardigans</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Chalecos">Chalecos</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Pijamas">Pijamas</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Brassieres">Brassieres</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Calzones">Calzones</a></li>
+                        <li class="mb-4" style="width: 150px;"></li>
+                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Rebajas Deportiva Mujer</a></span>
+                        </h6>
                         <ul class="list-unstyled">
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Blusas</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Sacos y Sweaters</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Vestidos</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Jeans</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Cardigans</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chalecos</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pijamas</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Brassieres</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Calzones</a></li>
-                          <li class="mb-4" style="width: 150px;"></li>
-                          <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Rebajas Deportiva Mujer</a></span>
-                          </h6>
-                          <ul class="list-unstyled">
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Tops</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Short</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Leggings</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Sacos y Hoodies</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
-                          </ul>
-                      </div>
-                      <!-- Nueva Columna Ropa Hombre -->
-                      <div class="col-md-3 px-2">
-                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Hombre</a></span></h6>
-                        <ul class="list-unstyled">
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisas</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Poleras</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Jeans</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Polerones</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Trajes</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Ropa Interior</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Calcetines</a></li>
-                          <li class="mb-4" style="width: 150px;"></li>
-                          <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Deportiva Hombre</a></span></h6>
-                          <ul class="list-unstyled">
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas Futbool</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalonetas</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Sacos y Hoodies</a></li>
-                          </ul>
-                      </div>
-                      <!-- Nueva Columna Ropa Hombre -->
-                      <div class="col-md-3 px-2">
-                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Niñas</a></span></h6>
-                        <ul class="list-unstyled">
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisas</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Poleras</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Jeans</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Polerones</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Trajes</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Ropa Interior</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover">Calcetines</a></li>
-                          <li class="mb-6" style="width: 150px;"></li>
-                          <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Niños</a></span></h6>
-                          <ul class="list-unstyled">
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Sacos y Sweaters</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pijamas</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Ropa interior</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
-                            <li class="mb-2"><a href="/" class="semi-bold-on-hover">Bermudas</a></li>
-                            <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Bebes Niñas</a></span></h6>
-                            <ul class="list-unstyled"> <!-- Abre una nueva lista aquí si es necesario -->
-                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Camisetas</a></li>
-                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pantalones</a></li>
-                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Sacos y Sweaters</a></li>
-                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Pijamas</a></li>
-                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Ropa interior</a></li>
-                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Chaquetas</a></li>
-                              <li class="mb-2"><a href="/" class="semi-bold-on-hover">Bermudas</a></li>
-                            </ul>
-                      </div>
-                      <!-- Nueva Columna Ropa bebe niños -->
-                      <div class="col-md-3 px-2">
-                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Bebes Niños</a></span></h6>
-                        <ul class="list-unstyled">
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover no-underline">Packs</a></li>
-                          <li class="mb-2"><a href="/" class="semi-bold-on-hover no-underline">Conjuntos</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Camisetas">Camisetas</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Tops">Tops</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Short">Short</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Leggings">Leggings</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Sacos y Hoodies">Sacos y
+                              Hoodies</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Chaquetas">Chaquetas</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Pantalones">Pantalones</a>
+                          </li>
                         </ul>
-                      </div>
-                      <!--Tecnologia-->
-                <li class="d-flex justify-content-between align-items-center menu-item">
-                  <span href="#" id="rebajas-link">Tecnología</span>
-                  <i class="bi bi-chevron-right"></i>
-                  <div class="submenu">
-                    <div class="row g-2"> <!-- Añadimos la clase g-2 para reducir el espaciado -->
-                      <!-- Columna Ropa Computación -->
-                      <div class="col-md-3 px-2"> <!-- Reducimos el padding horizontal -->
-                        <h6 class="mb-2"><span class="bold-on-hover">Computación</span></h6>
-                        <ul class="list-unstyled">
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Portátiles</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Inteligencia
-                              Artificial</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Tablets</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Impresoras</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Portátiles gamer</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Accesorios
-                              Computación</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Monitores</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Pc de escritorio</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Conectividad</a></li>
-                          <li class="mb-4" style="width: 150px;"></li>
-
-                          <h6 class="mb-2"><span class="bold-on-hover">Audio</span></h6>
-                          <ul class="list-unstyled">
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Audifonos</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Barras de sonido</a>
-                            </li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Equipos de sonido y
-                                karaoke</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Accesorios audio</a>
-                            </li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Parlantes</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Audio profesional y
-                                dj</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Instrumentos
-                                musicales</a></li>
-                          </ul>
-                      </div>
-                      <!-- Nueva Columna Ropa Hombre -->
-                      <div class="col-md-3 px-2">
-                        <h6 class="mb-2"><span class="bold-on-hover">Tv y video</span></h6>
-                        <ul class="list-unstyled">
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Televisores</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">TVs de 42" o menos</a>
-                          </li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">TVs de 43"-49"</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">TVs de 50"-58"</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">TVs de 60"-65"</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">TVs superiores a 70"</a>
-                          </li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Proyectores</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Accesorios TV</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Soportes</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Streaming</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Zona gamer</a></li>
-                          <ul class="list-unstyled">
-
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Portatiles gamer</a>
-                            </li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Monitores gamer</a>
-                            </li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Accesorios gamer</a>
-                            </li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Audifonos gamer</a>
-                            </li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Sillas gamer</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Lentes VR</a></li>
-                          </ul>
-                      </div>
-                      <!-- Nueva Columna Ropa Hombre -->
-                      <div class="col-md-3 px-2">
-                        <h6 class="mb-2"><span class="bold-on-hover">Consolas</span></h6>
-                        <ul class="list-unstyled">
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                              style="text-decoration: none; color: inherit;">Playstation</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                              style="text-decoration: none; color: inherit;">Nintendo</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                              style="text-decoration: none; color: inherit;">Xbox</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                              style="text-decoration: none; color: inherit;">Videojuegos</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                              style="text-decoration: none; color: inherit;">Accesorios</a></li>
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                              style="text-decoration: none; color: inherit;">Consolas retro</a></li>
-                          <li class="mb-6" style="width: 150px;"></li>
-                          <h6 class="mb-2"><span class="bold-on-hover">Smartwatch y accesorios</span></h6>
-                          <ul class="list-unstyled">
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                style="text-decoration: none; color: inherit;">Smartwatch</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                style="text-decoration: none; color: inherit;">Smartband</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                style="text-decoration: none; color: inherit;">Accesorios</a></li>
-
-                            <h6 class="mb-2"><span class="bold-on-hover">Cámaras y drones</span></h6>
-                            <ul class="list-unstyled">
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                  style="text-decoration: none; color: inherit;">Cámaras deportivas</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                  style="text-decoration: none; color: inherit;">Cámaras instantaneas</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                  style="text-decoration: none; color: inherit;">Cámaras profesionales</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                  style="text-decoration: none; color: inherit;">Cámaras semiprofesionales</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                  style="text-decoration: none; color: inherit;">Accesorios fotografía</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                  style="text-decoration: none; color: inherit;">Drones</a></li>
-                            </ul>
-                          </ul>
-                      </div>
-                      <!-- Nueva Columna Ropa bebe niños -->
-                      <div class="col-md-3 px-2">
-                        <h6 class="mb-2"><span class="bold-on-hover">Patinetas eléctricas</span></h6>
-                        <ul class="list-unstyled">
-                          <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                              style="text-decoration: none; color: inherit;">ver todo</a></li>
-                          <div style="margin-bottom: 20px;"></div>
-                          <h6 class="mb-2"><span class="bold-on-hover">Smart Home</span></h6>
-                          <ul class="list-unstyled">
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                style="text-decoration: none; color: inherit;">Asistentes de voz</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                style="text-decoration: none; color: inherit;">Aspiradoras robots</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                style="text-decoration: none; color: inherit;">Iluminación inteligente</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                style="text-decoration: none; color: inherit;">Cámaras inteligentes</a></li>
-                            <li class="mb-2"><a href="#" class="semi-bold-on-hover"
-                                style="text-decoration: none; color: inherit;">Routers y conectividad</a></li>
-                            <h6 class="mb-2"><span class="bold-on-hover">Marcas Destacadas</span></h6>
-                            <ul class="list-unstyled">
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Apple</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Samsung</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Xiaomi</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">LG</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Sony</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Bosse</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">HP</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Lenovo</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">Asus</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline">JVC</a></li>
-                              <li class="mb-2"><a href="#" class="semi-bold-on-hover no-underline"></a></li>
-                            </ul>
-                      </div>
-
-
-
                     </div>
-                  </div>
-                </li>
+                    <!-- Nueva Columna Ropa Hombre -->
+                    <div class="col-md-3 px-2">
+                      <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Hombre</a></span></h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Camisas">Camisas</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Poleras">Poleras</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Chaquetas">Chaquetas</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Jeans">Jeans</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Pantalones">Pantalones</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Polerones">Polerones</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Trajes">Trajes</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Ropa Interior">Ropa
+                            Interior</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Calcetines">Calcetines</a></li>
+                        <li class="mb-4" style="width: 150px;"></li>
+                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Deportiva Hombre</a></span></h6>
+                        <ul class="list-unstyled">
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Camisetas Futbool">Camisetas
+                              Futbool</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Camisetas">Camisetas</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Pantalonetas">Pantalonetas</a>
+                          </li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Pantalones">Pantalones</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Chaquetas">Chaquetas</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Sacos y Hoodies">Sacos y
+                              Hoodies</a></li>
+                        </ul>
+                    </div>
+                    <!-- Nueva Columna Ropa Hombre -->
+                    <div class="col-md-3 px-2">
+                      <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Niñas</a></span></h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Camisas">Camisas</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Poleras">Poleras</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Chaquetas">Chaquetas</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Jeans">Jeans</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Pantalones">Pantalones</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Polerones">Polerones</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Trajes">Trajes</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Ropa Interior">Ropa
+                            Interior</a></li>
+                        <li class="mb-2"><a href="/" class="category-link" data-category="Calcetines">Calcetines</a></li>
+                        <li class="mb-6" style="width: 150px;"></li>
+                        <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Niños</a></span></h6>
+                        <ul class="list-unstyled">
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Camisetas">Camisetas</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Pantalones">Pantalones</a>
+                          </li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Sacos y Sweaters">Sacos y
+                              Sweaters</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Pijamas">Pijamas</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Ropa interior">Ropa
+                              interior</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Chaquetas">Chaquetas</a></li>
+                          <li class="mb-2"><a href="/" class="category-link" data-category="Bermudas">Bermudas</a></li>
+                          <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Bebes Niñas</a></span></h6>
+                          <ul class="list-unstyled">
+                            <!-- Abre una nueva lista aquí si es necesario -->
+                            <li class="mb-2"><a href="/" class="category-link" data-category="Camisetas">Camisetas</a>
+                            </li>
+                            <li class="mb-2"><a href="/" class="category-link" data-category="Pantalones">Pantalones</a>
+                            </li>
+                            <li class="mb-2"><a href="/" class="category-link" data-category="Sacos y Sweaters">Sacos y
+                                Sweaters</a></li>
+                            <li class="mb-2"><a href="/" class="category-link" data-category="Pijamas">Pijamas</a></li>
+                            <li class="mb-2"><a href="/" class="category-link" data-category="Ropa interior">Ropa
+                                interior</a></li>
+                            <li class="mb-2"><a href="/" class="category-link" data-category="Chaquetas">Chaquetas</a>
+                            </li>
+                            <li class="mb-2"><a href="/" class="category-link" data-category="Bermudas">Bermudas</a></li>
+                          </ul>
+                    </div>
+                    <!-- Nueva Columna Ropa bebe niños -->
+                    <div class="col-md-3 px-2">
+                      <h6 class="mb-2"><span class="bold-on-hover"><a href="/">Ropa Bebes Niños</a></span></h6>
+                      <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/" class="semi-bold-on-hover no-underline">Packs</a></li>
+                        <li class="mb-2"><a href="/" class="semi-bold-on-hover no-underline">Conjuntos</a></li>
+                      </ul>
+                    </div>
+                      <!--Tecnologia-->
 
 
                 <li class="mb-4" style="width: 150px;"></li>
@@ -773,6 +995,227 @@
         </nav>
       </nav>
 
+      <!-- vista de productos -->
+      <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
+          <!-- Filtros -->
+          <div class="col-md-2" id="filters-container" style="display: none;">
+            <div>
+              <h5>Filtros</h5>
+                <div class="accordion simple-accordion" id="filtersAccordion">
+                <!-- tipo de envio -->
+                <div class="container" id="container-tipoEnvio">
+                  <h5 class="form-label">Tipo de envío</h5>
+                      
+                    <!-- Envío gratis -->
+                    <div class="envio-option">
+                        <button class="btn btn-outline-secondary btn-sm">Envío gratis</button>
+                        <p>En productos seleccionados por compras desde $149.990</p>
+                    </div>
+                      
+                    <!-- Envío a domicilio -->
+                    <div class="envio-option">
+                        <button class="btn btn-outline-secondary btn-sm">Entrega rápida</button>
+                        <p>Llega mañana</p>
+                        <p>Retiro en un punto</p>
+                    </div>
+                      
+                    <!-- Retiro en punto -->
+                    <div class="envio-option">
+                      <button class="btn btn-outline-secondary btn-sm">Retiro en punto</button>
+                      <p>Si compras hasta las 16:00 horas retira hoy</p>
+                      <p>Retira hoy</p>
+                      <p>Retira mañana</p>
+                    </div>
+                </div>
+                <!-- Categoría -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingCategory">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
+                      Categoría
+                    </button>
+                  </h2>
+                  <div id="collapseCategory" class="accordion-collapse collapse show" aria-labelledby="headingCategory"
+                    data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">Moda y accesorios</button>
+                      <button class="btn btn-outline-secondary btn-sm">Deportes y aire libre</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Marca -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingBrand">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseBrand" aria-expanded="false" aria-controls="collapseBrand">
+                      Marca
+                    </button>
+                  </h2>
+                  <div id="collapseBrand" class="accordion-collapse collapse" aria-labelledby="headingBrand"
+                    data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">Marca 1</button>
+                      <button class="btn btn-outline-secondary btn-sm">Marca 2</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Precio -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingPrice">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapsePrice" aria-expanded="false" aria-controls="collapsePrice">
+                      Precio
+                    </button>
+                  </h2>
+                  <div id="collapsePrice" class="accordion-collapse collapse" aria-labelledby="headingPrice"
+                    data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">$0 - $50</button>
+                      <button class="btn btn-outline-secondary btn-sm">$50 - $100</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Descuentos -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingDiscount">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"data-bs-target="#collapseDiscount" aria-expanded="false" aria-controls="collapseDiscount">
+                      Descuentos
+                    </button>
+                  </h2>
+                  <div id="collapseDiscount" class="accordion-collapse collapse" aria-labelledby="headingDiscount"data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">10% - 20%</button>
+                      <button class="btn btn-outline-secondary btn-sm">20% - 30%</button>
+                      <button class="btn btn-outline-secondary btn-sm">30% - 50%</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Vendido por -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingSeller">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseSeller" aria-expanded="false" aria-controls="collapseSeller">
+                      Vendido por
+                    </button>
+                  </h2>
+                  <div id="collapseSeller" class="accordion-collapse collapse" aria-labelledby="headingSeller"data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">Falabella</button>
+                      <button class="btn btn-outline-secondary btn-sm">Terceros</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Calificación del producto -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingRating">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseRating" aria-expanded="false" aria-controls="collapseRating">
+                      Calificación del producto
+                    </button>
+                  </h2>
+                  <div id="collapseRating" class="accordion-collapse collapse" aria-labelledby="headingRating" data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">1 estrella</button>
+                      <button class="btn btn-outline-secondary btn-sm">2 estrellas</button>
+                      <button class="btn btn-outline-secondary btn-sm">3 estrellas</button>
+                      <button class="btn btn-outline-secondary btn-sm">4 estrellas</button>
+                      <button class="btn btn-outline-secondary btn-sm">5 estrellas</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Oportunidad única -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingUniqueOpportunity">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUniqueOpportunity" aria-expanded="false" aria-controls="collapseUniqueOpportunity">
+                      Oportunidad única
+                    </button>
+                  </h2>
+                  <div id="collapseUniqueOpportunity" class="accordion-collapse collapse" aria-labelledby="headingUniqueOpportunity" data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">Sí</button>
+                      <button class="btn btn-outline-secondary btn-sm">No</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Color -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingColor">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseColor" aria-expanded="false" aria-controls="collapseColor">
+                      Color
+                    </button>
+                  </h2>
+                  <div id="collapseColor" class="accordion-collapse collapse" aria-labelledby="headingColor" data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">Rojo</button>
+                      <button class="btn btn-outline-secondary btn-sm">Azul</button>
+                      <button class="btn btn-outline-secondary btn-sm">Verde</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Talla -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingSize">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSize" aria-expanded="false" aria-controls="collapseSize">
+                      Talla
+                    </button>
+                  </h2>
+                  <div id="collapseSize" class="accordion-collapse collapse" aria-labelledby="headingSize"
+                    data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">S</button>
+                      <button class="btn btn-outline-secondary btn-sm">M</button>
+                      <button class="btn btn-outline-secondary btn-sm">L</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Diseño -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingDesign">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                      Diseño
+                    </button>
+                  </h2>
+                  <div id="collapseDesign" class="accordion-collapse collapse" aria-labelledby="headingDesign"
+                    data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">Estampado</button>
+                      <button class="btn btn-outline-secondary btn-sm">Liso</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Género -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingGender">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGender" aria-expanded="false" aria-controls="collapseGender">
+                      Género
+                    </button>
+                  </h2>
+                  <div id="collapseGender" class="accordion-collapse collapse" aria-labelledby="headingGender"
+                    data-bs-parent="#filtersAccordion">
+                    <div class="accordion-body">
+                      <button class="btn btn-outline-secondary btn-sm">Hombre</button>
+                      <button class="btn btn-outline-secondary btn-sm">Mujer</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6" id="product-container" style="display: none;">
+            <div>
+              <h5>Productos</h5>
+              <div class="row" id="products-list">
+                <!-- Aquí se agregarán los productos dinámicamente -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <!-- Agregar después del nav principal -->
       <div id="inlineRegisterForm" class="integrated-register" style="display: none;">
         <div class="container py-4">
@@ -792,42 +1235,33 @@
                         <div class="mb-3">
                           <label class="form-label">Correo</label>
                           <div class="position-relative col-md-10">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0"
-                                   placeholder="Ingresa un correo" 
-                                   style="box-shadow: none; background: transparent;padding-left: 0px;" required>
+                            <input type="text" class="form-control border-0 border-bottom rounded-0"placeholder="Ingresa un correo" style="box-shadow: none; background: transparent;padding-left: 0px;" required>
                           </div>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Nombre</label>
                           <div class="position-relative col-md-10">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0"
-                                   placeholder="Ingresa un nombre" 
-                                   style="box-shadow: none; background: transparent;padding-left: 0px;" required>
+                            <input type="text" class="form-control border-0 border-bottom rounded-0"placeholder="Ingresa un nombre" style="box-shadow: none; background: transparent;padding-left: 0px;" required>
                           </div>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Apellidos</label>
                           <div class="position-relative col-md-10">
-                            <input type="text" class="form-control border-0 border-bottom rounded-0"
-                                   placeholder="Ingresa apellidos" 
-                                   style="box-shadow: none; background: transparent;padding-left: 0px;" required>
+                            <input type="text" class="form-control border-0 border-bottom rounded-0" placeholder="Ingresa apellidos" style="box-shadow: none; background: transparent;padding-left: 0px;" required>
                           </div>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Tipo de documento</label>
                           <div class="position-relative col-md-10">
                             <strong class="position-absolute" style="top: 50%; transform: translateY(-50%); left: 0px;">CC</strong>
-                            <input type="text"class="form-control border-0 border-bottom rounded-0"
-                                   placeholder="Ingresa una cedula"style="box-shadow: none; background: transparent; padding-left: 25px;"required>
+                            <input type="text"class="form-control border-0 border-bottom rounded-0" placeholder="Ingresa una cedula"style="box-shadow: none; background: transparent; padding-left: 25px;"required>
                           </div>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Celular</label>
                           <div class="position-relative col-md-10"> <!-- Agregamos col-md-6 para hacerlo más corto -->
                             <strong class="position-absolute" style="top: 50%; transform: translateY(-50%); left: 0px;">+57</strong>
-                            <input type="celular" class="form-control border-0 border-bottom rounded-0"
-                                   placeholder="Ingresa un celular" 
-                                   style="box-shadow: none; background: transparent; padding-left: 40px;" required>
+                            <input type="celular" class="form-control border-0 border-bottom rounded-0"placeholder="Ingresa un celular" style="box-shadow: none; background: transparent; padding-left: 40px;" required>
                           </div>                        
 
                         </div>
@@ -835,9 +1269,7 @@
                         <div class="mb-3">
                           <label class="form-label">Contraseña</label>
                           <div class="position-relative col-md-10">
-                            <input type="password" class="form-control border-0 border-bottom rounded-0"
-                                   placeholder="Ingresa una contraseña" 
-                                   style="box-shadow: none; background: transparent; padding-left: 0px;" required>
+                            <input type="password" class="form-control border-0 border-bottom rounded-0"placeholder="Ingresa una contraseña" style="box-shadow: none; background: transparent; padding-left: 0px;" required>
                             <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y" 
                                     onclick="togglePassword('registerPassword')" 
                                     style="background: none; border: none;">
@@ -982,142 +1414,145 @@
         </div>
       </div>
 
+      <!-- Carrusel de imágenes -->
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">
+          </button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3">
+          </button>
+          <!-- Añade más botones si tienes más imágenes -->
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'img/car1.png' %}" class="d-block w-100" alt="Imagen 1">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/car2.png' %}" class="d-block w-100" alt="Imagen 2">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'img/car3.png' %}" class="d-block w-100" alt="Imagen 3">
+          </div>
+          <!-- Añade más divs con la clase carousel-item si tienes más imágenes -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <!-- tooltips-and-popovers -->
       <script>
         document.addEventListener('DOMContentLoaded', function () {
-          var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-          var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-         });
+          initializeTooltipsAndPopovers();
+        });
 
-          var loginArea = document.getElementById('loginArea');
-          var chevronIcon = document.getElementById('chevronIcon');
-          var popover = new bootstrap.Popover(chevronIcon, {
+        function initializeTooltipsAndPopovers() {
+          // Tooltips
+          var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+          var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+          });
+
+          // Popover
+          const loginArea = document.getElementById('loginArea');
+          const chevronIcon = document.getElementById('chevronIcon');
+          const popover = new bootstrap.Popover(chevronIcon, {
             trigger: 'manual',
             placement: 'bottom',
             html: true,
             content: `
-            <div class="popover-body text-start">
-              <ul class="list-unstyled m-0">
-                <li class="mb-3">
-                  <a href="#" class="semi-bold-on-hover no-underline" id="loginLink">
-                    Inicia sesión
-                  </a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="semi-bold-on-hover no-underline" id="registerLink">
-                    Regístrate
-                  </a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="semi-bold-on-hover no-underline" id="myAccountLink">
-                    Mi cuenta
-                  </a>
-                </li>
-                <hr class="my-3">
-                <li class="mb-3"><a href="/" class="semi-bold-on-hover no-underline">CMR Puntos</a></li>
-              </ul>
-            </div>
-          `
+              <div class="popover-body text-start">
+                <ul class="list-unstyled m-0">
+                  <li class="mb-3">
+                    <a href="#" class="semi-bold-on-hover no-underline" id="loginLink">Inicia sesión</a>
+                  </li>
+                  <li class="mb-3">
+                    <a href="#" class="semi-bold-on-hover no-underline" id="registerLink">Regístrate</a>
+                  </li>
+                  <li class="mb-3">
+                    <a href="#" class="semi-bold-on-hover no-underline" id="myAccountLink">Mi cuenta</a>
+                  </li>
+                  <hr class="my-3">
+                  <li class="mb-3"><a href="/" class="semi-bold-on-hover no-underline">CMR Puntos</a></li>
+                </ul>
+              </div>
+            `
           });
 
-          // Agregar evento para manejar el clic en el enlace de inicio de sesión
+          // Mostrar/ocultar popover
+          loginArea.addEventListener('mouseover', () => popover.show());
+          loginArea.addEventListener('mouseleave', () => setTimeout(() => {
+            if (!loginArea.matches(':hover') && !document.querySelector('.popover:hover')) {
+              popover.hide();
+            }
+          }, 300));
+
+          document.addEventListener('click', (event) => {
+            if (!loginArea.contains(event.target) && !document.querySelector('.popover').contains(event.target)) {
+              popover.hide();
+            }
+          });
+        }
+      </script>
+
+      <!-- Login y Registro -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          setupLoginAndRegistration();
+        });
+
+        function setupLoginAndRegistration() {
+          // Login
           document.addEventListener('click', function (event) {
             const loginLink = event.target.closest('#loginLink');
             if (loginLink) {
               event.preventDefault();
-
-              // Ocultar el popover
-              popover.hide();
-
-              // Mostrar el modal de inicio de sesión
               const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
               loginModal.show();
             }
           });
 
-          // Manejar el envío del formulario del modal
-          document.querySelector('#loginModal form').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            // Remover mensaje de error anterior si existe
-            const existingError = document.querySelector('.error-message');
-            if (existingError) {
-              existingError.remove();
-            }
-
-            // Simular verificación de credenciales (reemplazar con tu lógica real)
-            fetch('/login/', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-              },
-              body: JSON.stringify({ email, password })
-            })
-            .then(response => response.json())
-            .then(data => {
-              if (data.success) {
-                window.location.reload();
-              } else {
-                // Crear y mostrar mensaje de error
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'alert alert-danger mt-3 error-message';
-                errorDiv.style.fontSize = '14px';
-                errorDiv.innerHTML = 'Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.';
-                
-                // Insertar el mensaje después del botón de ingresar
-                const submitButton = document.querySelector('#loginModal button[type="submit"]');
-                submitButton.insertAdjacentElement('afterend', errorDiv);
-              }
-            })
-            .catch(error => {
-              // Mostrar el mismo mensaje de error en caso de error de red
-              const errorDiv = document.createElement('div');
-              errorDiv.className = 'alert alert-danger mt-3 error-message';
-              errorDiv.style.fontSize = '14px';
-              errorDiv.innerHTML = 'Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.';
-              
-              const submitButton = document.querySelector('#loginModal button[type="submit"]');
-              submitButton.insertAdjacentElement('afterend', errorDiv);
-            });
-          });
-
-          // Agregar evento para manejar el clic en el enlace de registro
+          // Registro
           document.addEventListener('click', function (event) {
             const registerLink = event.target.closest('#registerLink');
             if (registerLink) {
               event.preventDefault();
-
-              // Ocultar el popover
-              popover.hide();
-
-              // En lugar de mostrar el modal, mostramos el contenedor inline
               document.getElementById('inlineRegisterForm').style.display = 'block';
-              
-              // Scroll to the registration form
-              document.getElementById('inlineRegisterForm').scrollIntoView({behavior: 'smooth'});
+              document.getElementById('inlineRegisterForm').scrollIntoView({ behavior: 'smooth' });
             }
           });
 
-          // Manejar el envío del formulario de registro
-          document.getElementById('registerForm').addEventListener('submit', function(event) {
+          // Validación de Login
+          document.querySelector('#loginModal form').addEventListener('submit', function (event) {
             event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-            const name = document.getElementById('registerName').value;
-            const email = document.getElementById('registerEmail').value;
+            // Simular validación
+            if (email && password) {
+              showErrorMessage('Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.');
+            }
+          });
+
+          // Validación de Registro
+          document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault();
             const password = document.getElementById('registerPassword').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
 
-            // Validar que las contraseñas coincidan
             if (password !== confirmPassword) {
               alert('Las contraseñas no coinciden');
               return;
             }
 
-            // Enviar datos al servidor
+            // Simular envío de datos
             fetch('/register/', {
               method: 'POST',
               headers: {
@@ -1125,60 +1560,47 @@
                 'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
               },
               body: JSON.stringify({
-                name: name,
-                email: email,
+                name: document.getElementById('registerName').value,
+                email: document.getElementById('registerEmail').value,
                 password: password
               })
             })
-            .then(response => response.json())
-            .then(data => {
-              if (data.success) {
-                window.location.reload();
-              } else {
-                alert(data.message || 'Error al registrar usuario');
-              }
-            })
-            .catch(error => {
-              console.error('Error:', error);
-              alert('Error al registrar usuario');
-            });
+              .then(response => response.json())
+              .then(data => {
+                if (data.success) {
+                  window.location.reload();
+                } else {
+                  alert(data.message || 'Error al registrar usuario');
+                }
+              })
+              .catch(error => {
+                console.error('Error:', error);
+                alert('Error al registrar usuario');
+              });
           });
+        }
 
-          // Agregar el event listener para Mi cuenta
-          document.addEventListener('click', function(event) {
-            const myAccountLink = event.target.closest('#myAccountLink');
-            if (myAccountLink) {
-              event.preventDefault();
-              
-              // Ocultar el popover
-              popover.hide();
-              
-              // Mostrar el modal de inicio de sesión
-              const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-              loginModal.show();
-            }
-          });
+        function showErrorMessage(message) {
+          const errorDiv = document.createElement('div');
+          errorDiv.className = 'alert alert-danger mt-3 error-message';
+          errorDiv.style.fontSize = '14px';
+          errorDiv.innerHTML = message;
 
-          loginArea.addEventListener('mouseover', function () {
-            popover.show();
-          });
+          const existingError = document.querySelector('.error-message');
+          if (existingError) existingError.remove();
 
-          loginArea.addEventListener('mouseleave', function () {
-            setTimeout(function () {
-              if (!loginArea.matches(':hover') && !document.querySelector('.popover:hover')) {
-                popover.hide();
-              }
-            }, 300);
-          });
+          const submitButton = document.querySelector('#loginModal button[type="submit"]');
+          submitButton.insertAdjacentElement('afterend', errorDiv);
+        }
+      </script>
 
-          document.addEventListener('click', function (event) {
-            if (!loginArea.contains(event.target) && !document.querySelector('.popover').contains(event.target)) {
-              popover.hide();
-            }
-          });
+      <!-- submenu -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          setupSubmenus();
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
+        function setupSubmenus() {
           const menuItems = document.querySelectorAll('.menu-item');
           let activeSubmenu = null;
 
@@ -1187,234 +1609,172 @@
 
             if (submenu) {
               item.addEventListener('mouseenter', () => {
-                // Ocultar submenú anterior si existe y es diferente
                 if (activeSubmenu && activeSubmenu !== submenu) {
-                  activeSubmenu.style.display = 'none';
+                  hideSubmenu(activeSubmenu);
                 }
-                // Calcular posición y mostrar submenú
-                const offcanvasBody = document.querySelector('.offcanvas-body');
-                const bodyTop = offcanvasBody.getBoundingClientRect().top;
-                submenu.style.top = `${bodyTop}px`;
-                submenu.style.display = 'block';
+                showSubmenu(submenu);
                 activeSubmenu = submenu;
               });
 
-              // Mantener el submenú visible al hacer hover sobre él
-              submenu.addEventListener('mouseenter', () => {
-                submenu.style.display = 'block';
-              });
-
-              // Mantener el submenú visible al hacer hover sobre el menú principal
-              item.addEventListener('mouseleave', () => {
-                setTimeout(() => {
-                  if (!submenu.matches(':hover')) {
-                    submenu.style.display = 'none';
-                  }
-                }, 300);
-              });
-
-              submenu.addEventListener('mouseleave', () => {
-                setTimeout(() => {
-                  if (!item.matches(':hover')) {
-                    submenu.style.display = 'none';
-                  }
-                }, 300);
-              });
+              submenu.addEventListener('mouseenter', () => showSubmenu(submenu));
+              item.addEventListener('mouseleave', () => setTimeout(() => {
+                if (!submenu.matches(':hover')) hideSubmenu(submenu);
+              }, 300));
+              submenu.addEventListener('mouseleave', () => setTimeout(() => {
+                if (!item.matches(':hover')) hideSubmenu(submenu);
+              }, 300));
             }
           });
-        });
 
-        function togglePassword(id) {
-          const passwordInput = document.getElementById(id);
-          const toggleIcon = document.getElementById('togglePassword');
-          if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            toggleIcon.classList.remove('bi-eye-slash');
-            toggleIcon.classList.add('bi-eye');
-          } else {
-            passwordInput.type = 'password';
-            toggleIcon.classList.remove('bi-eye');
-            toggleIcon.classList.add('bi-eye-slash');
-          }
+          // Cerrar el menú y submenú al hacer clic en una categoría
+          const categoryLinks = document.querySelectorAll('.category-link');
+          categoryLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+              event.preventDefault();
+              const category = this.getAttribute('data-category');
+              loadProducts(category);
+
+              // Cerrar el menú y submenú
+              const offcanvasMenu = document.getElementById('offcanvasMenu');
+              const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasMenu);
+              offcanvasInstance.hide();
+
+              const submenus = document.querySelectorAll('.submenu');
+              submenus.forEach(submenu => {
+                hideSubmenu(submenu);
+              });
+
+              // Mostrar los filtros y productos
+              const filtersContainer = document.getElementById('filters-container');
+              const productContainer = document.getElementById('product-container');
+              filtersContainer.style.display = 'block';
+              productContainer.style.display = 'block';
+              productContainer.scrollIntoView({ behavior: 'smooth' });
+            });
+          });
         }
 
-        function closeInlineRegister() {
-          document.getElementById('inlineRegisterForm').style.display = 'none';
-          localStorage.setItem('registerFormVisible', 'false');
+        function showSubmenu(submenu) {
+          submenu.style.display = 'block';
+          submenu.style.visibility = 'visible';
+          submenu.style.opacity = '1';
         }
-      </script>
 
-      <script>
-        function togglePassword(inputId) {
-          const passwordInput = document.getElementById(inputId);
-          const toggleIcon = document.getElementById('togglePassword');
-          
-          if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            toggleIcon.className = 'bi bi-eye';
-          } else {
-            passwordInput.type = 'password';
-            toggleIcon.className = 'bi bi-eye-slash';
-          }
+        function hideSubmenu(submenu) {
+          submenu.style.display = 'none';
+          submenu.style.visibility = 'hidden';
+          submenu.style.opacity = '0';
         }
       </script>
 
+      <!-- toogle de contraseña -->
       <script>
-        document.addEventListener('click', function(event) {
-          const registerLinkFromLogin = event.target.closest('#registerLinkFromLogin');
-          if (registerLinkFromLogin) {
-            event.preventDefault();
-            
-            // Cerrar el modal de login
-            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-            loginModal.hide();
-            
-            // Mostrar el formulario de registro en línea en lugar del modal
-            document.getElementById('inlineRegisterForm').style.display = 'block';
-            document.getElementById('inlineRegisterForm').scrollIntoView({behavior: 'smooth'});
+        document.addEventListener('DOMContentLoaded', function () {
+          setupPasswordToggle();
+        });
+
+        function setupPasswordToggle() {
+          document.addEventListener('click', function (event) {
+            const toggleButton = event.target.closest('[data-toggle-password]');
+            if (toggleButton) {
+              const inputId = toggleButton.getAttribute('data-toggle-password');
+              const passwordInput = document.getElementById(inputId);
+              const toggleIcon = toggleButton.querySelector('i');
+
+              if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('bi-eye-slash');
+                toggleIcon.classList.add('bi-eye');
+              } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('bi-eye');
+                toggleIcon.classList.add('bi-eye-slash');
+              }
+            }
+          });
+        }
+      </script>
+
+      <!-- agregar productos dinamicos -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          setupDynamicProducts();
+        });
+
+        function setupDynamicProducts() {
+          const carousel = document.getElementById('carouselExampleIndicators');
+          const productContainer = document.getElementById('product-container');
+          const filtersContainer = document.getElementById('filters-container');
+          const inlineRegisterForm = document.getElementById('inlineRegisterForm');
+
+          document.addEventListener('click', function (event) {
+            const registerLink = event.target.closest('#registerLink');
+            if (registerLink) {
+              event.preventDefault();
+              carousel.style.display = 'none';
+              inlineRegisterForm.style.display = 'block';
+              inlineRegisterForm.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+
+          const categoryLinks = document.querySelectorAll('.category-link');
+          categoryLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+              event.preventDefault();
+              const category = this.getAttribute('data-category');
+              loadProducts(category);
+              filtersContainer.style.display = 'block';
+              productContainer.style.display = 'block';
+              productContainer.scrollIntoView({ behavior: 'smooth' });
+            });
+          });
+        }
+
+        function loadProducts(category) {
+          const products = {
+            'blusas': [
+              { name: 'Blusa 1', marca: 'ARKITEC', price: '$59.990', oldPrice: '$99.990', image: 'static/img/blusa1.png' },
+              { name: 'Blusa 2', marca: 'ARKITEC', price: '$49.990', oldPrice: '$79.990', image: 'static/img/blusa2.png' },
+              { name: 'Blusa 3', marca: 'ARKITEC', price: '$39.990', oldPrice: '$69.990', image: 'static/img/blusa3.png' }
+            ],
+            'camisetas': [
+              { name: 'Camiseta 1', price: '$15', oldPrice: '$20', image: 'img/camiseta1.jpg' },
+              { name: 'Camiseta 2', price: '$18', oldPrice: '$25', image: 'img/camiseta2.jpg' }
+            ]
+          };
+
+          const selectedProducts = products[category] || [];
+          displayProducts(selectedProducts);
+        }
+
+        function displayProducts(products) {
+          const productsList = document.getElementById('products-list');
+          productsList.innerHTML = '';
+
+          if (products.length === 0) {
+            productsList.innerHTML = '<p>No hay productos disponibles en esta categoría.</p>';
+            return;
           }
-        });
-      </script>
 
-      <script>
-        document.querySelector('#loginModal form').addEventListener('submit', function(event) {
-          event.preventDefault();
-          
-          const email = document.getElementById('email').value;
-          const password = document.getElementById('password').value;
-          
-          // Simular validación (esto es solo para demostración)
-          if (email && password) {
-            // Crear el mensaje de error
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'alert alert-danger mt-3';
-            errorDiv.style.fontSize = '14px';
-            errorDiv.style.borderRadius = '8px';
-            errorDiv.innerHTML = 'Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.';
-            
-            // Remover mensaje de error anterior si existe
-            const existingError = document.querySelector('.alert-danger');
-            if (existingError) {
-              existingError.remove();
-            }
-            
-            // Insertar el mensaje después del botón
-            const form = document.querySelector('#loginModal form');
-            form.appendChild(errorDiv);
-          }
-        });
-      </script>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const loginForm = document.querySelector('#loginModal form');
-          
-          loginForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // Remover mensaje de error anterior si existe
-            const existingError = document.querySelector('.alert-danger');
-            if (existingError) {
-              existingError.remove();
-            }
-            
-            // Crear el mensaje de error
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'alert alert-danger mt-3';
-            errorDiv.style.fontSize = '14px';
-            errorDiv.style.borderRadius = '8px';
-            errorDiv.innerHTML = 'Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.';
-            
-            // Insertar el mensaje después del título "Inicia sesión para comprar"
-            const title = loginForm.querySelector('h4');
-            title.insertAdjacentElement('afterend', errorDiv);
-
-            // Limpiar los campos del formulario
-            document.getElementById('email').value = '';
-            document.getElementById('password').value = '';
-            
-            // Restablecer el ícono de mostrar/ocultar contraseña
-            const toggleIcon = document.getElementById('togglePassword');
-            toggleIcon.className = 'bi bi-eye-slash';
-            
-            // Asegurar que el campo de contraseña esté en modo oculto
-            document.getElementById('password').type = 'password';
+          products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'col-md-4 mb-4';
+            productCard.innerHTML = `
+              <div class="card product-card">
+                <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                <div class="card-body">
+                  <h2 class="card-Title">${product.marca}</h2> 
+                  <h5 class="card-title">${product.name}</h5>
+                  <p class="card-text"><strong>${product.price}</strong> <del>${product.oldPrice}</del></p>
+                  <button class="btn btn-dark w-100 rounded-pill">Agregar al carro</button>
+                </div>
+              </div>
+            `;
+            productsList.appendChild(productCard);
           });
-        });
+        }
       </script>
 
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const loginForm = document.querySelector('#loginModal form');
-          
-          loginForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // Remover mensaje de error anterior si existe
-            const existingError = document.querySelector('.alert-danger');
-            if (existingError) {
-              existingError.remove();
-            }
-            
-            // Crear el mensaje de error
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'alert alert-danger mt-3';
-            errorDiv.style.fontSize = '14px';
-            errorDiv.style.borderRadius = '8px';
-            errorDiv.innerHTML = 'Correo electrónico o contraseña incorrecta. Por favor, vuelve a intentarlo nuevamente.';
-            
-            // Insertar el mensaje después del título "Inicia sesión para comprar"
-            const title = loginForm.querySelector('h4');
-            title.insertAdjacentElement('afterend', errorDiv);
-
-            // Limpiar los campos del formulario
-            document.getElementById('email').value = '';
-            document.getElementById('password').value = '';
-            
-            // Restablecer el ícono de mostrar/ocultar contraseña
-            const toggleIcon = document.getElementById('togglePassword');
-            toggleIcon.className = 'bi bi-eye-slash';
-            
-            // Asegurar que el campo de contraseña esté en modo oculto
-            document.getElementById('password').type = 'password';
-          });
-        });
-      </script>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const loginModal = document.getElementById('loginModal');
-          const loginForm = document.querySelector('#loginModal form');
-          
-          // Limpiar el error cuando se cierra el modal
-          loginModal.addEventListener('hidden.bs.modal', function() {
-            // Remover mensaje de error si existe
-            const existingError = document.querySelector('.alert-danger');
-            if (existingError) {
-              existingError.remove();
-            }
-            
-            // Limpiar los campos del formulario
-            document.getElementById('email').value = '';
-            document.getElementById('password').value = '';
-            
-            // Restablecer el ícono de mostrar/ocultar contraseña
-            const toggleIcon = document.getElementById('togglePassword');
-            toggleIcon.className = 'bi bi-eye-slash';
-            
-            // Asegurar que el campo de contraseña esté en modo oculto
-            document.getElementById('password').type = 'password';
-          });
-          
-          // Resto del código del formulario...
-        });
-      </script>
 
       <!-- Modal de inicio de sesión -->
       <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -1517,49 +1877,48 @@
       </div>
 
 
- <!-- Modal de recuperación por SMS -->
- <div class="modal fade" id="smsModal" tabindex="-1" aria-labelledby="smsModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <h4 class="text-label mb-3">Restablecer contraseña</h4>
-              <p class="text-muted mb-4">Ingresa tu correo electrónico y te enviaremos las instrucciones para una nueva contraseña..</p>
-              
-              <form id="emailRecoveryForm">
-                <div class="mb-3">
-                  <label class="form-label">Correo electrónico</label>
-                  <div class="position-relative">
-                    <input type="email" 
-                           class="form-control border-0 border-bottom rounded-0"
-                           placeholder="Ingresa tu correo electrónico" 
-                           style="box-shadow: none; background: transparent;"
-                           required>
+      <!-- Modal de recuperación por SMS -->
+      <div class="modal fade" id="smsModal" tabindex="-1" aria-labelledby="smsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12">
+                    <h4 class="text-label mb-3">Restablecer contraseña</h4>
+                    <p class="text-muted mb-4">Ingresa tu correo electrónico y te enviaremos las instrucciones para una nueva contraseña..</p>
+                    
+                    <form id="emailRecoveryForm">
+                      <div class="mb-3">
+                        <label class="form-label">Correo electrónico</label>
+                        <div class="position-relative">
+                          <input type="email" 
+                                class="form-control border-0 border-bottom rounded-0"
+                                placeholder="Ingresa tu correo electrónico" 
+                                style="box-shadow: none; background: transparent;"
+                                required>
+                        </div>
+                      </div>
+
+                      <button type="submit" 
+                              class="btn rounded-pill w-100 mb-3" 
+                              style="background-color: #000; color: #fff;">
+                        Continuar
+                      </button>
+                      
+                      <div class="text-center mt-3">
+                        <a href="#" class="text-dark text-decoration-underline" data-bs-toggle="modal" data-bs-target="#loginModal">
+                          Ya tengo el código verificador
+                        </a>
+                      </div>
+                    </form>
                   </div>
                 </div>
-
-                <button type="submit" 
-                        class="btn rounded-pill w-100 mb-3" 
-                        style="background-color: #000; color: #fff;">
-                  Continuar
-                </button>
-                
-                <div class="text-center mt-3">
-                  <a href="#" class="text-dark text-decoration-underline" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    Ya tengo el código verificador
-                  </a>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
 
       <!-- Modal de registro -->
       <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
@@ -1580,20 +1939,17 @@
                     {% csrf_token %}
                     <div class="mb-3">
                       <label for="registerName" class="form-label">Nombre completo</label>
-                      <input type="text" class="form-control border-0 border-bottom rounded-0" id="registerName" 
-                             placeholder="Ingresa tu nombre" style="box-shadow: none; background: transparent;" required>
+                      <input type="text" class="form-control border-0 border-bottom rounded-0" id="registerName"  placeholder="Ingresa tu nombre" style="box-shadow: none; background: transparent;" required>
                     </div>
                     <div class="mb-3">
                       <label for="registerEmail" class="form-label">Correo electrónico</label>
-                      <input type="email" class="form-control border-0 border-bottom rounded-0" id="registerEmail" 
-                             placeholder="nombre@ejemplo.com" style="box-shadow: none; background: transparent;" required>
+                      <input type="email" class="form-control border-0 border-bottom rounded-0" id="registerEmail" placeholder="nombre@ejemplo.com" style="box-shadow: none; background: transparent;" required>
                     </div>                       
                     
                     <div class="mb-3">
                       <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
                       <div class="position-relative">
-                        <input type="password" class="form-control border-0 border-bottom rounded-0" id="confirmPassword" 
-                               placeholder="Ingresa una contraseña" style="box-shadow: none; background: transparent; text-align: left;" required>
+                        <input type="password" class="form-control border-0 border-bottom rounded-0" id="confirmPassword" placeholder="Ingresa una contraseña" style="box-shadow: none; background: transparent; text-align: left;" required>
                         <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y" 
                                 onclick="togglePassword('confirmPassword')" style="background: none; border: none;">
                           <i class="bi bi-eye-slash" id="togglePasswordConfirm"></i>
@@ -1752,351 +2108,280 @@
     </script>
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Verificar si el formulario estaba visible antes de recargar
-    const formVisible = localStorage.getItem('registerFormVisible');
-    if (formVisible === 'true') {
-        document.getElementById('inlineRegisterForm').style.display = 'block';
+      document.addEventListener('DOMContentLoaded', function() {
+          // Verificar si el formulario estaba visible antes de recargar
+          const formVisible = localStorage.getItem('registerFormVisible');
+          if (formVisible === 'true') {
+              document.getElementById('inlineRegisterForm').style.display = 'block';
+          }
+
+          // Cuando se abre el formulario desde cualquier enlace de registro
+          const registerLinks = document.querySelectorAll('#registerLink, #registerLinkFromLogin');
+          registerLinks.forEach(link => {
+              link.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  document.getElementById('inlineRegisterForm').style.display = 'block';
+          });
+
+          // Cuando se envía el formulario
+          document.querySelector('#registerForm').addEventListener('submit', function(e) {
+              e.preventDefault();
+              // Solo eliminar el estado cuando el registro sea exitoso
+              if (/* validación exitosa */) {
+                  localStorage.removeItem('registerFormVisible');
+              }
+          });
+
+          // Cuando se cierra manualmente el formulario
+          window.closeInlineRegister = function() {
+              document.getElementById('inlineRegisterForm').style.display = 'none';
+              localStorage.removeItem('registerFormVisible');
+          };
+
+          // Mantener el formulario visible incluso después de actualizar
+          window.addEventListener('beforeunload', function() {
+              const form = document.getElementById('inlineRegisterForm');
+              if (form.style.display === 'block') {
+                  localStorage.setItem('registerFormVisible', 'true');
+              }
+          });
+      });
+    </script>
+
+    <script>
+    function showLoginForm() {
+      // Ocultar el formulario de registro
+      document.getElementById('inlineRegisterForm').style.display = 'none';
+      localStorage.removeItem('registerFormVisible');
+      
+      // Mostrar el modal de login
+      const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+      loginModal.show();
     }
+    </script>
 
-    // Cuando se abre el formulario desde cualquier enlace de registro
-    const registerLinks = document.querySelectorAll('#registerLink, #registerLinkFromLogin');
-    registerLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('inlineRegisterForm').style.display = 'block';
-    });
-
-    // Cuando se envía el formulario
-    document.querySelector('#registerForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Solo eliminar el estado cuando el registro sea exitoso
-        if (/* validación exitosa */) {
-            localStorage.removeItem('registerFormVisible');
-        }
-    });
-
-    // Cuando se cierra manualmente el formulario
-    window.closeInlineRegister = function() {
-        document.getElementById('inlineRegisterForm').style.display = 'none';
-        localStorage.removeItem('registerFormVisible');
-    };
-
-    // Mantener el formulario visible incluso después de actualizar
-    window.addEventListener('beforeunload', function() {
-        const form = document.getElementById('inlineRegisterForm');
-        if (form.style.display === 'block') {
-            localStorage.setItem('registerFormVisible', 'true');
-        }
-    });
-});
-</script>
-
-<script>
-function showLoginForm() {
-  // Ocultar el formulario de registro
-  document.getElementById('inlineRegisterForm').style.display = 'none';
-  localStorage.removeItem('registerFormVisible');
-  
-  // Mostrar el modal de login
-  const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-  loginModal.show();
-}
-</script>
-
-<script>
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    // Obtener los valores de los campos
-    const formData = {
-        email: document.querySelector('input[placeholder="Ingresa un correo"]').value,
-        nombre: document.querySelector('input[placeholder="Ingresa un nombre"]').value,
-        apellidos: document.querySelector('input[placeholder="Ingresa apellidos"]').value,
-        documento: document.querySelector('input[placeholder="Ingresa una cedula"]').value,
-        celular: document.querySelector('input[placeholder="Ingresa tu número celular"]').value,
-        tipoDocumento: document.querySelector('#documentTypeDropdown span').textContent,
-        aceptaCMR: document.querySelector('#cmrPuntosCheck').checked,
-        aceptaTerminos: document.querySelector('#terminosCheck').checked
-    };
-
-    // Validar que todos los campos requeridos estén llenos
-    if (!formData.email || !formData.nombre || !formData.apellidos || !formData.documento || !formData.celular) {
-        alert('Por favor, complete todos los campos requeridos');
-        return;
-    }
-
-    // Validar que los checkboxes estén marcados
-    if (!formData.aceptaTerminos) {
-        alert('Debe aceptar los términos y condiciones para continuar');
-        return;
-    }
-
-    // Aquí harías la llamada al servidor para registrar al usuario
-    fetch('/register/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Si usas CSRF token
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Registro exitoso
-            alert('¡Registro exitoso!');
-            window.location.href = '/'; // Redireccionar a la página principal
-        } else {
-            // Mostrar error
-            alert(data.message || 'Error en el registro');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error en el registro. Por favor, intente nuevamente.');
-    });
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Verificar si el formulario estaba visible antes de recargar
-    const formVisible = sessionStorage.getItem('registerFormVisible');
-    if (formVisible === 'true') {
-        document.getElementById('inlineRegisterForm').style.display = 'block';
-    }
-
-    // Cuando se abre el formulario desde cualquier enlace de registro
-    const registerLinks = document.querySelectorAll('#registerLink, #registerLinkFromLogin');
-    registerLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('inlineRegisterForm').style.display = 'block';
-            // Guardar el estado en sessionStorage
-            sessionStorage.setItem('registerFormVisible', 'true');
-        });
-    });
-
-    // Cuando se cierra manualmente el formulario
-    window.closeInlineRegister = function() {
-        document.getElementById('inlineRegisterForm').style.display = 'none';
-        sessionStorage.removeItem('registerFormVisible');
-    };
-
-    // Guardar estado antes de recargar la página
-    window.addEventListener('beforeunload', function() {
-        const form = document.getElementById('inlineRegisterForm');
-        if (form.style.display === 'block') {
-            sessionStorage.setItem('registerFormVisible', 'true');
-        }
-    });
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Agregar evento al enlace de correo en la recuperación de contraseña
-    const emailRecoveryLink = document.querySelector('a[data-bs-toggle="modal"] u:first-child');
-    if (emailRecoveryLink) {
-        emailRecoveryLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Cerrar el modal de login si está abierto
-            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-            if (loginModal) {
-                loginModal.hide();
-            }
-
-            // Mostrar el modal de recuperación por correo
-            const emailModal = new bootstrap.Modal(document.getElementById('emailRecoveryModal'));
-            emailModal.show();
-        });
-    }
-});
-</script>
-
-<script>
-function showLoginForm() {
-  // Ocultar el formulario de registro
-  document.getElementById('inlineRegisterForm').style.display = 'none';
-  localStorage.removeItem('registerFormVisible');
-  
-  // Mostrar el modal de login
-  const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-  loginModal.show();
-}
-</script>
-
-<script>
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    // Obtener los valores de los campos
-    const formData = {
-        email: document.querySelector('input[placeholder="Ingresa un correo"]').value,
-        nombre: document.querySelector('input[placeholder="Ingresa un nombre"]').value,
-        apellidos: document.querySelector('input[placeholder="Ingresa apellidos"]').value,
-        documento: document.querySelector('input[placeholder="Ingresa una cedula"]').value,
-        celular: document.querySelector('input[placeholder="Ingresa tu número celular"]').value,
-        tipoDocumento: document.querySelector('#documentTypeDropdown span').textContent,
-        aceptaCMR: document.querySelector('#cmrPuntosCheck').checked,
-        aceptaTerminos: document.querySelector('#terminosCheck').checked
-    };
-
-    // Validar que todos los campos requeridos estén llenos
-    if (!formData.email || !formData.nombre || !formData.apellidos || !formData.documento || !formData.celular) {
-        alert('Por favor, complete todos los campos requeridos');
-        return;
-    }
-
-    // Validar que los checkboxes estén marcados
-    if (!formData.aceptaTerminos) {
-        alert('Debe aceptar los términos y condiciones para continuar');
-        return;
-    }
-
-    // Aquí harías la llamada al servidor para registrar al usuario
-    fetch('/register/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Si usas CSRF token
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Registro exitoso
-            alert('¡Registro exitoso!');
-            window.location.href = '/'; // Redireccionar a la página principal
-        } else {
-            // Mostrar error
-            alert(data.message || 'Error en el registro');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error en el registro. Por favor, intente nuevamente.');
-    });
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Verificar si el formulario estaba visible antes de recargar
-    const formVisible = sessionStorage.getItem('registerFormVisible');
-    if (formVisible === 'true') {
-        document.getElementById('inlineRegisterForm').style.display = 'block';
-    }
-
-    // Cuando se abre el formulario desde cualquier enlace de registro
-    const registerLinks = document.querySelectorAll('#registerLink, #registerLinkFromLogin');
-    registerLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('inlineRegisterForm').style.display = 'block';
-            // Guardar el estado en sessionStorage
-            sessionStorage.setItem('registerFormVisible', 'true');
-        });
-    });
-
-    // Cuando se cierra manualmente el formulario
-    window.closeInlineRegister = function() {
-        document.getElementById('inlineRegisterForm').style.display = 'none';
-        sessionStorage.removeItem('registerFormVisible');
-    };
-
-    // Guardar estado antes de recargar la página
-    window.addEventListener('beforeunload', function() {
-        const form = document.getElementById('inlineRegisterForm');
-        if (form.style.display === 'block') {
-            sessionStorage.setItem('registerFormVisible', 'true');
-        }
-    });
-});
-</script>
-
-<script>
-document.getElementById('emailRecoveryForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = this.querySelector('input[type="email"]').value;
-    
-    if (email && email.includes('@')) {
-        // Aquí iría la lógica para enviar el código por correo
-        alert('Se ha enviado un código de verificación a tu correo electrónico');
+    <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
         
-        // Cambiar el contenido del modal para ingresar el código
-        const modalBody = this.closest('.modal-body');
-        modalBody.innerHTML = `
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <h4 class="text-label mb-3">Verificación</h4>
-                        <p class="text-muted mb-4">Ingresa el código de verificación enviado a tu correo</p>
-                        
-                        <form id="verificationForm">
-                            <div class="mb-3">
-                                <label class="form-label">Código de verificación</label>
-                                <input type="text" 
-                                       class="form-control border-0 border-bottom rounded-0"
-                                       placeholder="Ingresa el código"
-                                       style="box-shadow: none; background: transparent;"
-                                       maxlength="6"
-                                       required>
-                            </div>
+        // Obtener los valores de los campos
+        const formData = {
+            email: document.querySelector('input[placeholder="Ingresa un correo"]').value,
+            nombre: document.querySelector('input[placeholder="Ingresa un nombre"]').value,
+            apellidos: document.querySelector('input[placeholder="Ingresa apellidos"]').value,
+            documento: document.querySelector('input[placeholder="Ingresa una cedula"]').value,
+            celular: document.querySelector('input[placeholder="Ingresa tu número celular"]').value,
+            tipoDocumento: document.querySelector('#documentTypeDropdown span').textContent,
+            aceptaCMR: document.querySelector('#cmrPuntosCheck').checked,
+            aceptaTerminos: document.querySelector('#terminosCheck').checked
+        };
 
-                            <button type="submit" 
-                                    class="btn rounded-pill w-100 mb-3" 
-                                    style="background-color: #000; color: #fff;">
-                                Verificar
-                            </button>
-                            
-                            <div class="text-center mt-3">
-                                <a href="#" class="text-dark text-decoration-underline" id="resendCode">
-                                    Reenviar código
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        `;
-    } else {
-        alert('Por favor, ingresa un correo electrónico válido');
-    }
-});
-</script>
+        // Validar que todos los campos requeridos estén llenos
+        if (!formData.email || !formData.nombre || !formData.apellidos || !formData.documento || !formData.celular) {
+            alert('Por favor, complete todos los campos requeridos');
+            return;
+        }
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Agregar evento al enlace de SMS
-    const smsRecoveryLink = document.querySelector('a[data-bs-toggle="modal"] u:last-child');
-    if (smsRecoveryLink) {
-        smsRecoveryLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Cerrar el modal de login si está abierto
-            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-            if (loginModal) {
-                loginModal.hide();
+        // Validar que los checkboxes estén marcados
+        if (!formData.aceptaTerminos) {
+            alert('Debe aceptar los términos y condiciones para continuar');
+            return;
+        }
+
+        // Aquí harías la llamada al servidor para registrar al usuario
+        fetch('/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Si usas CSRF token
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Registro exitoso
+                alert('¡Registro exitoso!');
+                window.location.href = '/'; // Redireccionar a la página principal
+            } else {
+                // Mostrar error
+                alert(data.message || 'Error en el registro');
             }
-
-            // Mostrar el modal de recuperación por SMS
-            const smsModal = new bootstrap.Modal(document.getElementById('smsModal'));
-            smsModal.show();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error en el registro. Por favor, intente nuevamente.');
         });
-    }
+    });
+    </script>
 
-    // Manejar el envío del formulario SMS
-    document.getElementById('smsRecoveryForm')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const phone = this.querySelector('input[type="tel"]').value;
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Verificar si el formulario estaba visible antes de recargar
+        const formVisible = sessionStorage.getItem('registerFormVisible');
+        if (formVisible === 'true') {
+            document.getElementById('inlineRegisterForm').style.display = 'block';
+        }
+
+        // Cuando se abre el formulario desde cualquier enlace de registro
+        const registerLinks = document.querySelectorAll('#registerLink, #registerLinkFromLogin');
+        registerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('inlineRegisterForm').style.display = 'block';
+                // Guardar el estado en sessionStorage
+                sessionStorage.setItem('registerFormVisible', 'true');
+            });
+        });
+
+        // Cuando se cierra manualmente el formulario
+        window.closeInlineRegister = function() {
+            document.getElementById('inlineRegisterForm').style.display = 'none';
+            sessionStorage.removeItem('registerFormVisible');
+        };
+
+        // Guardar estado antes de recargar la página
+        window.addEventListener('beforeunload', function() {
+            const form = document.getElementById('inlineRegisterForm');
+            if (form.style.display === 'block') {
+                sessionStorage.setItem('registerFormVisible', 'true');
+            }
+        });
+    });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Agregar evento al enlace de correo en la recuperación de contraseña
+        const emailRecoveryLink = document.querySelector('a[data-bs-toggle="modal"] u:first-child');
+        if (emailRecoveryLink) {
+            emailRecoveryLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Cerrar el modal de login si está abierto
+                const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+                if (loginModal) {
+                    loginModal.hide();
+                }
+
+                // Mostrar el modal de recuperación por correo
+                const emailModal = new bootstrap.Modal(document.getElementById('emailRecoveryModal'));
+                emailModal.show();
+            });
+        }
+    });
+    </script>
+
+    <script>
+    function showLoginForm() {
+      // Ocultar el formulario de registro
+      document.getElementById('inlineRegisterForm').style.display = 'none';
+      localStorage.removeItem('registerFormVisible');
+      
+      // Mostrar el modal de login
+      const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+      loginModal.show();
+    }
+    </script>
+
+    <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
         
-        if (phone && phone.length === 10) {
-            // Aquí iría la lógica para enviar el código por SMS
-            alert('Se ha enviado un código de verificación a tu celular');
+        // Obtener los valores de los campos
+        const formData = {
+            email: document.querySelector('input[placeholder="Ingresa un correo"]').value,
+            nombre: document.querySelector('input[placeholder="Ingresa un nombre"]').value,
+            apellidos: document.querySelector('input[placeholder="Ingresa apellidos"]').value,
+            documento: document.querySelector('input[placeholder="Ingresa una cedula"]').value,
+            celular: document.querySelector('input[placeholder="Ingresa tu número celular"]').value,
+            tipoDocumento: document.querySelector('#documentTypeDropdown span').textContent,
+            aceptaCMR: document.querySelector('#cmrPuntosCheck').checked,
+            aceptaTerminos: document.querySelector('#terminosCheck').checked
+        };
+
+        // Validar que todos los campos requeridos estén llenos
+        if (!formData.email || !formData.nombre || !formData.apellidos || !formData.documento || !formData.celular) {
+            alert('Por favor, complete todos los campos requeridos');
+            return;
+        }
+
+        // Validar que los checkboxes estén marcados
+        if (!formData.aceptaTerminos) {
+            alert('Debe aceptar los términos y condiciones para continuar');
+            return;
+        }
+
+        // Aquí harías la llamada al servidor para registrar al usuario
+        fetch('/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Si usas CSRF token
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Registro exitoso
+                alert('¡Registro exitoso!');
+                window.location.href = '/'; // Redireccionar a la página principal
+            } else {
+                // Mostrar error
+                alert(data.message || 'Error en el registro');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error en el registro. Por favor, intente nuevamente.');
+        });
+    });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Verificar si el formulario estaba visible antes de recargar
+        const formVisible = sessionStorage.getItem('registerFormVisible');
+        if (formVisible === 'true') {
+            document.getElementById('inlineRegisterForm').style.display = 'block';
+        }
+
+        // Cuando se abre el formulario desde cualquier enlace de registro
+        const registerLinks = document.querySelectorAll('#registerLink, #registerLinkFromLogin');
+        registerLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('inlineRegisterForm').style.display = 'block';
+                // Guardar el estado en sessionStorage
+                sessionStorage.setItem('registerFormVisible', 'true');
+            });
+        });
+
+        // Cuando se cierra manualmente el formulario
+        window.closeInlineRegister = function() {
+            document.getElementById('inlineRegisterForm').style.display = 'none';
+            sessionStorage.removeItem('registerFormVisible');
+        };
+
+        // Guardar estado antes de recargar la página
+        window.addEventListener('beforeunload', function() {
+            const form = document.getElementById('inlineRegisterForm');
+            if (form.style.display === 'block') {
+                sessionStorage.setItem('registerFormVisible', 'true');
+            }
+        });
+    });
+    </script>
+
+    <script>
+    document.getElementById('emailRecoveryForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        
+        if (email && email.includes('@')) {
+            // Aquí iría la lógica para enviar el código por correo
+            alert('Se ha enviado un código de verificación a tu correo electrónico');
             
             // Cambiar el contenido del modal para ingresar el código
             const modalBody = this.closest('.modal-body');
@@ -2105,17 +2390,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <h4 class="text-label mb-3">Verificación</h4>
-                            <p class="text-muted mb-4">Ingresa el código de verificación enviado a tu celular</p>
+                            <p class="text-muted mb-4">Ingresa el código de verificación enviado a tu correo</p>
                             
                             <form id="verificationForm">
                                 <div class="mb-3">
                                     <label class="form-label">Código de verificación</label>
                                     <input type="text" 
-                                           class="form-control border-0 border-bottom rounded-0"
-                                           placeholder="Ingresa el código"
-                                           style="box-shadow: none; background: transparent;"
-                                           maxlength="6"
-                                           required>
+                                          class="form-control border-0 border-bottom rounded-0"
+                                          placeholder="Ingresa el código"
+                                          style="box-shadow: none; background: transparent;"
+                                          maxlength="6"
+                                          required>
                                 </div>
 
                                 <button type="submit" 
@@ -2135,12 +2420,83 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         } else {
-            alert('Por favor, ingresa un número de celular válido (10 dígitos)');
+            alert('Por favor, ingresa un correo electrónico válido');
         }
     });
-});
-</script>
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Agregar evento al enlace de SMS
+        const smsRecoveryLink = document.querySelector('a[data-bs-toggle="modal"] u:last-child');
+        if (smsRecoveryLink) {
+            smsRecoveryLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Cerrar el modal de login si está abierto
+                const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+                if (loginModal) {
+                    loginModal.hide();
+                }
+
+                // Mostrar el modal de recuperación por SMS
+                const smsModal = new bootstrap.Modal(document.getElementById('smsModal'));
+                smsModal.show();
+            });
+        }
+
+        // Manejar el envío del formulario SMS
+        document.getElementById('smsRecoveryForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const phone = this.querySelector('input[type="tel"]').value;
+            
+            if (phone && phone.length === 10) {
+                // Aquí iría la lógica para enviar el código por SMS
+                alert('Se ha enviado un código de verificación a tu celular');
+                
+                // Cambiar el contenido del modal para ingresar el código
+                const modalBody = this.closest('.modal-body');
+                modalBody.innerHTML = `
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <h4 class="text-label mb-3">Verificación</h4>
+                                <p class="text-muted mb-4">Ingresa el código de verificación enviado a tu celular</p>
+                                
+                                <form id="verificationForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">Código de verificación</label>
+                                        <input type="text" 
+                                              class="form-control border-0 border-bottom rounded-0"
+                                              placeholder="Ingresa el código"
+                                              style="box-shadow: none; background: transparent;"
+                                              maxlength="6"
+                                              required>
+                                    </div>
+
+                                    <button type="submit" 
+                                            class="btn rounded-pill w-100 mb-3" 
+                                            style="background-color: #000; color: #fff;">
+                                        Verificar
+                                    </button>
+                                    
+                                    <div class="text-center mt-3">
+                                        <a href="#" class="text-dark text-decoration-underline" id="resendCode">
+                                            Reenviar código
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                alert('Por favor, ingresa un número de celular válido (10 dígitos)');
+            }
+        });
+    });
+    </script>
 
   </body>
 
-  </html>
+</html>
