@@ -88,12 +88,14 @@
         /* Añadir sombra */
       }
 
-      .submenu:hover,
+      .submenu,
       .menu-item:hover .submenu {
         display: block;
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s;
       }
 
-      /* Ajustar el comportamiento del hover */
       .menu-item .submenu {
         visibility: hidden;
         opacity: 0;
@@ -358,6 +360,36 @@
         top: 1rem;
         right: 1rem;
         z-index: 10;
+      }
+
+      .popover hr {
+        margin: 0.5rem auto;
+        border-top: 1px solid #dee2e6;
+        opacity: 1;
+        width: 50%; /* Reducir el ancho al 50% */
+      }
+
+      .form-check-input {
+        width: 1.2em;
+        height: 1.2em;
+        margin-top: 0.25em;
+        border: 2px solid #000;
+      }
+
+      .form-check-input:checked {
+        background-color: #000;
+        border-color: #000;
+      }
+
+      .form-check-label {
+        padding-left: 0.5em;
+      }
+
+      /* Agregar este estilo específico para los requisitos de contraseña */
+      .password-requirements {
+          font-size: 10px;  /* Reducir solo el tamaño de fuente */
+          color: #6c757d;   /* Mantener el color gris */
+          margin-bottom: 2px; /* Mantener el espaciado */
       }
     </style>
 
@@ -745,100 +777,229 @@
       <div id="inlineRegisterForm" class="integrated-register" style="display: none;">
         <div class="container py-4">
           <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
               <div class="card border-0 shadow-sm">
                 <div class="card-body p-4">
                   <div class="row">
                     <!-- Columna del formulario - eliminar la clase border-end -->
                     <div class="col-md-7">
-                      <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div>
-                          <h4 class="m-0">Inicia sesión o regístrate para comprar</h4>
-                          <p class="text-muted mt-2 mb-0" style="font-size: 14px;">Ingresa tus datos personales y disfruta de una experiencia de compra más rápida.</p>
-                        </div>
-                        <button type="button" class="btn-close" onclick="closeInlineRegister()"></button>
-                      </div>
-                      <form>
+                      <!-- Título y subtítulo -->
+                      <h4 class="text-label mb-2">Inicia sesión o regístrate para comprar</h4>
+                      <p class="text-muted mb-4" style="font-size: 14px;">Ingresa tus datos personales y disfruta de una experiencia de compra más rápida.</p>
+                      
+                      <form id="registrationForm">
+                        {% csrf_token %}
                         <div class="mb-3">
                           <label class="form-label">Correo</label>
-                          <input type="text" class="form-control border-0 border-bottom rounded-0" required>
+                          <div class="position-relative col-md-10">
+                            <input type="text" class="form-control border-0 border-bottom rounded-0"
+                                   placeholder="Ingresa un correo" 
+                                   style="box-shadow: none; background: transparent;padding-left: 0px;" required>
+                          </div>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Nombre</label>
-                          <input type="email" class="form-control border-0 border-bottom rounded-0" required>
+                          <div class="position-relative col-md-10">
+                            <input type="text" class="form-control border-0 border-bottom rounded-0"
+                                   placeholder="Ingresa un nombre" 
+                                   style="box-shadow: none; background: transparent;padding-left: 0px;" required>
+                          </div>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Apellidos</label>
-                          <input type="email" class="form-control border-0 border-bottom rounded-0" required>
+                          <div class="position-relative col-md-10">
+                            <input type="text" class="form-control border-0 border-bottom rounded-0"
+                                   placeholder="Ingresa apellidos" 
+                                   style="box-shadow: none; background: transparent;padding-left: 0px;" required>
+                          </div>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Tipo de documento</label>
-                          <input type="email" class="form-control border-0 border-bottom rounded-0" required>
+                          <div class="position-relative col-md-10">
+                            <strong class="position-absolute" style="top: 50%; transform: translateY(-50%); left: 0px;">CC</strong>
+                            <input type="text"class="form-control border-0 border-bottom rounded-0"
+                                   placeholder="Ingresa una cedula"style="box-shadow: none; background: transparent; padding-left: 25px;"required>
+                          </div>
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Celular</label>
-                          <input type="email" class="form-control border-0 border-bottom rounded-0" required>
+                          <div class="position-relative col-md-10"> <!-- Agregamos col-md-6 para hacerlo más corto -->
+                            <strong class="position-absolute" style="top: 50%; transform: translateY(-50%); left: 0px;">+57</strong>
+                            <input type="celular" class="form-control border-0 border-bottom rounded-0"
+                                   placeholder="Ingresa un celular" 
+                                   style="box-shadow: none; background: transparent; padding-left: 40px;" required>
+                          </div>                        
+
                         </div>
+                        <!-- Agregar después del campo de celular -->
                         <div class="mb-3">
-                          
-                        </div>
-                        <div class="mb-3">
-                          <label for="confirmPassword" class="form-label">Contraseña</label>
-                          <div class="position-relative">
-                            <input type="password" class="form-control border-0 border-bottom rounded-0" id="confirmPassword" 
-                                   placeholder="Ingresa una contraseña" style="box-shadow: none; background: transparent;" required>
+                          <label class="form-label">Contraseña</label>
+                          <div class="position-relative col-md-10">
+                            <input type="password" class="form-control border-0 border-bottom rounded-0"
+                                   placeholder="Ingresa una contraseña" 
+                                   style="box-shadow: none; background: transparent; padding-left: 0px;" required>
                             <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y" 
-                                    onclick="togglePassword('confirmPassword')" style="background: none; border: none;">
-                              <i class="bi bi-eye-slash" id="togglePasswordConfirm"></i>
+                                    onclick="togglePassword('registerPassword')" 
+                                    style="background: none; border: none;">
+                              <i class="bi bi-eye-slash" id="toggleRegisterPassword"></i>
                             </button>
                           </div>
+
+                          <!-- Requisitos de contraseña -->
                           <div class="mt-2">
-                            <small class="text-muted d-flex flex-wrap gap-2">
-                              <span>• Mín. 8 caracteres</span>
-                              <span>• 1 número</span>
-                              <span>• 1 mayúscula</span>
-                              <span>• 1 minúscula</span>
-                              <span>• Sin espacio</span>
-                              <span>• Sin usar '\¡¿"ºª·`´çñÑ</span>
+                            <small class="text-muted">
+                              <div class="container p-0">
+                                <div class="row g-2">
+                                  <!-- Columna 1 -->
+                                  <div class="col-4">
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• Mín. 8 caracteres</div>
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 número</div>
+                                  </div>
+                                  <!-- Columna 2 -->
+                                  <div class="col-4">
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 mayúscula</div>
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 minúscula</div>
+                                  </div>
+                                  <!-- Columna 3 -->
+                                  <div class="col-4">
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• Sin espacio</div>
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• Sin usar '\¡¿"ºª·`´çñÑ</div>
+                                  </div>
+                                </div>
+                              </div>
                             </small>
                           </div>
                         </div>
-                        <button type="submit" class="btn btn-dark w-100 rounded-pill">Crear cuenta</button>
+                        <div class="mb-3"> 
+                                             
+                          
+                          
+                          <div class="position-relative">
+                            <div class="dropdown">
+
+                          </div>
+                        </div>
+                      </div
+
+                      <!-- Separador -->
+                      
+                      
+                        <div class="mt-2">
+                            <smal class="text-muted">
+                              <div class="container p-0">
+                                <div class="row g-2">
+                                  <!-- Columna 1 -->
+                                  <div class="col-4">
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• Mín. 8 caracteres</div>
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 número</div>
+                                  </div>
+                                  
+                                  <!-- Columna 2 -->
+                                  <div class="col-4">
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 mayúscula</div>
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 minúscula</div>
+                                  </div>
+                                  <!-- Columna 3 -->
+                                  <div class="col-4">
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• Sin espacio</div>
+                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• Sin usar '\¡¿"ºª·`´çñÑ</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </smal
+                          </div>
+                          
+                        </div>
+                        <div style="margin-bottom: 20px;"></div>
+                        <div class="mb-3">
+                          <!-- Primero el texto de CMR Puntos -->
+                          <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="cmrPuntosCheck" required>
+                            <label class="form-check-label" for="cmrPuntosCheck" style="font-size: 14px;">
+                              Quiero acumular CMR Puntos en mis compras según 
+                              <u><a href="#" data-bs-toggle="modal" data-bs-target="#reglamentoModal">el reglamento del programa</a></u>
+                              y autorizo el<br>
+                              <u><a href="#" data-bs-toggle="modal" data-bs-target="#tratamientoModal">tratamiento de mis datos personales</a></u>
+                            </label>
+                          </div>
+                          
+                          <!-- Luego el texto de términos y condiciones -->
+                          <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="terminosCheck" required>
+                            <label class="form-check-label" for="terminosCheck" style="font-size: 14px;">
+                              Acepto los términos y condiciones de falabella.com y autorizo el tratamiento de mis datos personales.
+                            </label>
+                          </div>
+                        </div>
+
+                        <!-- El botón de crear cuenta sin color -->
+                        <button type="submit" class="btn rounded-pill w-50 mx-auto d-block border-dark" 
+                                style="font-size: 14px; padding: 8px 20px; background-color: transparent; color: #000;">
+                          Registrate
+                        </button>
+
+                        <!-- Agregar el texto de ya tienes cuenta -->
+                        <div class="text-center mt-3">
+                          <p class="text-muted mb-2">
+                            ¿Ya tienes una cuenta? 
+                            <a href="#" class="text-dark text-decoration-underline" onclick="showLoginForm()">inicia sesión</a>
+                          </p>
+                        </div>
                       </form>
                     </div>
                     
                     <!-- Columna de beneficios -->
                     <div class="col-md-5">
                       <div class="p-4">
-                        <h5 class="mb-4">Beneficios de tu cuenta</h5>
+                        <!-- Primera sección de beneficios -->
+                        <h5 class="mb-4">Beneficios falabella.com</h5>
+                        <div class="row">
+                          <!-- Columna izquierda -->
+                          <div class="col-6">
+                            <ul class="list-unstyled">
+                              <li class="mb-3 text-nowrap"> <!-- Agregamos text-nowrap -->
+                                <i class="bi bi-clock-history text-success me-2"></i>
+                                <span style="font-size: 14px;">Recibir notificaciones en tiempo real</span> <!-- Agregamos span con tamaño de fuente -->
+                              </li>
+                              <li class="mb-3">
+                                <i class="bi bi-heart text-success me-2"></i>
+                                Revisar boletas online
+                              </li>
+                              <li class="mb-3 text-nowrap"> <!-- Agregamos text-nowrap -->
+                                <i class="bi bi-heart text-success me-2"></i>
+                                <span style="font-size: 14px;">Guardar medios de pago y direcciones favoritas</span>
+                              </li>
+                              <li class="mb-3 text-nowrap">
+                                <i class="bi bi-heart text-success me-2"></i>
+                                <span style="font-size: 14px;">Ser parte de CMR puntos, el mejor programa de beneficios</span>
+                              </li>
+                            </ul>
+                          </div>
+                          
+                          
+                          </div>
+                        </div>
+                        
+                        <!-- Separador -->
+                        <div style="width: 90%;">
+                          <hr style="width: 100%; margin-left: 0; opacity: 1; border-top: 1px solid #dee2e6;">
+                        </div>
+                        
+                        <!-- Segunda sección de beneficios -->
+                        <h5 class="mb-4">Beneficios CMR Puntos</h5>
                         <ul class="list-unstyled">
                           <li class="mb-3">
-                            <i class="bi bi-clock-history text-success me-2"></i>
-                            Historial de compras
+                            <i class="bi bi-piggy-bank text-success me-2"></i>
+                            Canje de productos, experiencias, viajes y Gift Cards
                           </li>
                           <li class="mb-3">
-                            <i class="bi bi-heart text-success me-2"></i>
-                            Lista de favoritos
-                          </li>
-                          <li class="mb-3">
-                            <i class="bi bi-truck text-success me-2"></i>
-                            Seguimiento de pedidos
-                          </li>
-                          <li class="mb-3">
-                            <i class="bi bi-tag text-success me-2"></i>
-                            Ofertas exclusivas
+                            <i class="bi bi-gift text-success me-2"></i>
+                            Promociones especiales, cupones de descuento y más
                           </li>
                         </ul>
-                        <hr class="my-4">
-                        <div class="text-center">
-                          <p>¿Ya tienes una cuenta?</p>
-                          <button type="button" class="btn btn-outline-dark rounded-pill" 
-                                  onclick="closeInlineRegister(); document.getElementById('loginModal').showModal();">
-                            Inicia sesión
-                          </button>
-                        </div>
                       </div>
                     </div>
+                    
                   </div>
                 </div>
               </div>
@@ -852,7 +1013,7 @@
           var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
           var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl)
-          });
+         });
 
           var loginArea = document.getElementById('loginArea');
           var chevronIcon = document.getElementById('chevronIcon');
@@ -1105,6 +1266,7 @@
 
         function closeInlineRegister() {
           document.getElementById('inlineRegisterForm').style.display = 'none';
+          localStorage.setItem('registerFormVisible', 'false');
         }
       </script>
 
@@ -1307,22 +1469,123 @@
                       <i class="bi bi-eye-slash" id="togglePassword"></i>
                     </button>
                   </div>
-                  <small class="text-muted mt-2 d-block">
-                    ¿Olvidaste tu contraseña? No te preocupes, pide un código verificador por correo o SMS para cambiar tu contraseña.
-                  </small>
-                  <button type="submit" class="btn btn-dark w-100 rounded-pill mt-4">Ingresar</button>
-                  <div class="text-center mt-3">
-                    <small class="text-muted">
-                      ¿Aún no tienes cuenta? 
-                      <a href="#" class="text-dark text-decoration-none fw-bold" id="registerLinkFromLogin">Regístrate</a>
-                    </small>
-                  </div>
+                </div>
+
+                <!-- ... después del campo de contraseña y antes del botón Ingresar ... -->
+                <div class="text-start mb-3">
+                  <a href="#" class="text-dark" 
+                     style="font-size: 14px; text-decoration: none;"
+                     data-bs-toggle="modal" 
+                     data-bs-target="#recoveryModal">
+                     ¿Olvidaste tu contraseña? No te preocupes, pide un código verificador por <u>correo</u> o <u>SMS</u> para cambiar tu contraseña.
+                  </a>
+                </div>
+
+                <button type="submit" class="btn rounded-pill w-100" 
+                        style="background-color: #000; color: #fff; font-size: 14px;">
+                  Ingresar
+                </button>
+                
+                <div class="text-center mt-3">
+                  <a href="#" class="text-dark" id="registerLinkFromLogin" 
+                     style="font-size: 14px; text-decoration: none;">
+                    ¿Aún no tienes cuenta? <u>Regístrate</u>
+                  </a>
                 </div>
               </form>
             </div>
           </div>
         </div>
       </div>
+
+      
+      <!-- Modal de recuperación por correo -->
+      <div class="modal fade" id="emailRecoveryModal" tabindex="-1" aria-labelledby="emailRecoveryModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12">
+                    <h4 class="text-label mb-3">Restablecer contraseña</h4>
+                    <p class="text-muted mb-4">Ingresa tu correo electrónico y te enviaremos las instrucciones para una nueva contraseña.</p>
+                    
+                    <form id="emailRecoveryForm">
+                      <div class="mb-3">
+                        <label class="form-label">Correo electrónico</label>
+                        <div class="position-relative">
+                          <input type="email" 
+                                 class="form-control border-0 border-bottom rounded-0"
+                                 placeholder="Ingresa tu correo electrónico" 
+                                 style="box-shadow: none; background: transparent;"
+                                 required>
+                        </div>
+                      </div>
+
+                      <button type="submit" 
+                              class="btn rounded-pill w-100 mb-3" 
+                              style="background-color: #000; color: #fff;">
+                        Continuar
+                      </button>
+                      
+                      <div class="text-center mt-3">
+                        <a href="#" class="text-dark text-decoration-underline" data-bs-toggle="modal" data-bs-target="#loginModal">
+                          Ya tengo el código verificador
+                        </a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+ <!-- Modal de recuperación por SMS -->
+ <div class="modal fade" id="smsModal" tabindex="-1" aria-labelledby="smsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <h4 class="text-label mb-3">Restablecer contraseña</h4>
+              <p class="text-muted mb-4">Ingresa tu correo electrónico y te enviaremos las instrucciones para una nueva contraseña..</p>
+              
+              <form id="emailRecoveryForm">
+                <div class="mb-3">
+                  <label class="form-label">Correo electrónico</label>
+                  <div class="position-relative">
+                    <input type="email" 
+                           class="form-control border-0 border-bottom rounded-0"
+                           placeholder="Ingresa tu correo electrónico" 
+                           style="box-shadow: none; background: transparent;"
+                           required>
+                  </div>
+                </div>
+
+                <button type="submit" 
+                        class="btn rounded-pill w-100 mb-3" 
+                        style="background-color: #000; color: #fff;">
+                  Continuar
+                </button>
+                
+                <div class="text-center mt-3">
+                  <a href="#" class="text-dark text-decoration-underline" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    Ya tengo el código verificador
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       <!-- Modal de registro -->
       <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
@@ -1340,6 +1603,7 @@
                 <div class="col-md-7 border-end">
                   <h4 class="text-label mb-4">Prueba</h4>
                   <form id="registerForm">
+                    {% csrf_token %}
                     <div class="mb-3">
                       <label for="registerName" class="form-label">Nombre completo</label>
                       <input type="text" class="form-control border-0 border-bottom rounded-0" id="registerName" 
@@ -1355,24 +1619,64 @@
                       <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
                       <div class="position-relative">
                         <input type="password" class="form-control border-0 border-bottom rounded-0" id="confirmPassword" 
-                               placeholder="Repite tu contraseña" style="box-shadow: none; background: transparent;" required>
+                               placeholder="Ingresa una contraseña" style="box-shadow: none; background: transparent; text-align: left;" required>
                         <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y" 
                                 onclick="togglePassword('confirmPassword')" style="background: none; border: none;">
                           <i class="bi bi-eye-slash" id="togglePasswordConfirm"></i>
                         </button>
                       </div>
                       <div class="mt-2">
-                        <small class="text-muted d-flex flex-wrap gap-2">
-                          <span>• Mín. 8 caracteres</span>
-                          <span>• 1 número</span>
-                          <span>• 1 mayúscula</span>
-                          <span>• 1 minúscula</span>
-                          <span>• Sin espacio</span>
-                          <span>• Sin usar '\¡¿"ºª·`´çñÑ</span>
+                        <small class="text-muted">
+                          <div class="container p-0">
+                            <div class="row g-2">
+                              <!-- Columna 1 -->
+                              <div class="col-4">
+                                <div style="font-size: 10px; color: #000000; font-weight: bold;">• Mín. 8 caracteres</div>
+                                <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 número</div>
+                              </div>
+                              <!-- Columna 2 -->
+                              <div class="col-4">
+                                <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 mayúscula</div>
+                                <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 minúscula</div>
+                              </div>
+                              <!-- Columna 3 -->
+                              <div class="col-4">
+                                <div style="font-size: 10px; color: #000000; font-weight: bold;">• Sin espacio</div>
+                                <div style="font-size: 10px; color: #000000; font-weight: bold;">• Sin usar '\¡¿"ºª·`´çñÑ</div>
+                              </div>
+                            </div>
+                          </div>
                         </small>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-dark w-100 rounded-pill mt-4">Crear cuenta</button>
+                    <div class="mb-3">
+                      <!-- Primero el texto de CMR Puntos -->
+                      <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="cmrPuntosCheck" required>
+                        <label class="form-check-label" for="cmrPuntosCheck" style="font-size: 14px;">
+                          Quiero acumular CMR Puntos en mis compras según <u>el reglamento del programa</u> y autorizo el<br>
+                          <u>tratamiento de mis datos personales.</u>
+                        </label>
+                      </div>
+
+                      <!-- Separador -->
+                      <div style="margin-bottom: 20px;"></div>
+
+                      <!-- Luego el texto de términos y condiciones -->
+                      <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="terminosCheck" required>
+                        <label class="form-check-label" for="terminosCheck" style="font-size: 14px;">
+                          Acepto los términos y condiciones de falabella.com y autorizo el tratamiento de mis datos personales.
+                        </label>
+                      </div>
+                    </div>
+
+                    <!-- El botón de crear cuenta sin color -->
+                    <button type="submit" class="btn rounded-pill w-50 mx-auto d-block border-dark" 
+                            style="font-size: 14px; padding: 8px 20px; background-color: transparent; color: #000;">
+                      Registrate
+                    </button>
+                    
                   </form>
                 </div>
                 
@@ -1380,11 +1684,8 @@
                 <div class="col-md-5">
                   <div class="benefits-section p-4">
                     <h5 class="mb-4">Beneficios de tu cuenta</h5>
-                    <ul class="list-unstyled">
-                      <li class="mb-3">
-                        <i class="bi bi-clock-history text-success me-2"></i>
-                        Historial de compras
-                      </li>
+                    < class="list-unstyled">
+                      
                       <li class="mb-3">
                         <i class="bi bi-heart text-success me-2"></i>
                         Lista de favoritos
@@ -1397,15 +1698,7 @@
                         <i class="bi bi-tag text-success me-2"></i>
                         Ofertas exclusivas
                       </li>
-                    </ul>
-                    <hr class="my-4">
-                    <div class="text-center">
-                      <p>¿Ya tienes una cuenta?</p>
-                      <button type="button" class="btn btn-outline-dark rounded-pill" 
-                              onclick="$('#registerModal').modal('hide'); $('#loginModal').modal('show');">
-                        Inicia sesión
-                      </button>
-                    </div>
+                    
                   </div>
                 </div>
               </div>
@@ -1414,8 +1707,466 @@
         </div>
       </div>
 
+      <!-- Agregar el modal del reglamento -->
+      <div class="modal fade" id="reglamentoModal" tabindex="-1" aria-labelledby="reglamentoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title w-100 text-center text-success" id="reglamentoModalLabel">
+                REGLAMENTO DEL PROGRAMA DE FIDELIZACIÓN CMR PUNTOS
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+              <!-- Contenido del reglamento -->
+              <p>1. Definiciones</p>
+              <p>2. Objetivo del Programa</p>
+              <p>3. Participantes</p>
+              <p>4. Acumulación de Puntos</p>
+              <p>5. Beneficios</p>
+              <!-- Agregar más contenido para que aparezca la barra -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agregar el modal para tratamiento de datos -->
+      <div class="modal fade" id="tratamientoModal" tabindex="-1" aria-labelledby="tratamientoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title w-100 text-center text-success" id="tratamientoModalLabel">
+                TRATAMIENTO DE DATOS PERSONALES
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+              <!-- Contenido del tratamiento de datos -->
+              <p>1. Política de Privacidad</p>
+              <p>2. Finalidad del Tratamiento</p>
+              <p>3. Derechos del Titular</p>
+              <p>4. Seguridad de los Datos</p>
+              <p>5. Tiempo de Conservación</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // Verificar si el formulario estaba visible antes de recargar
+          const formVisible = localStorage.getItem('registerFormVisible');
+          if (formVisible === 'true') {
+              document.getElementById('inlineRegisterForm').style.display = 'block';
+          }
+
+          // Cuando se abre el formulario
+          document.querySelector('#registerLink').addEventListener('click', function() {
+              document.getElementById('inlineRegisterForm').style.display = 'block';
+              localStorage.setItem('registerFormVisible', 'true');
+          });
+
+          // Cuando se cierra el formulario
+          function closeInlineRegister() {
+              document.getElementById('inlineRegisterForm').style.display = 'none';
+              localStorage.setItem('registerFormVisible', 'false');
+          }
+      });
+    </script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Verificar si el formulario estaba visible antes de recargar
+    const formVisible = localStorage.getItem('registerFormVisible');
+    if (formVisible === 'true') {
+        document.getElementById('inlineRegisterForm').style.display = 'block';
+    }
+
+    // Cuando se abre el formulario desde cualquier enlace de registro
+    const registerLinks = document.querySelectorAll('#registerLink, #registerLinkFromLogin');
+    registerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('inlineRegisterForm').style.display = 'block';
+    });
+
+    // Cuando se envía el formulario
+    document.querySelector('#registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Solo eliminar el estado cuando el registro sea exitoso
+        if (/* validación exitosa */) {
+            localStorage.removeItem('registerFormVisible');
+        }
+    });
+
+    // Cuando se cierra manualmente el formulario
+    window.closeInlineRegister = function() {
+        document.getElementById('inlineRegisterForm').style.display = 'none';
+        localStorage.removeItem('registerFormVisible');
+    };
+
+    // Mantener el formulario visible incluso después de actualizar
+    window.addEventListener('beforeunload', function() {
+        const form = document.getElementById('inlineRegisterForm');
+        if (form.style.display === 'block') {
+            localStorage.setItem('registerFormVisible', 'true');
+        }
+    });
+});
+</script>
+
+<script>
+function showLoginForm() {
+  // Ocultar el formulario de registro
+  document.getElementById('inlineRegisterForm').style.display = 'none';
+  localStorage.removeItem('registerFormVisible');
+  
+  // Mostrar el modal de login
+  const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+  loginModal.show();
+}
+</script>
+
+<script>
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Obtener los valores de los campos
+    const formData = {
+        email: document.querySelector('input[placeholder="Ingresa un correo"]').value,
+        nombre: document.querySelector('input[placeholder="Ingresa un nombre"]').value,
+        apellidos: document.querySelector('input[placeholder="Ingresa apellidos"]').value,
+        documento: document.querySelector('input[placeholder="Ingresa una cedula"]').value,
+        celular: document.querySelector('input[placeholder="Ingresa tu número celular"]').value,
+        tipoDocumento: document.querySelector('#documentTypeDropdown span').textContent,
+        aceptaCMR: document.querySelector('#cmrPuntosCheck').checked,
+        aceptaTerminos: document.querySelector('#terminosCheck').checked
+    };
+
+    // Validar que todos los campos requeridos estén llenos
+    if (!formData.email || !formData.nombre || !formData.apellidos || !formData.documento || !formData.celular) {
+        alert('Por favor, complete todos los campos requeridos');
+        return;
+    }
+
+    // Validar que los checkboxes estén marcados
+    if (!formData.aceptaTerminos) {
+        alert('Debe aceptar los términos y condiciones para continuar');
+        return;
+    }
+
+    // Aquí harías la llamada al servidor para registrar al usuario
+    fetch('/register/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Si usas CSRF token
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Registro exitoso
+            alert('¡Registro exitoso!');
+            window.location.href = '/'; // Redireccionar a la página principal
+        } else {
+            // Mostrar error
+            alert(data.message || 'Error en el registro');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error en el registro. Por favor, intente nuevamente.');
+    });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Verificar si el formulario estaba visible antes de recargar
+    const formVisible = sessionStorage.getItem('registerFormVisible');
+    if (formVisible === 'true') {
+        document.getElementById('inlineRegisterForm').style.display = 'block';
+    }
+
+    // Cuando se abre el formulario desde cualquier enlace de registro
+    const registerLinks = document.querySelectorAll('#registerLink, #registerLinkFromLogin');
+    registerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('inlineRegisterForm').style.display = 'block';
+            // Guardar el estado en sessionStorage
+            sessionStorage.setItem('registerFormVisible', 'true');
+        });
+    });
+
+    // Cuando se cierra manualmente el formulario
+    window.closeInlineRegister = function() {
+        document.getElementById('inlineRegisterForm').style.display = 'none';
+        sessionStorage.removeItem('registerFormVisible');
+    };
+
+    // Guardar estado antes de recargar la página
+    window.addEventListener('beforeunload', function() {
+        const form = document.getElementById('inlineRegisterForm');
+        if (form.style.display === 'block') {
+            sessionStorage.setItem('registerFormVisible', 'true');
+        }
+    });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Agregar evento al enlace de correo en la recuperación de contraseña
+    const emailRecoveryLink = document.querySelector('a[data-bs-toggle="modal"] u:first-child');
+    if (emailRecoveryLink) {
+        emailRecoveryLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Cerrar el modal de login si está abierto
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            if (loginModal) {
+                loginModal.hide();
+            }
+
+            // Mostrar el modal de recuperación por correo
+            const emailModal = new bootstrap.Modal(document.getElementById('emailRecoveryModal'));
+            emailModal.show();
+        });
+    }
+});
+</script>
+
+<script>
+function showLoginForm() {
+  // Ocultar el formulario de registro
+  document.getElementById('inlineRegisterForm').style.display = 'none';
+  localStorage.removeItem('registerFormVisible');
+  
+  // Mostrar el modal de login
+  const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+  loginModal.show();
+}
+</script>
+
+<script>
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Obtener los valores de los campos
+    const formData = {
+        email: document.querySelector('input[placeholder="Ingresa un correo"]').value,
+        nombre: document.querySelector('input[placeholder="Ingresa un nombre"]').value,
+        apellidos: document.querySelector('input[placeholder="Ingresa apellidos"]').value,
+        documento: document.querySelector('input[placeholder="Ingresa una cedula"]').value,
+        celular: document.querySelector('input[placeholder="Ingresa tu número celular"]').value,
+        tipoDocumento: document.querySelector('#documentTypeDropdown span').textContent,
+        aceptaCMR: document.querySelector('#cmrPuntosCheck').checked,
+        aceptaTerminos: document.querySelector('#terminosCheck').checked
+    };
+
+    // Validar que todos los campos requeridos estén llenos
+    if (!formData.email || !formData.nombre || !formData.apellidos || !formData.documento || !formData.celular) {
+        alert('Por favor, complete todos los campos requeridos');
+        return;
+    }
+
+    // Validar que los checkboxes estén marcados
+    if (!formData.aceptaTerminos) {
+        alert('Debe aceptar los términos y condiciones para continuar');
+        return;
+    }
+
+    // Aquí harías la llamada al servidor para registrar al usuario
+    fetch('/register/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Si usas CSRF token
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Registro exitoso
+            alert('¡Registro exitoso!');
+            window.location.href = '/'; // Redireccionar a la página principal
+        } else {
+            // Mostrar error
+            alert(data.message || 'Error en el registro');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error en el registro. Por favor, intente nuevamente.');
+    });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Verificar si el formulario estaba visible antes de recargar
+    const formVisible = sessionStorage.getItem('registerFormVisible');
+    if (formVisible === 'true') {
+        document.getElementById('inlineRegisterForm').style.display = 'block';
+    }
+
+    // Cuando se abre el formulario desde cualquier enlace de registro
+    const registerLinks = document.querySelectorAll('#registerLink, #registerLinkFromLogin');
+    registerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('inlineRegisterForm').style.display = 'block';
+            // Guardar el estado en sessionStorage
+            sessionStorage.setItem('registerFormVisible', 'true');
+        });
+    });
+
+    // Cuando se cierra manualmente el formulario
+    window.closeInlineRegister = function() {
+        document.getElementById('inlineRegisterForm').style.display = 'none';
+        sessionStorage.removeItem('registerFormVisible');
+    };
+
+    // Guardar estado antes de recargar la página
+    window.addEventListener('beforeunload', function() {
+        const form = document.getElementById('inlineRegisterForm');
+        if (form.style.display === 'block') {
+            sessionStorage.setItem('registerFormVisible', 'true');
+        }
+    });
+});
+</script>
+
+<script>
+document.getElementById('emailRecoveryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value;
+    
+    if (email && email.includes('@')) {
+        // Aquí iría la lógica para enviar el código por correo
+        alert('Se ha enviado un código de verificación a tu correo electrónico');
+        
+        // Cambiar el contenido del modal para ingresar el código
+        const modalBody = this.closest('.modal-body');
+        modalBody.innerHTML = `
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <h4 class="text-label mb-3">Verificación</h4>
+                        <p class="text-muted mb-4">Ingresa el código de verificación enviado a tu correo</p>
+                        
+                        <form id="verificationForm">
+                            <div class="mb-3">
+                                <label class="form-label">Código de verificación</label>
+                                <input type="text" 
+                                       class="form-control border-0 border-bottom rounded-0"
+                                       placeholder="Ingresa el código"
+                                       style="box-shadow: none; background: transparent;"
+                                       maxlength="6"
+                                       required>
+                            </div>
+
+                            <button type="submit" 
+                                    class="btn rounded-pill w-100 mb-3" 
+                                    style="background-color: #000; color: #fff;">
+                                Verificar
+                            </button>
+                            
+                            <div class="text-center mt-3">
+                                <a href="#" class="text-dark text-decoration-underline" id="resendCode">
+                                    Reenviar código
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        alert('Por favor, ingresa un correo electrónico válido');
+    }
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Agregar evento al enlace de SMS
+    const smsRecoveryLink = document.querySelector('a[data-bs-toggle="modal"] u:last-child');
+    if (smsRecoveryLink) {
+        smsRecoveryLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Cerrar el modal de login si está abierto
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            if (loginModal) {
+                loginModal.hide();
+            }
+
+            // Mostrar el modal de recuperación por SMS
+            const smsModal = new bootstrap.Modal(document.getElementById('smsModal'));
+            smsModal.show();
+        });
+    }
+
+    // Manejar el envío del formulario SMS
+    document.getElementById('smsRecoveryForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const phone = this.querySelector('input[type="tel"]').value;
+        
+        if (phone && phone.length === 10) {
+            // Aquí iría la lógica para enviar el código por SMS
+            alert('Se ha enviado un código de verificación a tu celular');
+            
+            // Cambiar el contenido del modal para ingresar el código
+            const modalBody = this.closest('.modal-body');
+            modalBody.innerHTML = `
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <h4 class="text-label mb-3">Verificación</h4>
+                            <p class="text-muted mb-4">Ingresa el código de verificación enviado a tu celular</p>
+                            
+                            <form id="verificationForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Código de verificación</label>
+                                    <input type="text" 
+                                           class="form-control border-0 border-bottom rounded-0"
+                                           placeholder="Ingresa el código"
+                                           style="box-shadow: none; background: transparent;"
+                                           maxlength="6"
+                                           required>
+                                </div>
+
+                                <button type="submit" 
+                                        class="btn rounded-pill w-100 mb-3" 
+                                        style="background-color: #000; color: #fff;">
+                                    Verificar
+                                </button>
+                                
+                                <div class="text-center mt-3">
+                                    <a href="#" class="text-dark text-decoration-underline" id="resendCode">
+                                        Reenviar código
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            alert('Por favor, ingresa un número de celular válido (10 dígitos)');
+        }
+    });
+});
+</script>
+
   </body>
 
   </html>
