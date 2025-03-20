@@ -1216,7 +1216,7 @@
         </div>
       </div>
 
-      <!-- Agregar después del nav principal -->
+      <!-- Modal Registrate -->
       <div id="inlineRegisterForm" class="integrated-register" style="display: none;">
         <div class="container py-4">
           <div class="row justify-content-center">
@@ -1339,7 +1339,15 @@
                         </div>
 
                         <!-- El botón de crear cuenta sin color -->
-                        
+                        <button type="button" 
+                                id="btnRegistro"
+                                class="btn rounded-pill w-50 mx-auto d-block border-dark"
+                                style="font-size: 14px; 
+                                       padding: 8px 20px; 
+                                       background-color: transparent; 
+                                       color: #000;">
+                            Registrate
+                        </button>
 
                         <!-- Agregar el texto de ya tienes cuenta -->
                         <div class="text-center mt-3">
@@ -2248,28 +2256,6 @@
     </script>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Agregar evento al enlace de correo en la recuperación de contraseña
-        const emailRecoveryLink = document.querySelector('a[data-bs-toggle="modal"] u:first-child');
-        if (emailRecoveryLink) {
-            emailRecoveryLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Cerrar el modal de login si está abierto
-                const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-                if (loginModal) {
-                    loginModal.hide();
-                }
-
-                // Mostrar el modal de recuperación por correo
-                const emailModal = new bootstrap.Modal(document.getElementById('emailRecoveryModal'));
-                emailModal.show();
-            });
-        }
-    });
-    </script>
-
-    <script>
     function showLoginForm() {
       // Ocultar el formulario de registro
       document.getElementById('inlineRegisterForm').style.display = 'none';
@@ -2493,6 +2479,32 @@
         });
     });
     </script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener el botón por su ID
+    const btnRegistro = document.getElementById('btnRegistro');
+    
+    if (btnRegistro) {
+        btnRegistro.addEventListener('click', function(e) {
+            // Prevenir el comportamiento por defecto
+            e.preventDefault();
+            
+            // Aquí puedes agregar el código que quieras ejecutar al dar clic
+            console.log('Clic en Registrate');
+        });
+    }
+    
+    // Prevenir el envío del formulario
+    const registrationForm = document.getElementById('registrationForm');
+    if (registrationForm) {
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Envío de formulario prevenido');
+        });
+    }
+});
+</script>
 
   </body>
 
