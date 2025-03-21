@@ -1419,6 +1419,40 @@
         </div>
       </div>
 
+      <!-- Formulario de recuperación por correo -->
+      <div id="inlineEmailRecoveryForm" class="integrated-register" style="display: none;">
+        <div class="container py-4">
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <div class="row">
+                    <div class="col-md-12"> <!-- Cambiar col-md-6 a col-md-12 para ocupar todo el ancho -->
+                      <h4 class="text-label mb-3">Restablecer contraseña</h4>
+                      <p class="text-muted mb-4">Ingresa tu correo electrónico y te enviaremos las instrucciones<br> para una nueva contraseña.</p>
+                      <form id="emailRecoveryForm">
+                        <div class="mb-3">
+                          <label class="form-label">Correo electrónico</label>
+                          <div class="position-relative col-md-12" style="padding-left: 0;">
+                            <input type="email" class="form-control border-0 border-bottom rounded-0" placeholder="Ingresa tu correo electrónico" style="box-shadow: none; background: transparent;" required>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn rounded-pill w-100 mb-3" style="background-color: #000; color: #fff;">
+                          Continuar
+                        </button>
+                        <div class="text-center mt-3">
+                          <a href="#" class="text-dark text-decoration-underline" onclick="showLoginForm()">Ya tengo el código verificador</a>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Carrusel de imágenes -->
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -2155,8 +2189,9 @@
 
     <script>
     function showLoginForm() {
-      // Ocultar el formulario de registro
+      // Ocultar los formularios de registro y recuperación por correo
       document.getElementById('inlineRegisterForm').style.display = 'none';
+      document.getElementById('inlineEmailRecoveryForm').style.display = 'none';
       localStorage.removeItem('registerFormVisible');
       
       // Mostrar el modal de login
@@ -2504,6 +2539,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+</script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  setupEmailRecoveryForm();
+});
+
+function setupEmailRecoveryForm() {
+  // Mostrar el formulario de recuperación por correo cuando se hace clic en el enlace correspondiente
+  const emailRecoveryLink = document.querySelector('a[data-bs-toggle="modal"] u:first-child');
+  if (emailRecoveryLink) {
+    emailRecoveryLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('inlineRegisterForm').style.display = 'none';
+      document.getElementById('inlineEmailRecoveryForm').style.display = 'block';
+      document.getElementById('inlineEmailRecoveryForm').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // Manejar el envío del formulario de recuperación por correo
+  document.getElementById('emailRecoveryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value;
+
+    if (email && email.includes('@')) {
+      // Aquí iría la lógica para enviar el código por correo
+      alert('Se ha enviado un código de verificación a tu correo electrónico');
+
+      // Cambiar el contenido del formulario para ingresar el código
+      this.innerHTML = `
+        <div class="mb-3">
+          <label class="form-label">Código de verificación</label>
+          <input type="text" class="form-control border-0 border-bottom rounded-0" placeholder="Ingresa el código" style="box-shadow: none; background: transparent;" maxlength="6" required>
+        </div>
+        <button type="submit" class="btn rounded-pill w-100 mb-3" style="background-color: #000; color: #fff;">
+          Verificar
+        </button>
+        <div class="text-center mt-3">
+          <a href="#" class="text-dark text-decoration-underline" id="resendCode">Reenviar código</a>
+        </div>
+      `;
+    } else {
+      alert('Por favor, ingresa un correo electrónico válido');
+    }
+  });
+}
 </script>
 
   </body>
