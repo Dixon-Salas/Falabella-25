@@ -746,6 +746,138 @@
           color: #555;
       }
 
+      /* Estilos generales del carrito */
+      #cart-container {
+          background-color: #f9f9f9;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Título del carrito */
+      #cart-container h4 {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #333;
+          margin-bottom: 10px;
+      }
+
+      /* Texto de descripción */
+      #cart-container p {
+          font-size: 14px;
+          color: #666;
+          margin-bottom: 20px;
+      }
+
+      /* Estilos para los productos en el carrito */
+      .cart-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px;
+          border-bottom: 1px solid #eee;
+          background-color: #fff;
+          border-radius: 8px;
+          margin-bottom: 10px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .cart-item:last-child {
+          border-bottom: none;
+      }
+
+      .cart-item h5 {
+          font-size: 1.1rem;
+          font-weight: bold;
+          color: #333;
+          margin-bottom: 5px;
+      }
+
+      .cart-item p {
+          font-size: 14px;
+          color: #666;
+          margin-bottom: 0;
+      }
+
+      .cart-item .price {
+          font-size: 1.1rem;
+          font-weight: bold;
+          color: #333;
+      }
+
+      .cart-item .shipping {
+          font-size: 12px;
+          color: #28a745; /* Color verde para el envío gratis */
+      }
+
+      /* Estilos para el resumen de la orden */
+      .order-summary {
+          margin-top: 20px;
+          padding: 15px;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .order-summary h5 {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #333;
+          margin-bottom: 15px;
+      }
+
+      .order-summary table {
+          width: 100%;
+          margin-bottom: 15px;
+      }
+
+      .order-summary table td {
+          padding: 8px 0;
+          font-size: 14px;
+          color: #666;
+      }
+
+      .order-summary table td:last-child {
+          text-align: right;
+          font-weight: bold;
+          color: #333;
+      }
+
+      .order-summary .total {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #333;
+          margin-top: 10px;
+      }
+
+      /* Botón de proceder al pago */
+      #cart-container .btn-primary {
+          width: 100%;
+          padding: 12px;
+          font-size: 1rem;
+          font-weight: bold;
+          background-color: #28a745; /* Color verde */
+          border: none;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      #cart-container .btn-primary:hover {
+          background-color: #218838; /* Color verde más oscuro al hacer hover */
+      }
+
+      /* Estilos para los checkboxes */
+      .cart-item input[type="checkbox"] {
+          margin-right: 10px;
+      }
+
+      /* Estilos para el texto "Últimas unidades" */
+      .last-units {
+          font-size: 12px;
+          color: #dc3545; /* Color rojo para indicar urgencia */
+          font-weight: bold;
+      }
+
     </style>
 
   </head>
@@ -1213,6 +1345,44 @@
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <!-- Carrito de compras -->
+      <div id="cart-container" style="display: none;">
+        <div class="container py-4">
+          <h4 class="text-label mb-2">Carro</h4>
+          
+          <div class="row">
+            <!-- Lista de productos -->
+            <div class="col-md-8" id="cart-items">
+              <!-- Aquí se agregarán los productos dinámicamente -->
+            </div>
+      
+            <!-- Resumen de la orden -->
+            <div class="col-md-4">
+              <div class="order-summary">
+                <h5>Resumen de la orden</h5>
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>Productos (<span id="cart-count">0</span>)</td>
+                      <td>$<span id="cart-total">0</span></td>
+                    </tr>
+                    <tr>
+                      <td>Descuentos</td>
+                      <td>- $<span id="cart-discount">0</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Total</strong></td>
+                      <td><strong>$<span id="cart-final-total">0</span></strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button class="btn btn-primary w-100">Proceder al pago</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1735,11 +1905,16 @@
             'blusas': [
               { name: 'Blusa 1', marca: 'ARKITEC', price: '$59.990', oldPrice: '$99.990', image: 'static/img/blusa1.png' },
               { name: 'Blusa 2', marca: 'ARKITEC', price: '$49.990', oldPrice: '$79.990', image: 'static/img/blusa2.png' },
-              { name: 'Blusa 3', marca: 'ARKITEC', price: '$39.990', oldPrice: '$69.990', image: 'static/img/blusa3.png' }
+              { name: 'Blusa 3', marca: 'ARKITEC', price: '$39.990', oldPrice: '$69.990', image: 'static/img/blusa3.png' },
+              { name: 'Blusa 4', marca: 'ARKITEC', price: '$49.990', oldPrice: '$79.990', image: 'static/img/blusa2.png' },
+              { name: 'Blusa 5', marca: 'ARKITEC', price: '$39.990', oldPrice: '$69.990', image: 'static/img/blusa3.png' }
             ],
-            'camisetas': [
-              { name: 'Camiseta 1', price: '$15', oldPrice: '$20', image: 'img/camiseta1.jpg' },
-              { name: 'Camiseta 2', price: '$18', oldPrice: '$25', image: 'img/camiseta2.jpg' }
+            'Vestidos': [
+              { name: 'Vestido 1', marca: 'ARKITEC', price: '$59.990', oldPrice: '$99.990', image: 'static/img/blusa1.png' },
+              { name: 'Vestido 2', marca: 'ARKITEC', price: '$49.990', oldPrice: '$79.990', image: 'static/img/blusa2.png' },
+              { name: 'Vestido 3', marca: 'ARKITEC', price: '$39.990', oldPrice: '$69.990', image: 'static/img/blusa3.png' },
+              { name: 'Vestido 4', marca: 'ARKITEC', price: '$49.990', oldPrice: '$79.990', image: 'static/img/blusa2.png' },
+              { name: 'Blusa 5', marca: 'ARKITEC', price: '$39.990', oldPrice: '$69.990', image: 'static/img/blusa3.png' }
             ]
           };
 
@@ -1775,6 +1950,101 @@
         }
       </script>
 
+      <!-- carrito de compras -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const cartIcon = document.querySelector('.bi-cart3'); // Selecciona el ícono del carrito
+          const cartContainer = document.getElementById('cart-container');
+          const otherSections = [document.getElementById('filters-container'), document.getElementById('product-container'), document.getElementById('inlineRegisterForm')];
+      
+          cartIcon.addEventListener('click', function () {
+            // Mostrar el carrito
+            cartContainer.style.display = 'block';
+      
+            // Ocultar otras secciones
+            otherSections.forEach(section => {
+              if (section) section.style.display = 'none';
+            });
+      
+            // Desplazar al carrito
+            cartContainer.scrollIntoView({ behavior: 'smooth' });
+          });
+        });
+      </script>
+
+      <!-- agregar productos dinamicamente al carro -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const cartItemsContainer = document.getElementById('cart-items');
+          const cartCount = document.querySelector('.badge'); // Selecciona el contador del carrito
+          const cartTotal = document.getElementById('cart-total');
+          let cart = []; // Array para almacenar los productos en el carrito
+      
+          // Evento para manejar el botón "Agregar al carro"
+          document.addEventListener('click', function (event) {
+            const addToCartButton = event.target.closest('.btn-dark'); // Selecciona el botón "Agregar al carro"
+            if (addToCartButton) {
+              const productCard = addToCartButton.closest('.product-card');
+              const productName = productCard.querySelector('.card-title').textContent;
+              const productPrice = parseFloat(
+                productCard.querySelector('.card-text strong').textContent.replace('$', '').replace(',', '')
+              );
+              const productImage = productCard.querySelector('.card-img-top').src;
+      
+              // Crear un objeto del producto
+              const product = {
+                name: productName,
+                price: productPrice,
+                image: productImage,
+              };
+      
+              // Agregar el producto al carrito
+              cart.push(product);
+              updateCartUI();
+            }
+          });
+      
+          // Actualizar la interfaz del carrito
+          function updateCartUI() {
+            // Limpiar el contenedor del carrito
+            cartItemsContainer.innerHTML = '';
+      
+            // Actualizar el total y el conteo
+            let total = 0;
+            cart.forEach((product, index) => {
+              total += product.price;
+      
+              // Crear un elemento para el producto
+              const cartItem = document.createElement('div');
+              cartItem.className = 'cart-item';
+              cartItem.innerHTML = `
+                <div class="d-flex align-items-center">
+                  <img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;">
+                  <div>
+                    <h5 class="mb-0">${product.name}</h5>
+                    <p class="mb-0">$${product.price.toFixed(2)}</p>
+                  </div>
+                </div>
+                <button class="btn btn-sm btn-danger" data-index="${index}">Eliminar</button>
+              `;
+              cartItemsContainer.appendChild(cartItem);
+            });
+      
+            // Actualizar el total y el conteo en la interfaz
+            cartCount.textContent = cart.length; // Actualiza el contador del carrito
+            cartTotal.textContent = total.toFixed(2);
+      
+            // Agregar evento para eliminar productos
+            document.querySelectorAll('.btn-danger').forEach(button => {
+              button.addEventListener('click', function () {
+                const index = parseInt(this.getAttribute('data-index'));
+                cart.splice(index, 1); // Eliminar el producto del carrito
+                updateCartUI(); // Actualizar la interfaz
+              });
+            });
+          }
+        });
+      </script>
 
       <!-- Modal de inicio de sesión -->
       <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -1832,7 +2102,6 @@
         </div>
       </div>
 
-      
       <!-- Modal de recuperación por correo -->
       <div class="modal fade" id="emailRecoveryModal" tabindex="-1" aria-labelledby="emailRecoveryModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -1875,7 +2144,6 @@
           </div>
         </div>
       </div>
-
 
       <!-- Modal de recuperación por SMS -->
       <div class="modal fade" id="smsModal" tabindex="-1" aria-labelledby="smsModalLabel" aria-hidden="true">
@@ -2270,6 +2538,58 @@
             });
         }
     });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const carousel = document.getElementById('carouselExampleIndicators');
+        const cartContainer = document.getElementById('cart-container');
+        const filtersContainer = document.getElementById('filters-container');
+        const productContainer = document.getElementById('product-container');
+        const inlineRegisterForm = document.getElementById('inlineRegisterForm');
+    
+        const otherSections = [cartContainer, filtersContainer, productContainer, carousel];
+    
+        // Función para ocultar todas las secciones
+        function hideAllSections() {
+          otherSections.forEach(section => {
+            if (section) section.style.display = 'none';
+          });
+        }
+    
+        // Evento para mostrar el formulario de registro
+        const registerLink = document.getElementById('registerLink');
+        if (registerLink) {
+          registerLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            hideAllSections(); // Ocultar todas las secciones
+            inlineRegisterForm.style.display = 'block'; // Mostrar el formulario de registro
+            inlineRegisterForm.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
+    
+        // Evento para mostrar el carrito
+        const cartIcon = document.querySelector('.bi-cart3');
+        cartIcon.addEventListener('click', function () {
+          hideAllSections(); // Ocultar todas las secciones
+          cartContainer.style.display = 'block'; // Mostrar el carrito
+          cartContainer.scrollIntoView({ behavior: 'smooth' });
+        });
+    
+        // Evento para mostrar productos dinámicos
+        const categoryLinks = document.querySelectorAll('.category-link');
+        categoryLinks.forEach(link => {
+          link.addEventListener('click', function (event) {
+            event.preventDefault();
+            const category = this.getAttribute('data-category');
+            hideAllSections(); // Ocultar todas las secciones
+            filtersContainer.style.display = 'block'; // Mostrar los filtros
+            productContainer.style.display = 'block'; // Mostrar los productos
+            productContainer.scrollIntoView({ behavior: 'smooth' });
+            loadProducts(category);
+          });
+        });
+      });
     </script>
 
     <script>
