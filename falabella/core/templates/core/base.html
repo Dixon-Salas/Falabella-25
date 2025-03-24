@@ -1419,6 +1419,76 @@
         </div>
       </div>
 
+      <!-- Agregar después del inlineRegisterForm y antes del carrusel -->
+      <div id="inlineSmsForm" class="integrated-register" style="display: none;">
+        <div class="container py-4">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <button type="button" class="btn-close position-absolute top-0 end-0 m-3" onclick="closeInlineSmsForm()"></button>
+                  <div class="row">
+                    <!-- Columna del formulario -->
+                    <div class="col-md-7">
+                      <h4 class="text-label mb-3">Restablecer contraseña</h4>
+                      <p class="text-muted mb-4">Ingresa tu número de celular y te enviaremos un código de verificación para restablecer tu contraseña.</p>
+                      
+                      <form id="inlineSmsRecoveryForm">
+                        <div class="mb-3">
+                          <label class="form-label">Número de celular</label>
+                          <div class="position-relative col-md-10">
+                            <strong class="position-absolute" style="top: 50%; transform: translateY(-50%); left: 0px;">+57</strong>
+                            <input type="tel" 
+                                  class="form-control border-0 border-bottom rounded-0" 
+                                  placeholder="Ingresa tu número celular"
+                                  style="box-shadow: none; background: transparent; padding-left: 40px;"
+                                  pattern="[0-9]{10}"
+                                  required>
+                          </div>
+                        </div>
+
+                        <button type="submit" 
+                                class="btn rounded-pill w-50" 
+                                style="background-color: #000; color: #fff;">
+                          Enviar código
+                        </button>
+                        
+                        <div class="text-center mt-3">
+                          <a href="#" class="text-dark" onclick="showLoginForm()">
+                            Volver a inicio de sesión
+                          </a>
+                        </div>
+                      </form>
+                    </div>
+                    
+                    <!-- Columna de información -->
+                    <div class="col-md-5">
+                      <div class="p-4">
+                        <h5 class="mb-4">Información importante</h5>
+                        <ul class="list-unstyled">
+                          <li class="mb-3">
+                            <i class="bi bi-shield-check text-success me-2"></i>
+                            Verifica que tu número esté actualizado
+                          </li>
+                          <li class="mb-3">
+                            <i class="bi bi-clock text-success me-2"></i>
+                            El código tiene una validez de 10 minutos
+                          </li>
+                          <li class="mb-3">
+                            <i class="bi bi-info-circle text-success me-2"></i>
+                            Si no recibes el código, podrás solicitar uno nuevo
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Carrusel de imágenes -->
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -1882,48 +1952,6 @@
       </div>
 
 
-      <!-- Modal de recuperación por SMS -->
-      <div class="modal fade" id="smsModal" tabindex="-1" aria-labelledby="smsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="container">
-                <div class="row justify-content-center">
-                  <div class="col-12">
-                    <h4 class="text-label mb-3">Restablecer contraseña</h4>
-                    <p class="text-muted mb-4">Ingresa tu correo electrónico y te enviaremos las instrucciones para una nueva contraseña..</p>
-                    
-                    <form id="emailRecoveryForm">
-                      <div class="mb-3">
-                        <label class="form-label">Correo electrónico</label>
-                        <div class="position-relative">
-                          <input type="email" 
-                                class="form-control border-0 border-bottom rounded-0"
-                                placeholder="Ingresa tu correo electrónico" 
-                                style="box-shadow: none; background: transparent;"
-                                required>
-                        </div>
-                      </div>
-
-                      <button type="submit" 
-                              class="btn rounded-pill w-100 mb-3" 
-                              style="background-color: #000; color: #fff;">
-                        Continuar
-                      </button>
-                      
-                      <div class="text-center mt-3">
-                        <a href="#" class="text-dark text-decoration-underline" data-bs-toggle="modal" data-bs-target="#loginModal">
-                          Ya tengo el código verificador
-                        </a>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!-- Modal de registro -->
       <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
@@ -2422,9 +2450,8 @@
                     loginModal.hide();
                 }
 
-                // Mostrar el modal de recuperación por SMS
-                const smsModal = new bootstrap.Modal(document.getElementById('smsModal'));
-                smsModal.show();
+                // Mostrar directamente el formulario inline de SMS
+                showInlineSmsForm();
             });
         }
 
@@ -2503,6 +2530,80 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Envío de formulario prevenido');
         });
     }
+});
+</script>
+
+<script>
+function showInlineSmsForm() {
+    // Ocultar otros formularios
+    document.getElementById('inlineRegisterForm').style.display = 'none';
+    document.getElementById('carouselExampleIndicators').style.display = 'none';
+    
+    // Mostrar el formulario SMS
+    document.getElementById('inlineSmsForm').style.display = 'block';
+    document.getElementById('inlineSmsForm').scrollIntoView({ behavior: 'smooth' });
+    
+    // Cerrar el modal de login si está abierto
+    const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+    if (loginModal) {
+        loginModal.hide();
+    }
+}
+
+function closeInlineSmsForm() {
+    document.getElementById('inlineSmsForm').style.display = 'none';
+    document.getElementById('carouselExampleIndicators').style.display = 'block';
+}
+
+// Modificar el evento de click del enlace SMS
+document.addEventListener('DOMContentLoaded', function() {
+    const smsLink = document.querySelector('a[href="#"][data-bs-toggle="modal"][data-bs-target="#recoveryModal"] u:last-child');
+    if (smsLink) {
+        smsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showInlineSmsForm();
+        });
+    }
+
+    // Manejar el envío del formulario SMS
+    document.getElementById('inlineSmsRecoveryForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const phone = this.querySelector('input[type="tel"]').value;
+        
+        if (phone && phone.length === 10) {
+            // Aquí iría la lógica para enviar el código
+            alert('Se ha enviado un código de verificación a tu celular');
+            
+            // Cambiar el contenido del formulario para ingresar el código
+            this.innerHTML = `
+                <div class="mb-3">
+                    <label class="form-label">Código de verificación</label>
+                    <div class="position-relative col-md-10">
+                        <input type="text" 
+                               class="form-control border-0 border-bottom rounded-0"
+                               placeholder="Ingresa el código de 6 dígitos"
+                               style="box-shadow: none; background: transparent;"
+                               maxlength="6"
+                               required>
+                    </div>
+                </div>
+
+                <button type="submit" 
+                        class="btn rounded-pill w-50" 
+                        style="background-color: #000; color: #fff;">
+                    Verificar código
+                </button>
+                
+                <div class="text-center mt-3">
+                    <a href="#" class="text-dark text-decoration-underline" onclick="showInlineSmsForm()">
+                        Reenviar código
+                    </a>
+                </div>
+            `;
+        } else {
+            alert('Por favor, ingresa un número de celular válido (10 dígitos)');
+        }
+    });
 });
 </script>
 
