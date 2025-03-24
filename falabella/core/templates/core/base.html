@@ -1447,7 +1447,7 @@
 
                         <button type="submit" 
                                 class="btn rounded-pill w-100" 
-                                style="background-color: #000; color: #fff;">
+                                style="background-color:transparent; color: #000;">
                           Continuar
                         </button>
                         <div class="text-center mt-3">
@@ -2636,8 +2636,8 @@ document.getElementById('inlineSmsRecoveryForm')?.addEventListener('submit', fun
             </button>
             
             <div class="text-center mt-3">
-                <a href="#" class="text-dark text-decoration-underline" onclick="showLoginForm()">
-                    Volver a inicio de sesión
+                <a href="#" class="text-dark" onclick="showLoginForm()">
+                    ¿Aún no te llega? puedes pedir un nuevo código por <u>correo</u> 
                 </a>
             </div>
         `;
@@ -2652,6 +2652,15 @@ document.getElementById('inlineSmsRecoveryForm')?.addEventListener('submit', fun
             <div class="mt-2">
                 <p class="text-muted mb-1">Correo electrónico</p>
                 <p class="text-muted">${email}</p>
+                <p class="text-muted mb-1">Código verificador</p>
+                <div class="position-relative col-md-12">
+                    <input type="text" 
+                           class="form-control border-0 border-bottom rounded-0" 
+                           placeholder="Ingresa el código de verificación"
+                           style="box-shadow: none; background: transparent;"
+                           maxlength="6"
+                           required>
+                </div>
             </div>
         `;
         description.insertAdjacentElement('afterend', emailDiv);
@@ -2675,6 +2684,27 @@ function togglePassword(button) {
         icon.classList.add('bi-eye-slash');
     }
 }
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const emailInput = document.querySelector('#inlineSmsForm input[type="email"]');
+    const submitButton = document.querySelector('#inlineSmsForm button[type="submit"]');
+
+    emailInput.addEventListener('input', function() {
+        if (this.value && this.value.includes('@')) {
+            // Email válido - cambiar a botón negro
+            submitButton.style.backgroundColor = '#000';
+            submitButton.style.color = '#fff';
+            submitButton.style.border = 'none';
+        } else {
+            // Email no válido - mantener transparente
+            submitButton.style.backgroundColor = 'transparent';
+            submitButton.style.color = '#000';
+            submitButton.style.border = '1px solid #000';
+        }
+    });
+});
 </script>
 
   </body>
