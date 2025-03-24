@@ -2233,7 +2233,7 @@
           </div>
         </div>
       </div>
-=======
+
 
 
 
@@ -2581,291 +2581,235 @@
                     loginModal.hide();
                 }
 
-                // Mostrar el modal de recuperación por correo
-                const emailModal = new bootstrap.Modal(document.getElementById('emailRecoveryModal'));
-                emailModal.show();
+                // Mostrar el formulario de recuperación por correo en la misma página
+                showInlineEmailRecoveryForm();
             });
         }
     });
-    </script>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const carousel = document.getElementById('carouselExampleIndicators');
-        const cartContainer = document.getElementById('cart-container');
-        const filtersContainer = document.getElementById('filters-container');
-        const productContainer = document.getElementById('product-container');
-        const inlineRegisterForm = document.getElementById('inlineRegisterForm');
-    
-        const otherSections = [cartContainer, filtersContainer, productContainer, carousel];
-    
-        // Función para ocultar todas las secciones
-        function hideAllSections() {
-          otherSections.forEach(section => {
-            if (section) section.style.display = 'none';
-          });
-        }
-    
-        // Evento para mostrar el formulario de registro
-        const registerLink = document.getElementById('registerLink');
-        if (registerLink) {
-          registerLink.addEventListener('click', function (event) {
-            event.preventDefault();
-            hideAllSections(); // Ocultar todas las secciones
-            inlineRegisterForm.style.display = 'block'; // Mostrar el formulario de registro
-            inlineRegisterForm.scrollIntoView({ behavior: 'smooth' });
-          });
-        }
-    
-        // Evento para mostrar el carrito
-        const cartIcon = document.querySelector('.bi-cart3');
-        cartIcon.addEventListener('click', function () {
-          hideAllSections(); // Ocultar todas las secciones
-          cartContainer.style.display = 'block'; // Mostrar el carrito
-          cartContainer.scrollIntoView({ behavior: 'smooth' });
-        });
-    
-        // Evento para mostrar productos dinámicos
-        const categoryLinks = document.querySelectorAll('.category-link');
-        categoryLinks.forEach(link => {
-          link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const category = this.getAttribute('data-category');
-            hideAllSections(); // Ocultar todas las secciones
-            filtersContainer.style.display = 'block'; // Mostrar los filtros
-            productContainer.style.display = 'block'; // Mostrar los productos
-            productContainer.scrollIntoView({ behavior: 'smooth' });
-            loadProducts(category);
-          });
-        });
-      });
-    </script>
-
-    <script>
-    function showLoginForm() {
-      // Ocultar el formulario de registro
-      document.getElementById('inlineRegisterForm').style.display = 'none';
-      localStorage.removeItem('registerFormVisible');
-      
-      // Mostrar el modal de login
-      const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-      loginModal.show();
-    }
-    </script>
-
-    <script>
-    document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+    function showInlineEmailRecoveryForm() {
+        // Ocultar otros formularios
+        document.getElementById('inlineRegisterForm').style.display = 'none';
+        document.getElementById('carouselExampleIndicators').style.display = 'none';
         
-        // Obtener los valores de los campos
-        const formData = {
-            email: document.querySelector('input[placeholder="Ingresa un correo"]').value,
-            nombre: document.querySelector('input[placeholder="Ingresa un nombre"]').value,
-            apellidos: document.querySelector('input[placeholder="Ingresa apellidos"]').value,
-            documento: document.querySelector('input[placeholder="Ingresa una cedula"]').value,
-            celular: document.querySelector('input[placeholder="Ingresa tu número celular"]').value,
-            tipoDocumento: document.querySelector('#documentTypeDropdown span').textContent,
-            aceptaCMR: document.querySelector('#cmrPuntosCheck').checked,
-            aceptaTerminos: document.querySelector('#terminosCheck').checked
-        };
+        // Mostrar el formulario de recuperación por correo
+        const emailForm = document.getElementById('inlineEmailForm');
+        emailForm.style.display = 'block';
 
-        // Validar que todos los campos requeridos estén llenos
-        if (!formData.email || !formData.nombre || !formData.apellidos || !formData.documento || !formData.celular) {
-            alert('Por favor, complete todos los campos requeridos');
-            return;
-        }
+        // Actualizar el contenido del formulario para mostrar correo electrónico
+        emailForm.innerHTML = `
+            <div class="container py-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="text-label mb-3">Restablecer contraseña</h4>
+                                        <p class="text-muted mb-4">Ingresa tu correo electrónico y te enviaremos un código de verificación para restablecer tu contraseña.</p>
+                                        
+                                        <form id="inlineEmailRecoveryForm">
+                                            <div class="mb-3">
+                                                <label class="form-label">Correo electrónico</label>
+                                                <div class="position-relative col-md-12">
+                                                    <input type="email" 
+                                                           class="form-control border-0 border-bottom rounded-0" 
+                                                           placeholder="Ingresa tu correo electrónico"
+                                                           style="box-shadow: none; background: transparent;"
+                                                           required>
+                                                </div>
+                                            </div>
 
-        // Validar que los checkboxes estén marcados
-        if (!formData.aceptaTerminos) {
-            alert('Debe aceptar los términos y condiciones para continuar');
-            return;
-        }
-
-        // Aquí harías la llamada al servidor para registrar al usuario
-        fetch('/register/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Si usas CSRF token
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Registro exitoso
-                alert('¡Registro exitoso!');
-                window.location.href = '/'; // Redireccionar a la página principal
-            } else {
-                // Mostrar error
-                alert(data.message || 'Error en el registro');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error en el registro. Por favor, intente nuevamente.');
-        });
-    });
-    </script>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Verificar si el formulario estaba visible antes de recargar
-        const formVisible = sessionStorage.getItem('registerFormVisible');
-        if (formVisible === 'true') {
-            document.getElementById('inlineRegisterForm').style.display = 'block';
-        }
-
-        // Cuando se abre el formulario desde cualquier enlace de registro
-        const registerLinks = document.querySelectorAll('#registerLink, #registerLinkFromLogin');
-        registerLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('inlineRegisterForm').style.display = 'block';
-                // Guardar el estado en sessionStorage
-                sessionStorage.setItem('registerFormVisible', 'true');
-            });
-        });
-
-        // Cuando se cierra manualmente el formulario
-        window.closeInlineRegister = function() {
-            document.getElementById('inlineRegisterForm').style.display = 'none';
-            sessionStorage.removeItem('registerFormVisible');
-        };
-
-        // Guardar estado antes de recargar la página
-        window.addEventListener('beforeunload', function() {
-            const form = document.getElementById('inlineRegisterForm');
-            if (form.style.display === 'block') {
-                sessionStorage.setItem('registerFormVisible', 'true');
-            }
-        });
-    });
-    </script>
-
-    <script>
-    document.getElementById('emailRecoveryForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = this.querySelector('input[type="email"]').value;
-        
-        if (email && email.includes('@')) {
-            // Aquí iría la lógica para enviar el código por correo
-            alert('Se ha enviado un código de verificación a tu correo electrónico');
-            
-            // Cambiar el contenido del modal para ingresar el código
-            const modalBody = this.closest('.modal-body');
-            modalBody.innerHTML = `
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12">
-                            <h4 class="text-label mb-3">Verificación</h4>
-                            <p class="text-muted mb-4">Ingresa el código de verificación enviado a tu correo</p>
-                            
-                            <form id="verificationForm">
-                                <div class="mb-3">
-                                    <label class="form-label">Código de verificación</label>
-                                    <input type="text" 
-                                          class="form-control border-0 border-bottom rounded-0"
-                                          placeholder="Ingresa el código"
-                                          style="box-shadow: none; background: transparent;"
-                                          maxlength="6"
-                                          required>
+                                            <button type="submit" 
+                                                    class="btn rounded-pill w-100" 
+                                                    style="background-color: transparent; border: 1px solid #000; color: #000;">
+                                                Continuar
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-
-                                <button type="submit" 
-                                        class="btn rounded-pill w-100 mb-3" 
-                                        style="background-color: #000; color: #fff;">
-                                    Verificar
-                                </button>
-                                
-                                <div class="text-center mt-3">
-                                    <a href="#" class="text-dark text-decoration-underline" id="resendCode">
-                                        Reenviar código
-                                    </a>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            `;
-        } else {
-            alert('Por favor, ingresa un correo electrónico válido');
-        }
-    });
-    </script>
+            </div>`;
 
-    <script>
+        // Agregar evento de escucha para cambiar el color del botón
+        const emailInput = emailForm.querySelector('input[type="email"]');
+        const submitButton = emailForm.querySelector('button[type="submit"]');
+
+        emailInput.addEventListener('input', function() {
+            if (emailInput.validity.valid) {
+                submitButton.style.backgroundColor = '#000';
+                submitButton.style.color = '#fff';
+            } else {
+                submitButton.style.backgroundColor = 'transparent';
+                submitButton.style.color = '#000';
+            }
+        });
+
+        // Agregar evento de escucha para el envío del formulario
+        emailForm.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = emailInput.value;
+            showPasswordResetForm(email);
+        });
+    }
+
+    function showPasswordResetForm(email) {
+        const emailForm = document.getElementById('inlineEmailForm');
+        emailForm.innerHTML = `
+            <div class="container py-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="text-label mb-3">Restablecer contraseña</h4>
+                                        <p class="text-muted mb-4">Ingresa una nueva contraseña para tu cuenta y evita que se repita con las que utilizaste anteriormente.</p>
+                                        
+                                        <form id="passwordResetForm">
+                                            <div class="mb-3">
+                                                <label class="form-label">Correo electrónico</label>
+                                                <div class="position-relative col-md-12">
+                                                    <input type="email" 
+                                                           class="form-control border-0 border-bottom rounded-0" 
+                                                           value="${email}"
+                                                           style="box-shadow: none; background: transparent;"
+                                                           required readonly>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Código verificador</label>
+                                                <div class="position-relative col-md-12">
+                                                    <input type="text" 
+                                                           class="form-control border-0 border-bottom rounded-0" 
+                                                           placeholder="Ingresa el código verificador"
+                                                           style="box-shadow: none; background: transparent;"
+                                                           required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Nueva contraseña</label>
+                                                <div class="position-relative col-md-12">
+                                                    <input type="password" 
+                                                           class="form-control border-0 border-bottom rounded-0" 
+                                                           placeholder="Ingresa tu nueva contraseña"
+                                                           style="box-shadow: none; background: transparent;"
+                                                           required>
+                                                    <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y" 
+                                                            onclick="togglePasswordVisibility(this)" 
+                                                            style="background: none; border: none;">
+                                                        <i class="bi bi-eye-slash"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Instrucciones de la contraseña -->
+                                            <div class="mt-2">
+                                                <small class="text-muted">
+                                                    <div class="container p-0">
+                                                        <div class="row g-2">
+                                                            <div class="col-6">
+                                                                <div class="password-requirements">• Mín. 8 caracteres</div>
+                                                                <div class="password-requirements">• 1 número</div>
+                                                                <div class="password-requirements">• 1 mayúscula</div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="password-requirements">• Sin espacio</div>
+                                                                <div class="password-requirements">• 1 minúscula</div>
+                                                                <div class="password-requirements">• Sin usar '\\¡¿"ºª·\`´çñÑ</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </small>
+                                            </div>
+
+                                            <button type="submit" 
+                                                    class="btn rounded-pill w-100" 
+                                                    style="background-color: #000; color: #fff;">
+                                                Crear
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    // Función para alternar la visibilidad de la contraseña
+    function togglePasswordVisibility(button) {
+        const input = button.previousElementSibling;
+        const icon = button.querySelector('i');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+        }
+    }
+
+    // Eliminar o comentar el código que cambia entre correo y SMS
     document.addEventListener('DOMContentLoaded', function() {
-        // Agregar evento al enlace de SMS
-        const smsRecoveryLink = document.querySelector('a[data-bs-toggle="modal"] u:last-child');
-        if (smsRecoveryLink) {
-            smsRecoveryLink.addEventListener('click', function(e) {
+        const recoveryLinks = document.querySelectorAll('a[href="#"][data-bs-toggle="modal"][data-bs-target="#recoveryModal"] u');
+        
+        recoveryLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // Cerrar el modal de login si está abierto
                 const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
                 if (loginModal) {
                     loginModal.hide();
                 }
 
-                // Mostrar directamente el formulario inline de SMS
+                showInlineSmsForm();
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const smsLink = document.querySelector('a[href="#"] u:contains("SMS")');
+        if (smsLink) {
+            smsLink.addEventListener('click', function(e) {
+                e.preventDefault();
                 showInlineSmsForm();
             });
         }
+    });
 
-        // Manejar el envío del formulario SMS
-        document.getElementById('smsRecoveryForm')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const phone = this.querySelector('input[type="tel"]').value;
-            
-            if (phone && phone.length === 10) {
-                // Aquí iría la lógica para enviar el código por SMS
-                alert('Se ha enviado un código de verificación a tu celular');
-                
-                // Cambiar el contenido del modal para ingresar el código
-                const modalBody = this.closest('.modal-body');
-                modalBody.innerHTML = `
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12">
-                                <h4 class="text-label mb-3">Verificación</h4>
-                                <p class="text-muted mb-4">Ingresa el código de verificación enviado a tu celular</p>
-                                
-                                <form id="verificationForm">
-                                    <div class="mb-3">
-                                        <label class="form-label">Código de verificación</label>
-                                        <input type="text" 
-                                              class="form-control border-0 border-bottom rounded-0"
-                                              placeholder="Ingresa el código"
-                                              style="box-shadow: none; background: transparent;"
-                                              maxlength="6"
-                                              required>
-                                    </div>
+    // Agregar evento de escucha para el formulario de recuperación por correo
+    document.addEventListener('DOMContentLoaded', function() {
+        const emailRecoveryForm = document.getElementById('emailRecoveryForm');
+        if (emailRecoveryForm) {
+            const emailInput = emailRecoveryForm.querySelector('input[type="email"]');
+            const submitButton = emailRecoveryForm.querySelector('button[type="submit"]');
 
-                                    <button type="submit" 
-                                            class="btn rounded-pill w-100 mb-3" 
-                                            style="background-color: #000; color: #fff;">
-                                        Verificar
-                                    </button>
-                                    
-                                    <div class="text-center mt-3">
-                                        <a href="#" class="text-dark text-decoration-underline" id="resendCode">
-                                            Reenviar código
-                                        </a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            } else {
-                alert('Por favor, ingresa un número de celular válido (10 dígitos)');
-            }
-        });
+            emailInput.addEventListener('input', function() {
+                if (emailInput.validity.valid) {
+                    submitButton.style.backgroundColor = '#000';
+                    submitButton.style.color = '#fff';
+                } else {
+                    submitButton.style.backgroundColor = 'transparent';
+                    submitButton.style.color = '#000';
+                }
+            });
+
+            emailRecoveryForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = emailInput.value;
+                showPasswordResetForm(email);
+            });
+        }
     });
     </script>
 
-<
     <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Obtener el botón por su ID
@@ -3050,6 +2994,62 @@ function showPasswordResetForm(email) {
 // Función para alternar la visibilidad de la contraseña
 function togglePasswordVisibility(button) {
     const input = button.previousElementSibling;
+    const icon = button.querySelector('i');
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('bi-eye-slash');
+        icon.classList.add('bi-eye');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('bi-eye');
+        icon.classList.add('bi-eye-slash');
+    }
+}
+
+// Eliminar o comentar el código que cambia entre correo y SMS
+document.addEventListener('DOMContentLoaded', function() {
+    const recoveryLinks = document.querySelectorAll('a[href="#"][data-bs-toggle="modal"][data-bs-target="#recoveryModal"] u');
+    
+    recoveryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            if (loginModal) {
+                loginModal.hide();
+            }
+
+            showInlineSmsForm();
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const smsLink = document.querySelector('a[href="#"] u:contains("SMS")');
+    if (smsLink) {
+        smsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showInlineSmsForm();
+        });
+    }
+});
+
+// Agregar evento de escucha para el formulario de recuperación por correo
+document.addEventListener('DOMContentLoaded', function() {
+    const emailRecoveryForm = document.getElementById('emailRecoveryForm');
+    if (emailRecoveryForm) {
+        const emailInput = emailRecoveryForm.querySelector('input[type="email"]');
+        const submitButton = emailRecoveryForm.querySelector('button[type="submit"]');
+
+        emailInput.addEventListener('input', function() {
+            if (emailInput.validity.valid) {
+                submitButton.style.backgroundColor = '#000';
+                submitButton.style.color = '#fff';
+            } else {
+                submitButton.style.backgroundColor = 'transparent';
+                submitButton.style.color = '#000';
+            }
+        });
     const icon = button.querySelector('i');
     if (input.type === 'password') {
         input.type = 'text';
