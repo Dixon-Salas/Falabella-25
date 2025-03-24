@@ -2528,7 +2528,7 @@ function showInlineSmsForm() {
                         <div class="card-body p-4">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4 class="text-label mb-3">Restablecer contraseña</h4>
+                                    <h4 class="text-label mb-3">Restablecer contraseña 2</h4>
                                     <p class="text-muted mb-4">Ingresa tu correo electrónico y te enviaremos un código de verificación para restablecer tu contraseña.</p>
                                     
                                     <form id="inlineSmsRecoveryForm">
@@ -2570,6 +2570,72 @@ function showInlineSmsForm() {
             submitButton.style.color = '#000';
         }
     });
+
+    // Agregar evento de escucha para el envío del formulario
+    smsForm.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        showPasswordResetForm();
+    });
+}
+
+function showPasswordResetForm() {
+    const smsForm = document.getElementById('inlineSmsForm');
+    smsForm.innerHTML = `
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="text-label mb-3">Nueva contraseña 2</h4>
+                                    <p class="text-muted mb-4">Ingresa una nueva contraseña para tu cuenta.</p>
+                                    
+                                    <form id="passwordResetForm">
+                                        <div class="mb-3">
+                                            <label class="form-label">Nueva contraseña</label>
+                                            <div class="position-relative col-md-12">
+                                                <input type="password" 
+                                                       class="form-control border-0 border-bottom rounded-0" 
+                                                       placeholder="Ingresa tu nueva contraseña"
+                                                       style="box-shadow: none; background: transparent;"
+                                                       required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Instrucciones de la contraseña -->
+                                        <div class="mt-2">
+                                            <small class="text-muted">
+                                                <div class="container p-0">
+                                                    <div class="row g-2">
+                                                        <div class="col-6">
+                                                            <div class="password-requirements">• Mín. 8 caracteres</div>
+                                                            <div class="password-requirements">• 1 número</div>
+                                                            <div class="password-requirements">• 1 mayúscula</div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="password-requirements">• Sin espacio</div>
+                                                            <div class="password-requirements">• 1 minúscula</div>
+                                                            <div class="password-requirements">• Sin usar '\\¡¿"ºª·\`´çñÑ</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </small>
+                                        </div>
+
+                                        <button type="submit" 
+                                                class="btn rounded-pill w-100" 
+                                                style="background-color: #000; color: #fff;">
+                                            Crear
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
 }
 
 // Eliminar o comentar el código que cambia entre correo y SMS
@@ -2596,6 +2662,30 @@ document.addEventListener('DOMContentLoaded', function() {
         smsLink.addEventListener('click', function(e) {
             e.preventDefault();
             showInlineSmsForm();
+        });
+    }
+});
+
+// Agregar evento de escucha para el formulario de recuperación por correo
+document.addEventListener('DOMContentLoaded', function() {
+    const emailRecoveryForm = document.getElementById('emailRecoveryForm');
+    if (emailRecoveryForm) {
+        const emailInput = emailRecoveryForm.querySelector('input[type="email"]');
+        const submitButton = emailRecoveryForm.querySelector('button[type="submit"]');
+
+        emailInput.addEventListener('input', function() {
+            if (emailInput.validity.valid) {
+                submitButton.style.backgroundColor = '#000';
+                submitButton.style.color = '#fff';
+            } else {
+                submitButton.style.backgroundColor = 'transparent';
+                submitButton.style.color = '#000';
+            }
+        });
+
+        emailRecoveryForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showPasswordResetForm();
         });
     }
 });
