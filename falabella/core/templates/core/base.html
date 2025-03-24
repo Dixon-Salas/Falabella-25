@@ -2515,246 +2515,89 @@ function showInlineSmsForm() {
     document.getElementById('inlineRegisterForm').style.display = 'none';
     document.getElementById('carouselExampleIndicators').style.display = 'none';
     
-    // Mostrar el formulario SMS
-    document.getElementById('inlineSmsForm').style.display = 'block';
-    document.getElementById('inlineSmsForm').scrollIntoView({ behavior: 'smooth' });
-    
-    // Cerrar el modal de login si está abierto
-    const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-    if (loginModal) {
-        loginModal.hide();
-    }
-}
+    // Mostrar el formulario 
+    const smsForm = document.getElementById('inlineSmsForm');
+    smsForm.style.display = 'block';
 
-function closeInlineSmsForm() {
-    document.getElementById('inlineSmsForm').style.display = 'none';
-    document.getElementById('carouselExampleIndicators').style.display = 'block';
-}
+    // Actualizar el contenido del formulario para mostrar correo electrónico en lugar de número celular
+    smsForm.innerHTML = `
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="text-label mb-3">Restablecer contraseña</h4>
+                                    <p class="text-muted mb-4">Ingresa tu correo electrónico y te enviaremos un código de verificación para restablecer tu contraseña.</p>
+                                    
+                                    <form id="inlineSmsRecoveryForm">
+                                        <div class="mb-3">
+                                            <label class="form-label">Correo electrónico</label>
+                                            <div class="position-relative col-md-12">
+                                                <input type="email" 
+                                                       class="form-control border-0 border-bottom rounded-0" 
+                                                       placeholder="Ingresa tu correo electrónico"
+                                                       style="box-shadow: none; background: transparent;"
+                                                       required>
+                                            </div>
+                                        </div>
 
-// Modificar el evento de click del enlace SMS
-document.addEventListener('DOMContentLoaded', function() {
-    const smsLink = document.querySelector('a[href="#"][data-bs-toggle="modal"][data-bs-target="#recoveryModal"] u:last-child');
-    if (smsLink) {
-        smsLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            showInlineSmsForm();
-        });
-    }
-
-    // Manejar el envío del formulario SMS
-    document.getElementById('inlineSmsRecoveryForm')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const phone = this.querySelector('input[type="tel"]').value;
-        
-        if (phone && phone.length === 10) {
-            // Aquí iría la lógica para enviar el código
-            alert('Se ha enviado un código de verificación a tu celular');
-            
-            // Cambiar el contenido del formulario para ingresar el código
-            this.innerHTML = `
-                <div class="mb-3">
-                    <label class="form-label">Código de verificación</label>
-                    <div class="position-relative col-md-10">
-                        <input type="text" 
-                               class="form-control border-0 border-bottom rounded-0"
-                               placeholder="Ingresa el código de 6 dígitos"
-                               style="box-shadow: none; background: transparent;"
-                               maxlength="6"
-                               required>
-                    </div>
-                </div>
-
-                <button type="submit" 
-                        class="btn rounded-pill w-50" 
-                        style="background-color: #000; color: #fff;">
-                    Verificar código
-                </button>
-                
-                <div class="text-center mt-3">
-                    <a href="#" class="text-dark text-decoration-underline" onclick="showInlineSmsForm()">
-                        Reenviar código
-                    </a>
-                </div>
-            `;
-        } else {
-            alert('Por favor, ingresa un número de celular válido (10 dígitos)');
-        }
-    });
-});
-</script>
-
-<script>
-document.getElementById('inlineSmsRecoveryForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = this.querySelector('input[type="email"]').value;
-    
-    if (email && email.includes('@')) {
-        // Cambiar el contenido del formulario para restablecer contraseña
-        this.innerHTML = `
-            <div class="mb-3">
-                <label class="form-label">Nueva contraseña </label>
-                <div class="position-relative col-md-12">
-                    <input type="password" 
-                           class="form-control border-0 border-bottom rounded-0" 
-                           placeholder="Ingresa tu nueva contraseña"
-                           style="box-shadow: none; background: transparent;"
-                           required>
-                    <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y" 
-                            onclick="togglePassword(this)" 
-                            style="background: none; border: none;">
-                        <i class="bi bi-eye-slash"></i>
-                    </button>
-                </div>
-                <div class="mt-2">
-                    <small class="text-muted">
-                        <div class="container p-0">
-                            <div class="row g-2">
-                                <div class="col-4">
-                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• Mín. 8 caracteres</div>
-                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 número</div>
-                                </div>
-                                <div class="col-4">
-                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 mayúscula</div>
-                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• 1 minúscula</div>
-                                </div>
-                                <div class="col-4">
-                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• Sin espacio</div>
-                                    <div style="font-size: 10px; color: #000000; font-weight: bold;">• Sin usar '\\¡¿"ºª·\`´çñÑ</div>
+                                        <button type="submit" 
+                                                class="btn rounded-pill w-100" 
+                                                style="background-color: transparent; border: 1px solid #000; color: #000;">
+                                            Continuar
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                    </small>
+                    </div>
                 </div>
             </div>
+        </div>`;
 
-            
+    // Agregar evento de escucha para cambiar el color del botón
+    const emailInput = smsForm.querySelector('input[type="email"]');
+    const submitButton = smsForm.querySelector('button[type="submit"]');
 
-            <button type="submit" 
-                    class="btn rounded-pill w-100" 
-                    style="background-color: #000; color: #fff;">
-                Crear
-            </button>
-            
-            <div class="text-center mt-3">
-                <a href="#" class="text-dark" onclick="showLoginForm()">
-                    ¿Aún no te llega? puedes pedir un nuevo código por <u>correo</u> 
-                </a>
-            </div>
-        `;
-
-        // Actualizar el título y descripción
-        const title = this.closest('.card-body').querySelector('h4');
-        const description = this.closest('.card-body').querySelector('p');
-        if (title) title.textContent = 'Restablecer contraseña';
-        if (description) description.textContent = 'Ingresa una nueva contraseña para tu cuenta y evita que se repita con las que utilizaste anteriormente.';
-        const emailDiv = document.createElement('div');
-        emailDiv.innerHTML = `
-            <div class="mt-2">
-                <p class="text-muted mb-1">Correo electrónico</p>
-                <p class="text-muted">${email}</p>
-                <p class="text-muted mb-1">Código verificador</p>
-                <div class="position-relative col-md-12">
-                    <input type="text" 
-                           class="form-control border-0 border-bottom rounded-0" 
-                           placeholder="Ingresa el código de verificación"
-                           style="box-shadow: none; background: transparent;"
-                           maxlength="6"
-                           required>
-                </div>
-            </div>
-        `;
-        description.insertAdjacentElement('afterend', emailDiv);
-    } else {
-        alert('Por favor, ingresa un correo electrónico válido');
-    }
-});
-
-// Función para alternar la visibilidad de la contraseña
-function togglePassword(button) {
-    const input = button.closest('.position-relative').querySelector('input');
-    const icon = button.querySelector('i');
-    
-    if (input.type === 'password') {
-        input.type = 'text';
-        icon.classList.remove('bi-eye-slash');
-        icon.classList.add('bi-eye');
-    } else {
-        input.type = 'password';
-        icon.classList.remove('bi-eye');
-        icon.classList.add('bi-eye-slash');
-    }
+    emailInput.addEventListener('input', function() {
+        if (emailInput.validity.valid) {
+            submitButton.style.backgroundColor = '#000';
+            submitButton.style.color = '#fff';
+        } else {
+            submitButton.style.backgroundColor = 'transparent';
+            submitButton.style.color = '#000';
+        }
+    });
 }
-</script>
 
-<script>
-// Agregar después de los scripts existentes
+// Eliminar o comentar el código que cambia entre correo y SMS
 document.addEventListener('DOMContentLoaded', function() {
-    // Obtener ambos enlaces (SMS y correo)
     const recoveryLinks = document.querySelectorAll('a[href="#"][data-bs-toggle="modal"][data-bs-target="#recoveryModal"] u');
     
     recoveryLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Cerrar el modal de login si está abierto
             const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
             if (loginModal) {
                 loginModal.hide();
             }
 
-            // Mostrar el formulario inline
             showInlineSmsForm();
-
-            // Ajustar el formulario según el tipo (correo o SMS)
-            const isEmail = this.textContent.toLowerCase().includes('correo');
-            const title = document.querySelector('#inlineSmsForm h4');
-            const description = document.querySelector('#inlineSmsForm p');
-            const input = document.querySelector('#inlineSmsForm input');
-            const inputLabel = document.querySelector('#inlineSmsForm label');
-
-            if (isEmail) {
-                // Configuración para correo
-                input.type = 'email';
-                input.placeholder = 'Ingresa tu correo electrónico';
-                inputLabel.textContent = 'Correo electrónico';
-            } else {
-                // Configuración para SMS
-                input.type = 'tel';
-                input.placeholder = 'Ingresa tu número celular';
-                inputLabel.textContent = 'Número de celular';
-            }
         });
     });
 });
 
-// Actualizar la función showInlineSmsForm para que sea más genérica
-function showInlineSmsForm() {
-    document.getElementById('inlineRegisterForm').style.display = 'none';
-    document.getElementById('carouselExampleIndicators').style.display = 'none';
-    document.getElementById('inlineSmsForm').style.display = 'block';
-    document.getElementById('inlineSmsForm').scrollIntoView({ behavior: 'smooth' });
-}
-</script>
-
-<script>
-// Agregar después de los scripts existentes
 document.addEventListener('DOMContentLoaded', function() {
-    const emailInput = document.querySelector('#inlineSmsForm input[type="email"]');
-    const submitButton = document.querySelector('#inlineSmsForm button[type="submit"]');
-
-    emailInput?.addEventListener('input', function() {
-        if (this.value && this.value.includes('@')) {
-            // Email válido - cambiar a botón negro
-            submitButton.style.backgroundColor = '#000';
-            submitButton.style.color = '#fff';
-            submitButton.style.border = 'none';
-        } else {
-            // Email no válido - mantener transparente
-            submitButton.style.backgroundColor = 'transparent';
-            submitButton.style.color = '#000';
-            submitButton.style.border = '1px solid #000';
-        }
-    });
+    const smsLink = document.querySelector('a[href="#"] u:contains("SMS")');
+    if (smsLink) {
+        smsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showInlineSmsForm();
+        });
+    }
 });
 </script>
 
