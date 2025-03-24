@@ -2531,61 +2531,53 @@ function closeInlineSmsForm() {
     document.getElementById('carouselExampleIndicators').style.display = 'block';
 }
 
-// Modificar el evento de click para ambos enlaces (SMS y correo)
+// Modificar el evento de click del enlace SMS
 document.addEventListener('DOMContentLoaded', function() {
-    const recoveryLinks = document.querySelectorAll('a[href="#"][data-bs-toggle="modal"][data-bs-target="#recoveryModal"] u');
-    
-    recoveryLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+    const smsLink = document.querySelector('a[href="#"][data-bs-toggle="modal"][data-bs-target="#recoveryModal"] u:last-child');
+    if (smsLink) {
+        smsLink.addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Cerrar el modal de login si está abierto
-            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-            if (loginModal) {
-                loginModal.hide();
-            }
-
-            // Mostrar el formulario inline
             showInlineSmsForm();
-
-            // Cambiar el título y texto según sea correo o SMS
-            const isEmail = this.textContent.toLowerCase().includes('correo');
-            const title = document.querySelector('#inlineSmsForm h4');
-            const description = document.querySelector('#inlineSmsForm p');
-            const input = document.querySelector('#inlineSmsForm input');
-            const inputLabel = document.querySelector('#inlineSmsForm label');
-
-            if (isEmail) {
-                input.type = 'email';
-                input.placeholder = 'Ingresa tu correo electrónico';
-                inputLabel.textContent = 'Correo electrónico';
-            } else {
-                input.type = 'tel';
-                input.placeholder = 'Ingresa tu número celular';
-                inputLabel.textContent = 'Número de celular';
-            }
         });
-    });
+    }
 
-    // Agregar evento input para el campo
-    const recoveryInput = document.querySelector('#inlineSmsForm input');
-    const submitButton = document.querySelector('#inlineSmsForm button[type="submit"]');
+    // Manejar el envío del formulario SMS
+    document.getElementById('inlineSmsRecoveryForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const phone = this.querySelector('input[type="tel"]').value;
+        
+        if (phone && phone.length === 10) {
+            // Aquí iría la lógica para enviar el código
+            alert('Se ha enviado un código de verificación a tu celular');
+            
+            // Cambiar el contenido del formulario para ingresar el código
+            this.innerHTML = `
+                <div class="mb-3">
+                    <label class="form-label">Código de verificación</label>
+                    <div class="position-relative col-md-10">
+                        <input type="text" 
+                               class="form-control border-0 border-bottom rounded-0"
+                               placeholder="Ingresa el código de 6 dígitos"
+                               style="box-shadow: none; background: transparent;"
+                               maxlength="6"
+                               required>
+                    </div>
+                </div>
 
-    recoveryInput?.addEventListener('input', function() {
-        const isValid = this.type === 'email' ? 
-            this.value.includes('@') : 
-            this.value.length === 10;
-
-        if (isValid) {
-            // Input válido - cambiar a botón negro
-            submitButton.style.backgroundColor = '#000';
-            submitButton.style.color = '#fff';
-            submitButton.style.border = 'none';
+                <button type="submit" 
+                        class="btn rounded-pill w-50" 
+                        style="background-color: #000; color: #fff;">
+                    Verificar código
+                </button>
+                
+                <div class="text-center mt-3">
+                    <a href="#" class="text-dark text-decoration-underline" onclick="showInlineSmsForm()">
+                        Reenviar código
+                    </a>
+                </div>
+            `;
         } else {
-            // Input no válido - mantener transparente
-            submitButton.style.backgroundColor = 'transparent';
-            submitButton.style.color = '#000';
-            submitButton.style.border = '1px solid #000';
+            alert('Por favor, ingresa un número de celular válido (10 dígitos)');
         }
     });
 });
@@ -2695,11 +2687,62 @@ function togglePassword(button) {
 </script>
 
 <script>
+// Agregar después de los scripts existentes
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener ambos enlaces (SMS y correo)
+    const recoveryLinks = document.querySelectorAll('a[href="#"][data-bs-toggle="modal"][data-bs-target="#recoveryModal"] u');
+    
+    recoveryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Cerrar el modal de login si está abierto
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            if (loginModal) {
+                loginModal.hide();
+            }
+
+            // Mostrar el formulario inline
+            showInlineSmsForm();
+
+            // Ajustar el formulario según el tipo (correo o SMS)
+            const isEmail = this.textContent.toLowerCase().includes('correo');
+            const title = document.querySelector('#inlineSmsForm h4');
+            const description = document.querySelector('#inlineSmsForm p');
+            const input = document.querySelector('#inlineSmsForm input');
+            const inputLabel = document.querySelector('#inlineSmsForm label');
+
+            if (isEmail) {
+                // Configuración para correo
+                input.type = 'email';
+                input.placeholder = 'Ingresa tu correo electrónico';
+                inputLabel.textContent = 'Correo electrónico';
+            } else {
+                // Configuración para SMS
+                input.type = 'tel';
+                input.placeholder = 'Ingresa tu número celular';
+                inputLabel.textContent = 'Número de celular';
+            }
+        });
+    });
+});
+
+// Actualizar la función showInlineSmsForm para que sea más genérica
+function showInlineSmsForm() {
+    document.getElementById('inlineRegisterForm').style.display = 'none';
+    document.getElementById('carouselExampleIndicators').style.display = 'none';
+    document.getElementById('inlineSmsForm').style.display = 'block';
+    document.getElementById('inlineSmsForm').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+<script>
+// Agregar después de los scripts existentes
 document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.querySelector('#inlineSmsForm input[type="email"]');
     const submitButton = document.querySelector('#inlineSmsForm button[type="submit"]');
 
-    emailInput.addEventListener('input', function() {
+    emailInput?.addEventListener('input', function() {
         if (this.value && this.value.includes('@')) {
             // Email válido - cambiar a botón negro
             submitButton.style.backgroundColor = '#000';
