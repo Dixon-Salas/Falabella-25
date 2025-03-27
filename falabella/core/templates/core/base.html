@@ -878,6 +878,21 @@
           font-weight: bold;
       }
 
+      footer {
+        background-color: #00274d;
+        color: #ffffff;
+      }
+      
+      footer a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+      
+      footer a:hover {
+        color:rgb(6, 42, 59);
+        text-decoration: underline;
+      }
+
     </style>
 
   </head>
@@ -1090,9 +1105,9 @@
           <div class="container-fluid d-flex align-items-center justify-content-between">
             <!-- Login -->
             <div class="d-flex flex-column align-items-start" id="loginArea">
-              <strong class="text-dark mb-0 fs-5">Hola,</strong> <!-- Aumentar el tamaño del texto -->
+              <strong class="  mb-0 fs-5">Hola,</strong> <!-- Aumentar el tamaño del texto -->
               <div class="d-flex align-items-center">
-                <strong class="text-dark fs-5 semi-bold-on-hover">Inicia sesión</strong>
+                <strong class="  fs-5 semi-bold-on-hover">Inicia sesión</strong>
                 <!-- Aumentar el tamaño del texto -->
                 <i class="bi bi-chevron-down ms-1 fs-5" id="chevronIcon"></i> <!-- Aumentar el tamaño del ícono -->
               </div>
@@ -1102,22 +1117,22 @@
             <!-- Mis compras -->
             <div class="d-flex align-items-center" id="misCompras">
               <div class="d-flex flex-column" style="line-height: 1;">
-                <strong class="text-dark">Mis</strong>
-                <strong class="text-dark fw-bold">compras</strong>
+                <strong class=" ">Mis</strong>
+                <strong class="  fw-bold">compras</strong>
               </div>
             </div>
             <!-- Divider -->
             <div class="vr mx-3"></div>
             <!-- Liked -->
             <a href="#">
-              <i class="bi bi-heart text-dark fs-4"></i>
+              <i class="bi bi-heart   fs-4"></i>
             </a>
             <!-- Divider -->
             <div class="vr mx-3"></div>
             <!-- Cart -->
             <div class="position-relative me-3">
               <a href="#" class="text-decoration-none">
-                <i class="bi bi-cart3 text-dark fs-4"></i>
+                <i class="bi bi-cart3   fs-4"></i>
               </a>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
                 0
@@ -1518,7 +1533,7 @@
                         <div class="text-center mt-3">
                           <p class="text-muted mb-2">
                             ¿Ya tienes una cuenta? 
-                            <a href="#" class="text-dark text-decoration-underline" onclick="showLoginForm()">inicia sesión</a>
+                            <a href="#" class="  text-decoration-underline" onclick="showLoginForm()">inicia sesión</a>
                           </p>
                         </div>
                       </form>
@@ -2077,7 +2092,7 @@
 
                 <!-- ... después del campo de contraseña y antes del botón Ingresar ... -->
                 <div class="text-start mb-3">
-                  <a href="#" class="text-dark" 
+                  <a href="#" class=" " 
                      style="font-size: 14px; text-decoration: none;"
                      data-bs-toggle="modal" 
                      data-bs-target="#recoveryModal">
@@ -2091,7 +2106,7 @@
                 </button>
                 
                 <div class="text-center mt-3">
-                  <a href="#" class="text-dark" id="registerLinkFromLogin" 
+                  <a href="#" class=" " id="registerLinkFromLogin" 
                      style="font-size: 14px; text-decoration: none;">
                     ¿Aún no tienes cuenta? <u>Regístrate</u>
                   </a>
@@ -2132,7 +2147,7 @@
                       </button>
                       
                       <div class="text-center mt-3">
-                        <a href="#" class="text-dark text-decoration-underline" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <a href="#" class="  text-decoration-underline" data-bs-toggle="modal" data-bs-target="#loginModal">
                           Ya tengo el código verificador
                         </a>
                       </div>
@@ -2175,7 +2190,7 @@
                       </button>
                       
                       <div class="text-center mt-3">
-                        <a href="#" class="text-dark text-decoration-underline" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <a href="#" class="  text-decoration-underline" data-bs-toggle="modal" data-bs-target="#loginModal">
                           Ya tengo el código verificador
                         </a>
                       </div>
@@ -2352,6 +2367,74 @@
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </div>
+
+    <!-- Footer -->
+    <footer class="py-5 mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- Te ayudamos -->
+          <div class="col-md-3">
+            <h5>Te ayudamos</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-decoration-none">Venta telefónica</a></li>
+              <li><a href="#" class="  text-decoration-none">Centro de ayuda</a></li>
+              <li><a href="#" class="  text-decoration-none">Devoluciones y cambios</a></li>
+              <li><a href="#" class="  text-decoration-none">Información legal</a></li>
+              <li><a href="#" class="  text-decoration-none">Facturas</a></li>
+              <li><a href="#" class="  text-decoration-none">Estado de mi pedido</a></li>
+              <li><a href="#" class="  text-decoration-none">Canal de integridad</a></li>
+              <li><a href="#" class="  text-decoration-none">Cómo cuidamos tus datos</a></li>
+              <li><a href="#" class="  text-decoration-none">Peticiones, quejas y reclamos</a></li>
+              <li><a href="https://www.sie.gov.co/" class="  text-decoration-none">https://www.sie.gov.co/</a></li>
+              <li><a href="#" class="  text-decoration-none">Propiedad Industrial</a></li>
+            </ul>
+          </div>
+
+          <!-- Sé parte de falabella.com -->
+          <div class="col-md-3">
+            <h5>Sé parte de falabella.com</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="  text-decoration-none">Vende en falabella.com</a></li>
+              <li><a href="#" class="  text-decoration-none">Nuestros inversionistas</a></li>
+              <li><a href="#" class="  text-decoration-none">Trabajo en grupo Falabella</a></li>
+              <li><a href="#" class="  text-decoration-none">Venta Empresa</a></li>
+              <li><a href="#" class="  text-decoration-none">Proveedores</a></li>
+            </ul>
+          </div>
+
+          <!-- Únete a nuestros programas -->
+          <div class="col-md-3">
+            <h5>Únete a nuestros programas</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="  text-decoration-none">CMR Puntos</a></li>
+              <li><a href="#" class="  text-decoration-none">Novios Falabella</a></li>
+              <li><a href="#" class="  text-decoration-none">Club Belké</a></li>
+              <li><a href="#" class="  text-decoration-none">Club Hagar</a></li>
+              <li><a href="#" class="  text-decoration-none">Fashion Club</a></li>
+              <li><a href="#" class="  text-decoration-none">Banco Falabella</a></li>
+              <li><a href="#" class="  text-decoration-none">Seguros Falabella</a></li>
+            </ul>
+          </div>
+
+          <!-- Términos y condiciones -->
+          <div class="col-md-3">
+            <h5>Términos y condiciones</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="  text-decoration-none">Política de cookies</a></li>
+              <li><a href="#" class="  text-decoration-none">Política de privacidad</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Derechos reservados y información legal -->
+        <div class="row mt-4">
+          <div class="col-12 text-center">
+            <p class="text-muted">© TODOS LOS DERECHOS RESERVADOS</p>
+            <p class="text-muted">Falabella.com: 6.4.5-1817 000-975-026 & C.018-797-74 - 49 Fino 9, Riegard, Colombia</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
@@ -2730,7 +2813,7 @@
                                 </button>
                                 
                                 <div class="text-center mt-3">
-                                    <a href="#" class="text-dark text-decoration-underline" id="resendCode">
+                                    <a href="#" class="  text-decoration-underline" id="resendCode">
                                         Reenviar código
                                     </a>
                                 </div>
@@ -2801,7 +2884,7 @@
                                     </button>
                                     
                                     <div class="text-center mt-3">
-                                        <a href="#" class="text-dark text-decoration-underline" id="resendCode">
+                                        <a href="#" class="  text-decoration-underline" id="resendCode">
                                             Reenviar código
                                         </a>
                                     </div>
