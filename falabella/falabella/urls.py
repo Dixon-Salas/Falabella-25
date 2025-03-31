@@ -53,6 +53,8 @@ urlpatterns = [
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'), #Rutas de documentacion API
     path('api/', include('products.urls')),#Ruta de productos
+    path("cart/", include("cart.urls")),  # Agrega esta línea
+    path("products/", include("products.urls")),
 ]
 
 if settings.DEBUG:
