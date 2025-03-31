@@ -1,10 +1,12 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated 
-from .models import Cart, CartItem
-from .serializers import CartSerializer, CartItemSerializer
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from .models import Cart, CartItem, Order
+from .serializers import CartSerializer, CartItemSerializer, OrderSerializer
 from products.models import Product
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
+from django.core.mail import send_mail
 
 class CartView(generics.RetrieveAPIView):
     """
@@ -87,5 +89,30 @@ class ConfirmOrderView(APIView):
         # Vaciar el carrito
         cart.items.all().delete()
 
+        # Enviar correo de confirmación
+        send_mail(
+            'Confirmación de Pedido',
+            f'Tu pedido con ID {order.id} ha sido confirmado. Total: ${total_price}',
+            'tu_correo@gmail.com',
+            [request.user.email],
+            fail_silently=False,
+        )
+
         return Response({'message': 'Order created successfully', 'order_id': order.id}, status=status.HTTP_201_CREATED)
+
+class OrderHistoryView(ListAPIView):
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
+
+class UpdateOrderStatusView(APIView):
+    permission_classes = [IsAdminUser]
+
+    def patch(self, request, *args, **kwargs):
+        order = Order.objects.get(id=kwargs['order_id'])
+        order.status = request.data['status']
+        order.save()
+        return Response({'message': 'Order status updated successfully'}, status=status.HTTP_200_OK)
 

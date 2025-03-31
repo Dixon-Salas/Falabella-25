@@ -1,6 +1,6 @@
 from rest_framework import generics, status, permissions
-from .models import CustomUser
-from .serializers import UserSerializer
+from .models import CustomUser, Address
+from .serializers import UserSerializer, AddressSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -99,3 +99,37 @@ class ResetPasswordView(APIView):
         user.set_password(new_password)
         user.save()
         return Response({"detail": "Contraseña restablecida correctamente."}, status=status.HTTP_200_OK)
+
+class AddressListCreateView(generics.ListCreateAPIView):
+    serializer_class = AddressSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Address.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+class AddressDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = AddressSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Address.objects.filter(user=self.request.user)
+
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        return Response({
+            'username': user.username,
+            'email': user.email,
+        })
+
+    def patch(self, request):
+        user = request.user
+        user.username = request.data.get('username', user.username)
+        user.email = request.data.get('email', user.email)
+        user.save()
+        return Response({'message': 'Profile updated successfully'})

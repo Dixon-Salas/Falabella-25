@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import CustomUser
+from .models import Address
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
@@ -42,6 +43,10 @@ class ResetPasswordSerializer(serializers.Serializer):
     token = serializers.CharField(required=True) #Token generado
     new_password = serializers.CharField(required=True, write_only=True) #Restablecer solo de escritura
 
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ['id', 'street', 'city', 'state', 'postal_code', 'country', 'is_default']
 
 
-    
+
