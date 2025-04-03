@@ -6,9 +6,27 @@ body {
     padding: 0;
 }
 
-/* Navbar */
+/* Navbar-1 */
 .navbar {
     border-bottom: 2px solid #ddd;
+}
+
+.custom-navbar {
+    padding-top: 1px; /* Ajusta el relleno superior */
+    padding-bottom: 1px; /* Ajusta el relleno inferior */
+    height: 40px; /* Ajusta la altura automáticamente */
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+a {
+    outline: none; /* Elimina el recuadro */
+    box-shadow: none; /* Elimina cualquier sombra que pueda aparecer */
+}
+
+a:focus {
+    outline: none; /* Asegúrate de que no aparezca al enfocar */
+    box-shadow: none; /* Elimina cualquier sombra al enfocar */
+    text-decoration: underline; /* Alternativa accesible */
 }
 
 /* Footer */
@@ -28,3 +46,8 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+
+
+
+
