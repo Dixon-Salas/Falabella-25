@@ -25,12 +25,12 @@
     {% block extra_head %}{% endblock %}
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!-- Navbar -->
     {% include "partials/navbar.html" %}
 
-    <main class="container mt-4">
+    <main class="container mt-4 flex-grow-1">
         {% block content %}{% endblock %}
     </main>
 
